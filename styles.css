@@ -2,14 +2,14 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #000000; /* Fundo preto */
-  color: #FFFFFF; /* Texto branco */
+  background-color: #000; /* Fundo preto */
+  color: #fff; /* Texto branco */
   line-height: 1.6;
   text-align: center; /* Centraliza os elementos */
 }
 
 a {
-  color: #FF0000; /* Vermelho */
+  color: #a259ff; /* Roxo */
   text-decoration: none;
 }
 
@@ -19,7 +19,7 @@ a:hover {
 
 /* Cabeçalho */
 header {
-  background: #000000; /* Fundo preto */
+  background: #1a1a1a;
   padding: 2rem 0;
 }
 
@@ -34,18 +34,18 @@ header {
   width: 100px;
   height: 100px;
   border-radius: 50%; /* Torna a imagem circular */
-  border: 2px solid #FF0000; /* Vermelho */
+  border: 2px solid #a259ff;
 }
 
 header h1 {
   font-size: 2.5rem;
-  color: #FF0000; /* Vermelho */
+  color: #a259ff;
   margin: 0;
 }
 
 header p {
   font-size: 1.2rem;
-  color: #FFFFFF;
+  color: #fff;
 }
 
 /* Menu de navegação */
@@ -58,18 +58,14 @@ nav ul {
   gap: 2rem;
 }
 
-nav ul li {
-  margin: 0;
-}
-
 nav ul li a {
-  color: #FFFFFF; /* Branco */
+  color: #fff;
   font-size: 1rem;
   text-decoration: none;
 }
 
 nav ul li a:hover {
-  color: #FF0000; /* Vermelho */
+  color: #a259ff;
 }
 
 /* Seções */
@@ -80,12 +76,12 @@ nav ul li a:hover {
 .section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #FF0000; /* Vermelho */
+  color: #a259ff;
 }
 
 .section p {
   font-size: 1rem;
-  color: #FFFFFF; /* Branco */
+  color: #ddd;
 }
 
 /* Projetos */
@@ -96,17 +92,17 @@ nav ul li a:hover {
 }
 
 .project-card {
-  background: #000000; /* Fundo preto */
+  background: #1a1a1a;
   padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
-  transition: all 0.2s ease-in-out; /* Transição mais rápida */
-  box-shadow: 0 2px 5px rgba(255, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .project-card:hover {
-  transform: scale(1.02); /* Aumento sutil de escala */
-  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); /* Sombra leve vermelha */
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(162, 89, 255, 0.5);
 }
 
 .project-card img {
@@ -117,7 +113,7 @@ nav ul li a:hover {
 }
 
 .project-card h3 {
-  color: #FF0000; /* Vermelho */
+  color: #a259ff;
   margin: 0.5rem 0;
 }
 
@@ -129,17 +125,17 @@ nav ul li a:hover {
 }
 
 .skill-card {
-  background: #000000; /* Fundo preto */
+  background: #1a1a1a;
   padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
-  transition: all 0.2s ease-in-out; /* Transição mais rápida */
-  box-shadow: 0 2px 5px rgba(255, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .skill-card:hover {
-  transform: scale(1.02); /* Aumento sutil de escala */
-  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); /* Sombra leve vermelha */
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(162, 89, 255, 0.5);
 }
 
 .skill-card img {
@@ -149,15 +145,80 @@ nav ul li a:hover {
 }
 
 .skill-card h3 {
-  color: #FF0000; /* Vermelho */
+  color: #a259ff;
   margin: 0.5rem 0;
 }
 
 /* Rodapé */
 footer {
-  background: #000000; /* Fundo preto */
+  background: #1a1a1a;
   text-align: center;
   padding: 1rem 0;
   font-size: 0.9rem;
-  color: #FFFFFF; /* Branco */
+  color: #aaa;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header-content {
+      padding: 1rem;
+      text-align: center;
+  }
+
+  .profile-pic {
+      width: 80px;
+      height: 80px;
+  }
+
+  header h1 {
+      font-size: 2rem;
+  }
+
+  nav ul {
+      flex-direction: column;
+      gap: 1rem;
+  }
+
+  .section {
+      padding: 2rem 1rem;
+  }
+
+  .projects-grid, .skills-grid {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+      gap: 0.5rem;
+  }
+
+  header h1 {
+      font-size: 1.8rem;
+  }
+
+  header p {
+      font-size: 1rem;
+  }
+
+  .section h2 {
+      font-size: 1.5rem;
+  }
+
+  .section p {
+      font-size: 0.9rem;
+  }
+}
+
+/* Efeito inicial (escondido) */
+.section.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Efeito ao se tornar visível */
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
