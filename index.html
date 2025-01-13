@@ -1,97 +1,486 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfólio - Arcelino Cavalcante</title>
+
+  <!-- Fonte Google (opcional) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
+  
+  <style>
+    /* ------------------------------------------
+       VARIÁVEIS DE COR (Claro e Escuro)
+    ------------------------------------------- */
+    :root {
+      /* Tema Claro */
+      --bg-color: #d9d9d9;
+      --text-color: #171716;
+      --header-bg: #fff;
+      --card-bg: #fff;
+      --hover-bg: #d4d4d4;
+    }
+
+    /* Tema Escuro */
+    body.dark-mode {
+      --bg-color: #1e1e1e;
+      --text-color: #f0f0f0;
+      --header-bg: #2c2c2c;
+      --card-bg: #2b2b2b;
+      --hover-bg: #444;
+    }
+
+    /* ------------------------------------------
+       REGRAS GERAIS
+    ------------------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth; /* Transição suave ao rolar a página */
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    a {
+      text-decoration: none;
+      color: var(--text-color);
+      transition: color 0.3s ease-in-out;
+    }
+    a:hover {
+      color: #555; /* Pequeno destaque ao passar o mouse */
+    }
+    h1, h2 {
+      margin-bottom: 1rem;
+    }
+    section {
+      padding: 2rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ------------------------------------------
+       CABEÇALHO E NAVEGAÇÃO
+    ------------------------------------------- */
+    header {
+      background-color: var(--header-bg);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      transition: background-color 0.4s ease;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+    }
+
+    /* Logo (imagem) */
+    .navbar__logo img {
+      height: 40px; /* Ajuste conforme desejado */
+    }
+    
+    .navbar__links ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+    .navbar__links a {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+    .navbar__links a:hover {
+      background-color: var(--hover-bg);
+    }
+
+    /* Botão Modo Escuro */
+    .dark-mode-toggle button {
+      background-color: transparent;
+      border: 1px solid var(--text-color);
+      color: var(--text-color);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode-toggle button:hover {
+      background-color: var(--text-color);
+      color: var(--bg-color);
+    }
+
+    /* ------------------------------------------
+       SEÇÃO TOPO (FOTO + NOME)
+    ------------------------------------------- */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 6rem; /* Espaço extra por conta do header fixo */
+      min-height: 60vh;
+    }
+    .hero__image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--text-color);
+      margin-bottom: 1rem;
+      transition: border-color 0.4s ease;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ------------------------------------------
+       SEÇÃO SOBRE MIM
+    ------------------------------------------- */
+    #sobre-mim {
+      background-color: #f3f3f3;
+      border-radius: 5px;
+      margin-top: 2rem;
+      transition: background-color 0.4s ease;
+    }
+    body.dark-mode #sobre-mim {
+      background-color: #2c2c2c;
+    }
+    #sobre-mim h2 {
+      margin-bottom: 1rem;
+    }
+    #sobre-mim p {
+      margin-bottom: 1rem;
+    }
+
+    /* ------------------------------------------
+       SEÇÃO PROJETOS
+    ------------------------------------------- */
+    #projetos {
+      margin-top: 2rem;
+    }
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .project-card {
+      background-color: var(--card-bg);
+      border-radius: 5px;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease-in-out, background-color 0.4s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card img {
+      border-radius: 5px;
+    }
+    .project-card h3 {
+      margin: 0.5rem 0;
+    }
+    .project-card p {
+      font-size: 0.9rem;
+    }
+    .project-card a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    /* ------------------------------------------
+       SEÇÃO HABILIDADES
+    ------------------------------------------- */
+    #habilidades {
+      margin-top: 2rem;
+      background-color: #f3f3f3;
+      border-radius: 5px;
+      transition: background-color 0.4s ease;
+    }
+    body.dark-mode #habilidades {
+      background-color: #2c2c2c;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .skill-item {
+      background-color: var(--card-bg);
+      padding: 0.75rem 1rem;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background-color 0.4s ease;
+    }
+
+    /* ------------------------------------------
+       SEÇÃO CONTATO
+    ------------------------------------------- */
+    #contato {
+      margin-top: 2rem;
+    }
+    #contato form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    #contato form input,
+    #contato form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    #contato form button {
+      background-color: var(--text-color);
+      color: var(--bg-color);
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    #contato form button:hover {
+      background-color: #333;
+    }
+
+    /* ------------------------------------------
+       RODAPÉ
+    ------------------------------------------- */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* ------------------------------------------
+       RESPONSIVIDADE
+    ------------------------------------------- */
+    @media (max-width: 768px) {
+      .navbar__links ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .hero {
+        padding-top: 7rem;
+      }
+    }
+
+    /* Ajustes adicionais para telas bem pequenas */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .hero p {
+        font-size: 0.9rem;
+      }
+      .navbar__logo img {
+        height: 30px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- =========================
+       CABEÇALHO
+  ========================== -->
   <header>
-    <div class="container header-content">
-      <img src="imagens/sua-foto.jpg" alt="Sua Foto" class="profile-pic">
-      <h1>Arcelino Cavalcante Cordeiro</h1>
-      <p>HTML | CSS | PYTHON | GIT | GITHUB</p>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#about">Sobre</a></li>
-        <li><a href="#projects">Projetos</a></li>
-        <li><a href="#skills">Habilidades</a></li>
-        <li><a href="#contact">Contato</a></li>
-      </ul>
+    <nav class="navbar">
+      <!-- Logo (imagem) no canto superior esquerdo -->
+      <div class="navbar__logo">
+        <a href="#topo">
+          <!-- Ajuste o caminho para o seu arquivo de logo (ex.: logo.png) -->
+          <img src="./imagem/logo.png" alt="Logo">
+        </a>
+      </div>
+      <div class="navbar__links">
+        <ul>
+          <li><a href="#sobre-mim">Sobre Mim</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <!-- Botão "Comprar Projetos" após Contato -->
+          <li>
+            <!-- Ajuste o link abaixo para a sua loja real -->
+            <a href="https://www.sualoja.com" target="_blank" rel="noopener">Comprar Projetos</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Botão para Modo Escuro -->
+      <div class="dark-mode-toggle">
+        <button id="darkModeBtn">Modo Escuro</button>
+      </div>
     </nav>
   </header>
 
-  <main>
-    <section id="about" class="section">
-      <div class="container">
-        <h2>Sobre Mim</h2>
-        <p>
-          Sou um profissional apaixonado por tecnologia e design, com experiência em HTML, CSS, e desenvolvimento web. Adoro criar soluções elegantes e funcionais.
-        </p>
-      </div>
-    </section>
+  <!-- =========================
+       SEÇÃO TOPO / HERO
+  ========================== -->
+  <section class="hero" id="topo">
+    <!-- Substitua "sua-foto.jpg" pela sua imagem na pasta ./imagem -->
+    <img 
+      src="./imagem/sua-foto.jpg" 
+      alt="Minha foto" 
+      class="hero__image" 
+    />
+    <h1>Arcelino Cavalcante</h1>
+    <p>
+      Desenvolvedor apaixonado por criar soluções eficientes e elegantes, 
+      focado na experiência do usuário e nas melhores práticas de desenvolvimento.
+    </p>
+  </section>
 
-    <section id="projects" class="section">
-      <div class="container">
-        <h2>Meus Projetos</h2>
-        <div class="projects-grid">
-          <div class="project-card">
-            <img src="imagens/projeto1.jpg" alt="Projeto 1">
-            <h3>Blog Professor de Letras</h3>
-            <p>Criação de um blog educacional para ensinar língua portuguesa e compartilhar projetos literários de estudantes.</p>
-          </div>
-          <div class="project-card">
-            <img src="imagens/projeto2.jpg" alt="Projeto 2">
-            <h3>Site de Portfólio</h3>
-            <p>Desenvolvimento de um site minimalista para apresentar meus projetos e habilidades profissionais.</p>
-          </div>
-          <div class="project-card">
-            <img src="imagens/projeto3.jpg" alt="Projeto 3">
-            <h3>Aplicativo de Tarefas</h3>
-            <p>Criação de um aplicativo simples para organização de tarefas com funcionalidades responsivas.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- =========================
+       SEÇÃO SOBRE MIM
+  ========================== -->
+  <section id="sobre-mim">
+    <h2>Sobre Mim</h2>
+    <p>
+      Olá! Meu nome é Arcelino Cavalcante, sou desenvolvedor com foco em 
+      <strong>tecnologias web</strong>. Possuo experiência em <strong>HTML, CSS, JavaScript</strong> 
+      e em frameworks modernos como <strong>React</strong>.  
+      Minha paixão é transformar ideias em projetos reais e funcionais.
+    </p>
+    <p>
+      Quando não estou codando, gosto de estudar novas tecnologias, contribuir 
+      com a comunidade de desenvolvedores e compartilhar conhecimento por meio 
+      de artigos e palestras.
+    </p>
+  </section>
 
-    <section id="skills" class="section">
-      <div class="container">
-        <h2>Habilidades</h2>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <img src="imagens/html-logo.png" alt="HTML Logo">
-            <h3>HTML</h3>
-            <p>Nível: Intermediário em HTML, com foco na criação de estruturas semânticas e responsivas, otimizadas para acessibilidade e usabilidade.</p>
-          </div>
-          <div class="skill-card">
-            <img src="imagens/css-logo.png" alt="CSS Logo">
-            <h3>CSS</h3>
-            <p>Nível: Intermediário. Estilização moderna e uso de animações simples.</p>
-          </div>
-          <div class="skill-card">
-            <img src="imagens/python-logo.png" alt="Python Logo">
-            <h3>Python</h3>
-            <p>Nível: Intermediário em Python e Inteligência Artificial, com interesse na criação de sistemas e foco em automação de tarefas, desenvolvimento de scripts eficientes e soluções práticas.</p>
-          </div>
-        </div>
+  <!-- =========================
+       SEÇÃO PROJETOS
+  ========================== -->
+  <section id="projetos">
+    <h2>Projetos</h2>
+    <div class="projects-container">
+      <!-- Card de projeto 1 -->
+      <div class="project-card">
+        <img src="./imagem/projeto1.jpg" alt="Projeto 1">
+        <h3>Nome do Projeto 1</h3>
+        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
+        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
       </div>
-    </section>
 
-    <section id="contact" class="section">
-      <div class="container">
-        <h2>Contato</h2>
-        <p>Entre em contato comigo pelo e-mail: <a href="mailto:seuemail@exemplo.com">arcelinocavalcante19@gmail.com</a></p>
+      <!-- Card de projeto 2 -->
+      <div class="project-card">
+        <img src="./imagem/projeto2.jpg" alt="Projeto 2">
+        <h3>Nome do Projeto 2</h3>
+        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
+        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 Arcelino cavalacnte Cordeiro. Todos os direitos reservados.</p>
+      <!-- Card de projeto 3 -->
+      <div class="project-card">
+        <img src="./imagem/projeto3.jpg" alt="Projeto 3">
+        <h3>Nome do Projeto 3</h3>
+        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
+        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
+      </div>
     </div>
+  </section>
+
+  <!-- =========================
+       SEÇÃO HABILIDADES
+  ========================== -->
+  <section id="habilidades">
+    <h2>Habilidades</h2>
+    <div class="skills-list">
+      <div class="skill-item">HTML5</div>
+      <div class="skill-item">CSS3</div>
+      <div class="skill-item">JavaScript</div>
+      <div class="skill-item">React</div>
+      <div class="skill-item">Node.js</div>
+      <div class="skill-item">Git & GitHub</div>
+      <!-- Adicione mais habilidades conforme necessário -->
+    </div>
+  </section>
+
+  <!-- =========================
+       SEÇÃO CONTATO
+  ========================== -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Entre em contato para criarmos o seu projeto ou tirar uma dúvida!</p>
+    <form>
+      <input type="text" name="nome" placeholder="Nome" required />
+      <input type="email" name="email" placeholder="E-mail" required />
+      <textarea name="mensagem" rows="5" placeholder="Mensagem" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <!-- =========================
+       RODAPÉ
+  ========================== -->
+  <footer>
+    &copy; 2025 Arcelino Cavalcante. Todos os direitos reservados.
   </footer>
-  <script src="script.js"></script>
+
+  <script>
+    // Rolagem suave entre seções
+    document.querySelectorAll('.navbar__links a').forEach(link => {
+      const isExternalLink = !link.getAttribute('href').startsWith('#');
+
+      // Se o link for interno (com #), faz rolagem suave
+      if (!isExternalLink) {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          const section = document.querySelector(href);
+          
+          // Distância até o topo da seção (ajustando para o header fixo)
+          const offsetTop = section.offsetTop - 60;
+          
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        });
+      }
+    });
+
+    // Botão para alternar modo escuro
+    const darkModeBtn = document.getElementById('darkModeBtn');
+    darkModeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      
+      // Atualiza o texto do botão conforme o modo
+      if(document.body.classList.contains('dark-mode')) {
+        darkModeBtn.textContent = "Modo Claro";
+      } else {
+        darkModeBtn.textContent = "Modo Escuro";
+      }
+    });
+  </script>
 </body>
 </html>
