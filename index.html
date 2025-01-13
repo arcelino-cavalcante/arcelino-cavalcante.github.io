@@ -91,14 +91,23 @@
 
     /* Logo (imagem) */
     .navbar__logo img {
-      height: 100px; /* Ajuste conforme desejado */
+      height: 40px; /* Ajuste conforme desejado */
     }
     
-    .navbar__links ul {
-      list-style: none;
+    .navbar__container {
       display: flex;
+      align-items: center;
       gap: 1rem;
     }
+
+    .navbar__links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 1rem;
+      transition: max-height 0.4s ease;
+    }
+
     .navbar__links a {
       padding: 0.5rem 1rem;
       border-radius: 4px;
@@ -120,6 +129,30 @@
     .dark-mode-toggle button:hover {
       background-color: var(--text-color);
       color: var(--bg-color);
+    }
+
+    /* Hamburguer Icon */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-color);
+      transition: 0.3s;
+    }
+    /* Animações ao abrir/fechar */
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
     }
 
     /* ------------------------------------------
@@ -283,15 +316,34 @@
     }
 
     /* ------------------------------------------
-       RESPONSIVIDADE
+       RESPONSIVIDADE / MENU HAMBURGER
     ------------------------------------------- */
     @media (max-width: 768px) {
-      .navbar__links ul {
+      .navbar__links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: var(--header-bg);
         flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
         gap: 0.5rem;
+        max-height: 0;
+        overflow: hidden;
+        border-radius: 0 0 8px 8px;
       }
-      .hero {
-        padding-top: 7rem;
+      .navbar__links.active {
+        max-height: 500px; /* valor arbitrário para exibir o menu */
+        transition: max-height 0.4s ease;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+      /* Esconde o Dark Mode Toggle no mobile, 
+         ou reposicione conforme desejar */
+      .dark-mode-toggle {
+        display: none;
       }
     }
 
@@ -322,8 +374,17 @@
           <img src="./imagens/logo.png" alt="Logo">
         </a>
       </div>
-      <div class="navbar__links">
-        <ul>
+      
+      <!-- Ícone do menu hamburger (só aparece em telas pequenas) -->
+      <div class="hamburger" id="hamburgerMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Container com links do menu + botão dark mode (desktop) -->
+      <div class="navbar__container">
+        <ul class="navbar__links">
           <li><a href="#sobre-mim">Sobre Mim</a></li>
           <li><a href="#projetos">Projetos</a></li>
           <li><a href="#habilidades">Habilidades</a></li>
@@ -334,10 +395,11 @@
             <a href="https://www.sualoja.com" target="_blank" rel="noopener">Comprar Projetos</a>
           </li>
         </ul>
-      </div>
-      <!-- Botão para Modo Escuro -->
-      <div class="dark-mode-toggle">
-        <button id="darkModeBtn">Modo Escuro</button>
+
+        <!-- Botão para Modo Escuro (aparece em telas maiores) -->
+        <div class="dark-mode-toggle">
+          <button id="darkModeBtn">Modo Escuro</button>
+        </div>
       </div>
     </nav>
   </header>
@@ -346,16 +408,16 @@
        SEÇÃO TOPO / HERO
   ========================== -->
   <section class="hero" id="topo">
-    <!-- Substitua "sua-foto.jpg" pela sua imagem na pasta ./imagem -->
+    <!-- Substitua "sua-foto.jpg" pela sua imagem na pasta ./imagens -->
     <img 
-      src="./imagem/sua-foto.jpg" 
+      src="./imagens/sua-foto.jpg" 
       alt="Minha foto" 
       class="hero__image" 
     />
     <h1>Arcelino Cavalcante</h1>
     <p>
-      Desenvolvedor dedicado a soluções eficientes e elegantes, focado na experiência do usuário e nas melhores práticas de desenvolvimento. 
-      Atualmente, aprimoro minhas habilidades para alcançar excelência e inovação em cada projeto..
+      Desenvolvedor apaixonado por criar soluções eficientes e elegantes, 
+      focado na experiência do usuário e nas melhores práticas de desenvolvimento.
     </p>
   </section>
 
@@ -365,13 +427,15 @@
   <section id="sobre-mim">
     <h2>Sobre Mim</h2>
     <p>
-      Olá! Sou Arcelino Cavalcante, desenvolvedor especializado em tecnologias web, 
-      com experiência em HTML, CSS, JavaScript e frameworks modernos. Minha paixão é transformar ideias em projetos funcionais. 
-      Atualmente, estudo Python para expandir minhas habilidades. 
+      Olá! Meu nome é Arcelino Cavalcante, sou desenvolvedor com foco em 
+      <strong>tecnologias web</strong>. Possuo experiência em <strong>HTML, CSS, JavaScript</strong> 
+      e em frameworks modernos como <strong>React</strong>.  
+      Minha paixão é transformar ideias em projetos reais e funcionais.
     </p>
     <p>
-      Fora do código, gosto de explorar novas tecnologias, 
-      contribuir com a comunidade de desenvolvedores e compartilhar conhecimento por meio de artigos e palestras.
+      Quando não estou codando, gosto de estudar novas tecnologias, contribuir 
+      com a comunidade de desenvolvedores e compartilhar conhecimento por meio 
+      de artigos e palestras.
     </p>
   </section>
 
@@ -383,7 +447,7 @@
     <div class="projects-container">
       <!-- Card de projeto 1 -->
       <div class="project-card">
-        <img src="./imagem/projeto1.jpg" alt="Projeto 1">
+        <img src="./imagens/projeto1.jpg" alt="Projeto 1">
         <h3>Nome do Projeto 1</h3>
         <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
         <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
@@ -391,7 +455,7 @@
 
       <!-- Card de projeto 2 -->
       <div class="project-card">
-        <img src="./imagem/projeto2.jpg" alt="Projeto 2">
+        <img src="./imagens/projeto2.jpg" alt="Projeto 2">
         <h3>Nome do Projeto 2</h3>
         <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
         <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
@@ -399,7 +463,7 @@
 
       <!-- Card de projeto 3 -->
       <div class="project-card">
-        <img src="./imagem/projeto3.jpg" alt="Projeto 3">
+        <img src="./imagens/projeto3.jpg" alt="Projeto 3">
         <h3>Nome do Projeto 3</h3>
         <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
         <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
@@ -445,18 +509,14 @@
   </footer>
 
   <script>
-    // Rolagem suave entre seções
+    // Rolagem suave entre seções (para links internos)
     document.querySelectorAll('.navbar__links a').forEach(link => {
-      const isExternalLink = !link.getAttribute('href').startsWith('#');
-
-      // Se o link for interno (com #), faz rolagem suave
-      if (!isExternalLink) {
+      const hrefValue = link.getAttribute('href');
+      // Se for link interno (começa com #), faz a rolagem suave
+      if (hrefValue && hrefValue.startsWith('#')) {
         link.addEventListener('click', (e) => {
           e.preventDefault();
-          const href = link.getAttribute('href');
-          const section = document.querySelector(href);
-          
-          // Distância até o topo da seção (ajustando para o header fixo)
+          const section = document.querySelector(hrefValue);
           const offsetTop = section.offsetTop - 60;
           
           window.scrollTo({
@@ -478,6 +538,17 @@
       } else {
         darkModeBtn.textContent = "Modo Escuro";
       }
+    });
+
+    // Menu Hamburguer (mobile)
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const navLinks = document.querySelector('.navbar__links');
+
+    hamburgerMenu.addEventListener('click', () => {
+      // Ativa/desativa o menu
+      navLinks.classList.toggle('active');
+      // Animação do ícone (x)
+      hamburgerMenu.classList.toggle('open');
     });
   </script>
 </body>
