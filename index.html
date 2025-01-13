@@ -2,7 +2,9 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- IMPORTANTE: Esta meta tag ajuda na exibição em dispositivos móveis -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <title>Portfólio - Arcelino Cavalcante</title>
 
   <!-- Fonte Google (opcional) -->
@@ -91,7 +93,7 @@
 
     /* Logo (imagem) */
     .navbar__logo img {
-      height: 60px; /* Ajuste conforme desejado */
+      height: 40px; /* Ajuste conforme desejado */
     }
     
     .navbar__container {
@@ -116,7 +118,7 @@
       background-color: var(--hover-bg);
     }
 
-    /* Botão Modo Escuro */
+    /* Botão Modo Escuro (desktop) */
     .dark-mode-toggle button {
       background-color: transparent;
       border: 1px solid var(--text-color);
@@ -319,6 +321,11 @@
        RESPONSIVIDADE / MENU HAMBURGER
     ------------------------------------------- */
     @media (max-width: 768px) {
+      /* Oculta o toggle "dark-mode" no mobile (pode ajustar) */
+      .dark-mode-toggle {
+        display: none;
+      }
+      
       .navbar__links {
         position: absolute;
         top: 60px;
@@ -337,13 +344,9 @@
         transition: max-height 0.4s ease;
       }
 
+      /* Exibe o ícone do menu hamburger em telas menores */
       .hamburger {
         display: flex;
-      }
-      /* Esconde o Dark Mode Toggle no mobile, 
-         ou reposicione conforme desejar */
-      .dark-mode-toggle {
-        display: none;
       }
     }
 
