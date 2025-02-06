@@ -32,7 +32,7 @@
       --accent-color: #25D366;
       --instagram-color: #C13584;
     }
-
+    
     /* ==================================================
        REGRAS GERAIS
     ================================================== */
@@ -83,12 +83,12 @@
       transition: background-color 0.4s;
     }
     .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       max-width: 1200px;
       margin: 0 auto;
       padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .navbar__logo img {
       height: 50px;
@@ -106,6 +106,12 @@
     .navbar__links a:hover {
       background-color: var(--hover-bg);
     }
+    /* Container para o botão de modo escuro e o menu hamburger */
+    .hamburger-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
     .dark-mode-toggle button {
       background-color: transparent;
       border: 1px solid var(--text-color);
@@ -119,45 +125,41 @@
       background-color: var(--text-color);
       color: var(--bg-color);
     }
-    /* Novo menu responsivo para celular: botão "Menu" e overlay */
-    .menu-toggle {
-      display: none;
-      background-color: transparent;
-      border: none;
-      font-size: 1.2rem;
-      color: var(--text-color);
-      cursor: pointer;
-    }
-    .overlay-menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--header-bg);
-      z-index: 1000;
+    .hamburger {
       display: none;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .overlay-menu.active {
-      display: flex;
-    }
-    .overlay-menu a {
-      font-size: 1.5rem;
-      margin: 1rem 0;
-      color: var(--text-color);
-    }
-    .overlay-menu .close-menu {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 2rem;
-      background: none;
-      border: none;
-      color: var(--text-color);
       cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-color);
+      transition: 0.3s;
+    }
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    /* Responsividade: exibe o menu hamburger em telas menores */
+    @media (max-width: 768px) {
+      .navbar__links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+    @media (max-width: 480px) {
+      .navbar__logo img {
+        height: 40px;
+      }
     }
     
     /* ==================================================
@@ -165,7 +167,7 @@
     ================================================== */
     main {
       max-width: 800px;
-      margin: 6rem auto 2rem auto; /* espaço superior considerando o header fixo */
+      margin: 6rem auto 2rem auto; /* Espaço superior para compensar o header fixo */
       padding: 0 1rem;
     }
     .product-container {
@@ -212,12 +214,11 @@
     
     /* ==================================================
        BOTÃO "VOLTAR" (seta azul) para voltar à página de produtos
-       Posicionado de forma fixa no canto inferior direito,
-       em formato quadrado com bordas arredondadas.
+       Posicionado fixo no canto inferior direito, formato quadrado com bordas arredondadas.
     ================================================== */
     .back-arrow {
       position: fixed;
-      bottom: 90px;  /* Posicionado acima do botão "Voltar ao Topo" */
+      bottom: 90px;  /* Acima do botão "Voltar ao Topo" */
       right: 20px;
       background-color: var(--primary-color);
       color: #fff;
@@ -301,23 +302,6 @@
       opacity: 1;
       visibility: visible;
     }
-    
-    /* ==================================================
-       RESPONSIVIDADE
-    ================================================== */
-    @media (max-width: 768px) {
-      .navbar__links {
-        display: none;
-      }
-      .menu-toggle {
-        display: block;
-      }
-    }
-    @media (max-width: 480px) {
-      .navbar__logo img {
-        height: 40px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -332,24 +316,24 @@
         <li><a href="../../index.html">Portfólio</a></li>
         <li><a href="../../loja.html">Comprar Produtos</a></li>
       </ul>
-      <div class="dark-mode-toggle">
-        <button id="darkModeBtn">Modo Escuro</button>
+      <!-- Container com o botão de modo escuro e o menu hamburger (para mobile) -->
+      <div class="hamburger-container">
+        <div class="dark-mode-toggle">
+          <button id="darkModeBtn">Modo Escuro</button>
+        </div>
+        <div class="hamburger" id="hamburgerMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
-      <!-- Botão de Menu para Celulares -->
-      <button class="menu-toggle" id="menuToggle">Menu</button>
     </nav>
-    <!-- Overlay do Menu (mobile) -->
-    <div class="overlay-menu" id="overlayMenu">
-      <button class="close-menu" id="closeMenu">&times;</button>
-      <a href="../../index.html">Portfólio</a>
-      <a href="../../loja.html">Comprar Produtos</a>
-    </div>
   </header>
   
   <!-- CONTEÚDO PRINCIPAL -->
   <main>
     <div class="product-container">
-      <!-- Botão "Voltar" (seta azul) para voltar à página de produtos -->
+      <!-- Botão "Voltar" (seta azul) -->
       <a href="../../loja.html" class="back-arrow" title="Voltar para Produtos">&#8592;</a>
       
       <!-- Imagem do Produto -->
@@ -365,7 +349,6 @@
           Com processador octa-core e 6GB de RAM, o XYZ garante fluidez em todas as tarefas. Seu design elegante e acabamento em metal o tornam um destaque em qualquer ambiente.
         </p>
         <div class="product-price">R$ 100,00</div>
-        <!-- Botão Comprar -->
         <button class="buy-button">Comprar</button>
       </div>
       
@@ -404,16 +387,12 @@
       darkModeBtn.textContent = document.body.classList.contains('dark-mode') ? "Modo Claro" : "Modo Escuro";
     });
     
-    // Menu overlay (mobile)
-    const menuToggle = document.getElementById('menuToggle');
-    const overlayMenu = document.getElementById('overlayMenu');
-    const closeMenu = document.getElementById('closeMenu');
-    
-    menuToggle.addEventListener('click', () => {
-      overlayMenu.classList.add('active');
-    });
-    closeMenu.addEventListener('click', () => {
-      overlayMenu.classList.remove('active');
+    // Menu Hamburger para Mobile
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const navbarLinks = document.querySelector('.navbar__links');
+    hamburgerMenu.addEventListener('click', () => {
+      navbarLinks.classList.toggle('active');
+      hamburgerMenu.classList.toggle('open');
     });
     
     // Botão "Voltar ao Topo"
