@@ -9,7 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
   
   <style>
-    /* Cores e variáveis – visual elegante */
+    /* ==================================================
+       VARIÁVEIS DE COR E ESTILO (PADRÃO UNIFICADO)
+    ================================================== */
     :root {
       --bg-color: #f7f9fc;
       --text-color: #333;
@@ -18,7 +20,7 @@
       --hover-bg: #e0e6ed;
       --primary-color: #4a90e2;       /* Azul elegante */
       --accent-color: #25D366;        /* Verde do WhatsApp */
-      --instagram-color: #C13584;     /* Roxo do Instagram */
+      --instagram-color: #C13584;     /* Roxo/rosa do Instagram */
     }
     body.dark-mode {
       --bg-color: #1a1a1a;
@@ -30,8 +32,10 @@
       --accent-color: #25D366;
       --instagram-color: #C13584;
     }
-
-    /* Regras gerais */
+    
+    /* ==================================================
+       REGRAS GERAIS
+    ================================================== */
     * {
       margin: 0;
       padding: 0;
@@ -43,7 +47,7 @@
       color: var(--text-color);
       font-family: 'Montserrat', sans-serif;
       line-height: 1.6;
-      transition: background-color 0.4s ease, color 0.4s ease;
+      transition: background-color 0.4s, color 0.4s;
     }
     img {
       max-width: 100%;
@@ -52,7 +56,7 @@
     a {
       text-decoration: none;
       color: var(--text-color);
-      transition: color 0.3s ease-in-out;
+      transition: color 0.3s;
     }
     a:hover {
       color: var(--primary-color);
@@ -66,7 +70,9 @@
       margin: 0 auto;
     }
     
-    /* Cabeçalho e Navegação */
+    /* ==================================================
+       CABEÇALHO E NAVEGAÇÃO
+    ================================================== */
     header {
       background-color: var(--header-bg);
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -74,30 +80,24 @@
       top: 0;
       width: 100%;
       z-index: 999;
-      transition: background-color 0.4s ease;
+      transition: background-color 0.4s;
     }
     .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       max-width: 1200px;
       margin: 0 auto;
       padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .navbar__logo img {
       height: 50px;
-    }
-    .navbar__container {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
     }
     .navbar__links {
       display: flex;
       align-items: center;
       list-style: none;
       gap: 1rem;
-      transition: max-height 0.4s ease;
     }
     .navbar__links a {
       padding: 0.5rem 1rem;
@@ -105,6 +105,12 @@
     }
     .navbar__links a:hover {
       background-color: var(--hover-bg);
+    }
+    /* Container para o botão de modo escuro e o menu hamburger */
+    .hamburger-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
     .dark-mode-toggle button {
       background-color: transparent;
@@ -119,6 +125,7 @@
       background-color: var(--text-color);
       color: var(--bg-color);
     }
+    /* Menu Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -141,153 +148,55 @@
       transform: translateY(-8px) rotate(-45deg);
     }
     
-    /* Seção Hero */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding-top: 6rem; /* Espaço para o header fixo */
-      min-height: 60vh;
+    /* Responsividade: em telas menores, os itens de navegação são escondidos por padrão */
+    @media (max-width: 768px) {
+      .navbar__links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: var(--header-bg);
+        width: 100%;
+        text-align: right;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      .navbar__links.active {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
     }
-    .hero__image {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--primary-color);
-      margin-bottom: 1rem;
-      transition: border-color 0.4s ease;
+    @media (max-width: 480px) {
+      .navbar__logo img {
+        height: 40px;
+      }
+    }
+    
+    /* ==================================================
+       CONTEÚDO PRINCIPAL
+    ================================================== */
+    main {
+      max-width: 800px;
+      margin: 6rem auto 2rem auto; /* Espaço para compensar o header fixo */
+      padding: 0 1rem;
+    }
+    /* Exemplos de seções de conteúdo */
+    .hero {
+      text-align: center;
     }
     .hero h1 {
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
     }
     .hero p {
       font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
     }
     
-    /* Seções Sobre Mim, Projetos, Habilidades */
-    #sobre-mim,
-    #habilidades {
-      background-color: var(--hover-bg);
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    #sobre-mim h2,
-    #habilidades h2 {
-      color: var(--primary-color);
-    }
-    #sobre-mim p,
-    #habilidades p {
-      margin-bottom: 1rem;
-    }
-    
-    /* Projetos */
-    #projetos .projects-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    .project-card {
-      background-color: var(--card-bg);
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    }
-    .project-card img {
-      border-radius: 8px;
-    }
-    .project-card h3 {
-      margin: 0.5rem 0;
-    }
-    .project-card p {
-      font-size: 0.95rem;
-    }
-    .project-card a {
-      margin-top: 0.5rem;
-      display: inline-block;
-      font-weight: 600;
-      color: var(--primary-color);
-    }
-    
-    /* Habilidades */
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .skill-item {
-      background-color: var(--card-bg);
-      padding: 0.75rem 1rem;
-      border-radius: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    /* Contato */
-    #contato form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    #contato form input,
-    #contato form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-family: inherit;
-    }
-    #contato form button {
-      background-color: var(--primary-color);
-      color: #fff;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
-    #contato form button:hover {
-      background-color: #357ab7;
-    }
-    /* Botões sociais (Instagram e WhatsApp) */
-    .social-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .social-buttons a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
-      color: #fff;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-    .social-buttons a.instagram {
-      background-color: var(--instagram-color);
-    }
-    .social-buttons a.whatsapp {
-      background-color: var(--accent-color);
-    }
-    
-    /* Rodapé */
+    /* ==================================================
+       RODAPÉ
+    ================================================== */
     footer {
       text-align: center;
       padding: 1rem;
@@ -295,7 +204,7 @@
       font-size: 0.9rem;
     }
     
-    /* Botão “Voltar ao Topo” */
+    /* Botão "Voltar ao Topo" */
     #backToTop {
       position: fixed;
       bottom: 20px;
@@ -313,181 +222,94 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s;
+      transition: opacity 0.3s, visibility 0.3s;
       z-index: 1000;
     }
     #backToTop.show {
       opacity: 1;
       visibility: visible;
     }
-    
-    /* Responsividade */
-    @media (max-width: 768px) {
-      .dark-mode-toggle {
-        display: none;
-      }
-      .navbar__links {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: var(--header-bg);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem;
-        gap: 0.5rem;
-        max-height: 0;
-        overflow: hidden;
-        border-radius: 0 0 8px 8px;
-      }
-      .navbar__links.active {
-        max-height: 500px;
-      }
-      .hamburger {
-        display: flex;
-      }
-    }
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .navbar__logo img {
-        height: 40px;
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- Cabeçalho -->
+  <!-- CABEÇALHO COM MENU -->
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <a href="#topo">
-          <img src="./imagens/logo.png" alt="Logo">
-        </a>
+        <a href="index.html"><img src="./imagens/logo.png" alt="Logo"></a>
       </div>
-      <div class="hamburger" id="hamburgerMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <!-- Container para os itens de navegação e o botão de modo escuro -->
       <div class="navbar__container">
         <ul class="navbar__links">
-          <li><a href="#sobre-mim">Sobre Mim</a></li>
-          <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#habilidades">Habilidades</a></li>
-          <li><a href="#contato">Contato</a></li>
+          <li><a href="index.html">Portfólio</a></li>
           <li><a href="loja.html">Comprar Produtos</a></li>
         </ul>
         <div class="dark-mode-toggle">
           <button id="darkModeBtn">Modo Escuro</button>
         </div>
+        <!-- Menu Hamburger para mobile -->
+        <div class="hamburger" id="hamburgerMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </nav>
   </header>
   
-  <!-- Seção Hero -->
-  <section class="hero" id="topo">
-    <img src="./imagens/sua-foto.jpg" alt="Minha foto" class="hero__image">
-    <h1>Arcelino Cavalcante</h1>
-    <p>
-      Desenvolvedor apaixonado por criar soluções eficientes e elegantes, 
-      focado na experiência do usuário e nas melhores práticas de desenvolvimento.
-    </p>
-  </section>
-  
-  <!-- Seção Sobre Mim -->
-  <section id="sobre-mim">
-    <h2>Sobre Mim</h2>
-    <p>
-      Olá! Meu nome é Arcelino Cavalcante, sou desenvolvedor com foco em tecnologias web.
-      Possuo experiência em HTML, CSS, JavaScript e em frameworks modernos como React.
-    </p>
-    <p>
-      Quando não estou codando, gosto de estudar novas tecnologias, contribuir com a comunidade 
-      de desenvolvedores e compartilhar conhecimento por meio de artigos e palestras.
-    </p>
-  </section>
-  
-  <!-- Seção Projetos -->
-  <section id="projetos">
-    <h2>Projetos</h2>
-    <div class="projects-container">
-      <div class="project-card">
-        <img src="./imagens/projeto1.jpg" alt="Projeto 1">
-        <h3>Projeto 1</h3>
-        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
-        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
+  <!-- SEÇÃO LOJA -->
+  <section id="loja">
+    <h2>Loja - Meus Produtos</h2>
+    <div class="loja-container">
+      <!-- Produto 1 com link para detalhes -->
+      <div class="produto-card">
+        <div class="carousel">
+          <img src="./imagens/produto1-1.jpg" alt="Produto 1 - Imagem 1" class="active">
+          <img src="./imagens/produto1-2.jpg" alt="Produto 1 - Imagem 2">
+          <img src="./imagens/produto1-3.jpg" alt="Produto 1 - Imagem 3">
+        </div>
+        <h3>Smartphone XYZ</h3>
+        <p class="valor">Valor: R$ 100,00</p>
+        <!-- Botão Comprar como link para a página de detalhes -->
+        <a href="produtos/detalhes-produto.html" class="btn-comprar">Comprar</a>
+        <p class="descricao">Smartphone com design moderno, câmera tripla e excelente desempenho.</p>
       </div>
-      <div class="project-card">
-        <img src="./imagens/projeto2.jpg" alt="Projeto 2">
-        <h3>Projeto 2</h3>
-        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
-        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
+      <!-- Produto 2 -->
+      <div class="produto-card">
+        <div class="carousel">
+          <img src="./imagens/produto2-1.jpg" alt="Produto 2 - Imagem 1" class="active">
+          <img src="./imagens/produto2-2.jpg" alt="Produto 2 - Imagem 2">
+          <img src="./imagens/produto2-3.jpg" alt="Produto 2 - Imagem 3">
+        </div>
+        <h3>Produto 2</h3>
+        <p class="valor">Valor: R$ 200,00</p>
+        <button class="btn-comprar">Comprar</button>
+        <p class="descricao">Pequena descrição do produto 2.</p>
       </div>
-      <div class="project-card">
-        <img src="./imagens/projeto3.jpg" alt="Projeto 3">
-        <h3>Projeto 3</h3>
-        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
-        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
+      <!-- Produto 3 -->
+      <div class="produto-card">
+        <div class="carousel">
+          <img src="./imagens/produto3-1.jpg" alt="Produto 3 - Imagem 1" class="active">
+          <img src="./imagens/produto3-2.jpg" alt="Produto 3 - Imagem 2">
+          <img src="./imagens/produto3-3.jpg" alt="Produto 3 - Imagem 3">
+        </div>
+        <h3>Produto 3</h3>
+        <p class="valor">Valor: R$ 300,00</p>
+        <button class="btn-comprar">Comprar</button>
+        <p class="descricao">Pequena descrição do produto 3.</p>
       </div>
     </div>
   </section>
   
-  <!-- Seção Habilidades -->
-  <section id="habilidades">
-    <h2>Habilidades</h2>
-    <div class="skills-list">
-      <div class="skill-item">HTML5</div>
-      <div class="skill-item">CSS3</div>
-      <div class="skill-item">JavaScript</div>
-      <div class="skill-item">React</div>
-      <div class="skill-item">Node.js</div>
-      <div class="skill-item">Git & GitHub</div>
-    </div>
-  </section>
-  
-  <!-- Seção Contato -->
-  <section id="contato">
-    <h2>Contato</h2>
-    <p>Entre em contato para criarmos o seu projeto ou tirar uma dúvida!</p>
-    <form>
-      <input type="text" name="nome" placeholder="Nome" required>
-      <input type="email" name="email" placeholder="E-mail" required>
-      <textarea name="mensagem" rows="5" placeholder="Mensagem" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-    <!-- Botões para Instagram e WhatsApp -->
-    <div class="social-buttons">
-      <a href="https://www.instagram.com/seuusuario" target="_blank" class="instagram">Instagram</a>
-      <a href="https://api.whatsapp.com/send?phone=seunumero" target="_blank" class="whatsapp">WhatsApp</a>
-    </div>
-  </section>
-  
-  <!-- Rodapé -->
+  <!-- RODAPÉ -->
   <footer>
     &copy; 2025 Arcelino Cavalcante. Todos os direitos reservados.
   </footer>
   
-  <!-- Botão “Voltar ao Topo” -->
+  <!-- BOTÃO "VOLTAR AO TOPO" -->
   <button id="backToTop" title="Voltar ao Topo">&#8679;</button>
   
   <script>
-    // Rolagem suave para links internos
-    document.querySelectorAll('.navbar__links a').forEach(link => {
-      const hrefValue = link.getAttribute('href');
-      if (hrefValue && hrefValue.startsWith('#')) {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const section = document.querySelector(hrefValue);
-          const offsetTop = section.offsetTop - 60;
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-        });
-      }
-    });
-    
     // Alternar modo escuro/claro
     const darkModeBtn = document.getElementById('darkModeBtn');
     darkModeBtn.addEventListener('click', () => {
@@ -495,7 +317,7 @@
       darkModeBtn.textContent = document.body.classList.contains('dark-mode') ? "Modo Claro" : "Modo Escuro";
     });
     
-    // Menu Hamburger (mobile)
+    // Menu Hamburger para mobile
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const navLinks = document.querySelector('.navbar__links');
     hamburgerMenu.addEventListener('click', () => {
@@ -503,7 +325,7 @@
       hamburgerMenu.classList.toggle('open');
     });
     
-    // Botão Voltar ao Topo
+    // Botão "Voltar ao Topo"
     const backToTopBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
@@ -514,6 +336,17 @@
     });
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Carrossel automático para cada produto
+    document.querySelectorAll('.carousel').forEach(carousel => {
+      const slides = carousel.querySelectorAll('img');
+      let index = 0;
+      setInterval(() => {
+        slides[index].classList.remove('active');
+        index = (index + 1) % slides.length;
+        slides[index].classList.add('active');
+      }, 3000);
     });
   </script>
 </body>
