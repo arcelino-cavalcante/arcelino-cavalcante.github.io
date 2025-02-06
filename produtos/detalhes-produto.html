@@ -173,7 +173,7 @@
       padding: 1.5rem;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: relative; /* para posicionamento da seta de voltar */
+      position: relative;
     }
     .product-image {
       width: 100%;
@@ -211,21 +211,25 @@
     }
     
     /* ==================================================
-       BOTÃO "VOLTAR" (seta azul)
+       BOTÃO "VOLTAR" (seta azul) para voltar à página de produtos
+       Posicionado de forma fixa no canto inferior direito,
+       em formato quadrado com bordas arredondadas.
     ================================================== */
     .back-arrow {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
+      position: fixed;
+      bottom: 90px;  /* Posicionado acima do botão "Voltar ao Topo" */
+      right: 20px;
       background-color: var(--primary-color);
       color: #fff;
-      padding: 0.5rem;
-      border-radius: 50%;
+      padding: 0.75rem;
+      border-radius: 8px;
       text-decoration: none;
       font-size: 1.2rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 1001;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     .back-arrow:hover {
       background-color: #357ab7;
@@ -345,8 +349,8 @@
   <!-- CONTEÚDO PRINCIPAL -->
   <main>
     <div class="product-container">
-      <!-- Seta azul para voltar à página de produtos -->
-      <a href="../../loja.html" class="back-arrow" title="Voltar para produtos">&#8592;</a>
+      <!-- Botão "Voltar" (seta azul) para voltar à página de produtos -->
+      <a href="../../loja.html" class="back-arrow" title="Voltar para Produtos">&#8592;</a>
       
       <!-- Imagem do Produto -->
       <img src="../../imagens/smartphone-xyz.jpg" alt="Smartphone XYZ" class="product-image">
@@ -355,12 +359,13 @@
       <div class="product-details">
         <h2>Smartphone XYZ</h2>
         <p>
-          O Smartphone XYZ é a escolha perfeita para quem busca desempenho e design moderno. Equipado com uma tela de 6.5 polegadas, câmera tripla de alta resolução, e bateria de longa duração, ele oferece uma experiência completa para jogos, redes sociais e produtividade.
+          O Smartphone XYZ é a escolha perfeita para quem busca desempenho e design moderno. Equipado com uma tela de 6.5 polegadas, câmera tripla de alta resolução e bateria de longa duração, ele oferece uma experiência completa para jogos, redes sociais e produtividade.
         </p>
         <p>
           Com processador octa-core e 6GB de RAM, o XYZ garante fluidez em todas as tarefas. Seu design elegante e acabamento em metal o tornam um destaque em qualquer ambiente.
         </p>
         <div class="product-price">R$ 100,00</div>
+        <!-- Botão Comprar -->
         <button class="buy-button">Comprar</button>
       </div>
       
