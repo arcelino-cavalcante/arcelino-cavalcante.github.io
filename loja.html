@@ -202,6 +202,7 @@
       font-weight: bold;
       margin: 0.5rem 0;
     }
+    /* No primeiro produto, o botão "Comprar" é um link para a página de detalhes */
     .btn-comprar {
       display: inline-block;
       background-color: var(--primary-color);
@@ -217,6 +218,7 @@
     .btn-comprar:hover {
       background-color: #357ab7;
     }
+    
     .produto-card p.descricao {
       font-size: 0.95rem;
     }
@@ -302,7 +304,7 @@
           <img src="./imagens/logo.png" alt="Logo">
         </a>
       </div>
-      <!-- Ícone do menu hamburger (para mobile) -->
+      <!-- Menu hamburger para mobile -->
       <div class="hamburger" id="hamburgerMenu">
         <span></span>
         <span></span>
@@ -324,17 +326,18 @@
   <section id="loja">
     <h2>Loja - Meus Produtos</h2>
     <div class="loja-container">
-      <!-- Produto 1 -->
+      <!-- Produto 1 com link para a página de detalhes -->
       <div class="produto-card">
         <div class="carousel">
           <img src="./imagens/produto1-1.jpg" alt="Produto 1 - Imagem 1" class="active">
           <img src="./imagens/produto1-2.jpg" alt="Produto 1 - Imagem 2">
           <img src="./imagens/produto1-3.jpg" alt="Produto 1 - Imagem 3">
         </div>
-        <h3>Produto 1</h3>
+        <h3>Smartphone XYZ</h3>
         <p class="valor">Valor: R$ 100,00</p>
-        <button class="btn-comprar">Comprar</button>
-        <p class="descricao">Pequena descrição do produto 1.</p>
+        <!-- O botão Comprar agora é um link para a página de detalhes do produto -->
+        <a href="produtos/detalhes-produto.html" class="btn-comprar">Comprar</a>
+        <p class="descricao">Smartphone com design moderno, câmera tripla e excelente desempenho.</p>
       </div>
       <!-- Produto 2 -->
       <div class="produto-card">
