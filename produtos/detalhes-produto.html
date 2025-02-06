@@ -47,7 +47,7 @@
       color: var(--text-color);
       font-family: 'Montserrat', sans-serif;
       line-height: 1.6;
-      transition: background-color 0.4s ease, color 0.4s ease;
+      transition: background-color 0.4s, color 0.4s;
     }
     img {
       max-width: 100%;
@@ -56,7 +56,7 @@
     a {
       text-decoration: none;
       color: var(--text-color);
-      transition: color 0.3s ease-in-out;
+      transition: color 0.3s;
     }
     a:hover {
       color: var(--primary-color);
@@ -71,7 +71,7 @@
     }
     
     /* ==================================================
-       CABEÇALHO E NAVEGAÇÃO (mesmo dos outros arquivos)
+       CABEÇALHO E NAVEGAÇÃO
     ================================================== */
     header {
       background-color: var(--header-bg);
@@ -80,7 +80,7 @@
       top: 0;
       width: 100%;
       z-index: 999;
-      transition: background-color 0.4s ease;
+      transition: background-color 0.4s;
     }
     .navbar {
       display: flex;
@@ -93,17 +93,11 @@
     .navbar__logo img {
       height: 50px;
     }
-    .navbar__container {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
     .navbar__links {
       display: flex;
       align-items: center;
       list-style: none;
       gap: 1rem;
-      transition: max-height 0.4s ease;
     }
     .navbar__links a {
       padding: 0.5rem 1rem;
@@ -125,26 +119,45 @@
       background-color: var(--text-color);
       color: var(--bg-color);
     }
-    .hamburger {
+    /* Novo menu responsivo para celular: botão "Menu" e overlay */
+    .menu-toggle {
+      display: none;
+      background-color: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+    .overlay-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--header-bg);
+      z-index: 1000;
       display: none;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .overlay-menu.active {
+      display: flex;
+    }
+    .overlay-menu a {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      color: var(--text-color);
+    }
+    .overlay-menu .close-menu {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: var(--text-color);
       cursor: pointer;
-      gap: 5px;
-    }
-    .hamburger span {
-      width: 25px;
-      height: 3px;
-      background-color: var(--text-color);
-      transition: 0.3s;
-    }
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
     }
     
     /* ==================================================
@@ -160,6 +173,7 @@
       padding: 1.5rem;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: relative; /* para posicionamento da seta de voltar */
     }
     .product-image {
       width: 100%;
@@ -193,6 +207,27 @@
       transition: background-color 0.3s;
     }
     .buy-button:hover {
+      background-color: #357ab7;
+    }
+    
+    /* ==================================================
+       BOTÃO "VOLTAR" (seta azul)
+    ================================================== */
+    .back-arrow {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-arrow:hover {
       background-color: #357ab7;
     }
     
@@ -255,7 +290,7 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s;
+      transition: opacity 0.3s, visibility 0.3s;
       z-index: 1000;
     }
     #backToTop.show {
@@ -267,27 +302,11 @@
        RESPONSIVIDADE
     ================================================== */
     @media (max-width: 768px) {
-      .dark-mode-toggle {
+      .navbar__links {
         display: none;
       }
-      .navbar__links {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: var(--header-bg);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem;
-        gap: 0.5rem;
-        max-height: 0;
-        overflow: hidden;
-        border-radius: 0 0 8px 8px;
-      }
-      .navbar__links.active {
-        max-height: 500px;
-      }
-      .hamburger {
-        display: flex;
+      .menu-toggle {
+        display: block;
       }
     }
     @media (max-width: 480px) {
@@ -298,35 +317,37 @@
   </style>
 </head>
 <body>
-  <!-- CABEÇALHO (mantém o mesmo menu de navegação) -->
+  <!-- CABEÇALHO COM MENU -->
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
-        <a href="../../index.html">
-          <img src="../../imagens/logo.png" alt="Logo">
-        </a>
+        <a href="../../index.html"><img src="../../imagens/logo.png" alt="Logo"></a>
       </div>
-      <!-- Menu hamburger para mobile -->
-      <div class="hamburger" id="hamburgerMenu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <!-- Navegação Desktop -->
+      <ul class="navbar__links">
+        <li><a href="../../index.html">Portfólio</a></li>
+        <li><a href="../../loja.html">Comprar Produtos</a></li>
+      </ul>
+      <div class="dark-mode-toggle">
+        <button id="darkModeBtn">Modo Escuro</button>
       </div>
-      <div class="navbar__container">
-        <ul class="navbar__links">
-          <li><a href="../../index.html">Portfólio</a></li>
-          <li><a href="../../loja.html">Comprar Produtos</a></li>
-        </ul>
-        <div class="dark-mode-toggle">
-          <button id="darkModeBtn">Modo Escuro</button>
-        </div>
-      </div>
+      <!-- Botão de Menu para Celulares -->
+      <button class="menu-toggle" id="menuToggle">Menu</button>
     </nav>
+    <!-- Overlay do Menu (mobile) -->
+    <div class="overlay-menu" id="overlayMenu">
+      <button class="close-menu" id="closeMenu">&times;</button>
+      <a href="../../index.html">Portfólio</a>
+      <a href="../../loja.html">Comprar Produtos</a>
+    </div>
   </header>
   
   <!-- CONTEÚDO PRINCIPAL -->
   <main>
     <div class="product-container">
+      <!-- Seta azul para voltar à página de produtos -->
+      <a href="../../loja.html" class="back-arrow" title="Voltar para produtos">&#8592;</a>
+      
       <!-- Imagem do Produto -->
       <img src="../../imagens/smartphone-xyz.jpg" alt="Smartphone XYZ" class="product-image">
       
@@ -340,7 +361,6 @@
           Com processador octa-core e 6GB de RAM, o XYZ garante fluidez em todas as tarefas. Seu design elegante e acabamento em metal o tornam um destaque em qualquer ambiente.
         </p>
         <div class="product-price">R$ 100,00</div>
-        <!-- Botão Comprar -->
         <button class="buy-button">Comprar</button>
       </div>
       
@@ -372,19 +392,6 @@
   <button id="backToTop" title="Voltar ao Topo">&#8679;</button>
   
   <script>
-    // Rolagem suave para links internos (se houver)
-    document.querySelectorAll('.navbar__links a').forEach(link => {
-      const hrefValue = link.getAttribute('href');
-      if (hrefValue && hrefValue.startsWith('#')) {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const section = document.querySelector(hrefValue);
-          const offsetTop = section.offsetTop - 60;
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-        });
-      }
-    });
-    
     // Alternar modo escuro/claro
     const darkModeBtn = document.getElementById('darkModeBtn');
     darkModeBtn.addEventListener('click', () => {
@@ -392,12 +399,16 @@
       darkModeBtn.textContent = document.body.classList.contains('dark-mode') ? "Modo Claro" : "Modo Escuro";
     });
     
-    // Menu Hamburger para mobile
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const navLinks = document.querySelector('.navbar__links');
-    hamburgerMenu.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      hamburgerMenu.classList.toggle('open');
+    // Menu overlay (mobile)
+    const menuToggle = document.getElementById('menuToggle');
+    const overlayMenu = document.getElementById('overlayMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    
+    menuToggle.addEventListener('click', () => {
+      overlayMenu.classList.add('active');
+    });
+    closeMenu.addEventListener('click', () => {
+      overlayMenu.classList.remove('active');
     });
     
     // Botão "Voltar ao Topo"
