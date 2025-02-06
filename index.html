@@ -4,10 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio - Arcelino Cavalcante</title>
-  <!-- Fonte Google -->
-  <link rel="preconnect" href="https://fonts.gstatic.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
-  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
     /* ==================================================
        VARIÁVEIS DE COR E ESTILO (PADRÃO UNIFICADO)
@@ -19,8 +18,8 @@
       --card-bg: #fff;
       --hover-bg: #e0e6ed;
       --primary-color: #4a90e2;       /* Azul elegante */
-      --accent-color: #25D366;        /* Verde do WhatsApp */
-      --instagram-color: #C13584;     /* Roxo/rosa do Instagram */
+      --accent-color: #25D366;
+      --instagram-color: #C13584;
     }
     body.dark-mode {
       --bg-color: #1a1a1a;
@@ -37,10 +36,7 @@
        REGRAS GERAIS
     ================================================== */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+      margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;
     }
     body {
       background-color: var(--bg-color);
@@ -49,26 +45,11 @@
       line-height: 1.6;
       transition: background-color 0.4s, color 0.4s;
     }
-    img {
-      max-width: 100%;
-      display: block;
-    }
-    a {
-      text-decoration: none;
-      color: var(--text-color);
-      transition: color 0.3s;
-    }
-    a:hover {
-      color: var(--primary-color);
-    }
-    h1, h2 {
-      margin-bottom: 1rem;
-    }
-    section {
-      padding: 2rem 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: var(--text-color); transition: color 0.3s; }
+    a:hover { color: var(--primary-color); }
+    h1, h2 { margin-bottom: 1rem; }
+    section { padding: 2rem 1.5rem; max-width: 1200px; margin: 0 auto; }
     
     /* ==================================================
        CABEÇALHO E NAVEGAÇÃO
@@ -76,79 +57,49 @@
     header {
       background-color: var(--header-bg);
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 999;
+      position: fixed; top: 0; width: 100%; z-index: 999;
       transition: background-color 0.4s;
     }
     .navbar {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    .navbar__logo img {
-      height: 50px;
-    }
+    .navbar__logo img { height: 50px; }
     .navbar__links {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      gap: 1rem;
+      display: flex; align-items: center; list-style: none; gap: 1rem;
     }
     .navbar__links a {
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
+      padding: 0.5rem 1rem; border-radius: 4px;
     }
-    .navbar__links a:hover {
-      background-color: var(--hover-bg);
-    }
-    /* Container para o botão de modo escuro e o menu hamburger */
+    .navbar__links a:hover { background-color: var(--hover-bg); }
+    /* Container para botão de modo escuro e menu hamburger */
     .hamburger-container {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      display: flex; align-items: center; gap: 1rem;
     }
     .dark-mode-toggle button {
-      background-color: transparent;
-      border: 1px solid var(--text-color);
-      color: var(--text-color);
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
+      background-color: transparent; border: 1px solid var(--text-color);
+      color: var(--text-color); padding: 0.5rem 1rem; border-radius: 5px;
+      cursor: pointer; transition: background-color 0.3s, color 0.3s;
     }
     .dark-mode-toggle button:hover {
-      background-color: var(--text-color);
-      color: var(--bg-color);
+      background-color: var(--text-color); color: var(--bg-color);
     }
     /* Menu Hamburger */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
+      display: none; flex-direction: column; cursor: pointer; gap: 5px;
     }
     .hamburger span {
-      width: 25px;
-      height: 3px;
-      background-color: var(--text-color);
+      width: 25px; height: 3px; background-color: var(--text-color);
       transition: 0.3s;
     }
     .hamburger.open span:nth-child(1) {
       transform: translateY(8px) rotate(45deg);
     }
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) {
       transform: translateY(-8px) rotate(-45deg);
     }
-    
-    /* Responsividade: em telas menores, os itens de navegação são escondidos por padrão */
+    /* Responsividade: em telas ≤768px, ocultar os links e exibir o menu hamburger */
     @media (max-width: 768px) {
       .navbar__links {
         display: none;
@@ -162,151 +113,82 @@
         padding: 1rem 1.5rem;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       }
-      .navbar__links.active {
-        display: flex;
-      }
-      .hamburger {
-        display: flex;
-      }
+      .navbar__links.active { display: flex; }
+      .hamburger { display: flex; }
     }
     @media (max-width: 480px) {
-      .navbar__logo img {
-        height: 40px;
-      }
+      .navbar__logo img { height: 40px; }
     }
     
     /* ==================================================
-       CONTEÚDO PRINCIPAL
+       CONTEÚDO PRINCIPAL (exemplo de Hero)
     ================================================== */
-    main {
-      max-width: 800px;
-      margin: 6rem auto 2rem auto; /* Espaço para compensar o header fixo */
-      padding: 0 1rem;
-    }
-    /* Exemplos de seções de conteúdo */
     .hero {
       text-align: center;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-    }
-    .hero p {
-      font-size: 1.1rem;
-    }
+    .hero h1 { font-size: 2.5rem; }
+    .hero p { font-size: 1.1rem; }
     
     /* ==================================================
        RODAPÉ
     ================================================== */
     footer {
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-      font-size: 0.9rem;
+      text-align: center; padding: 1rem; margin-top: 2rem; font-size: 0.9rem;
     }
     
     /* Botão "Voltar ao Topo" */
     #backToTop {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--primary-color);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
+      position: fixed; bottom: 20px; right: 20px;
+      background-color: var(--primary-color); color: #fff; border: none;
+      border-radius: 50%; width: 50px; height: 50px;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
+      opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
       z-index: 1000;
     }
-    #backToTop.show {
-      opacity: 1;
-      visibility: visible;
-    }
+    #backToTop.show { opacity: 1; visibility: visible; }
   </style>
 </head>
 <body>
-  <!-- CABEÇALHO COM MENU -->
+  <!-- HEADER -->
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
         <a href="index.html"><img src="./imagens/logo.png" alt="Logo"></a>
       </div>
-      <!-- Container para os itens de navegação e o botão de modo escuro -->
       <div class="navbar__container">
         <ul class="navbar__links">
           <li><a href="index.html">Portfólio</a></li>
           <li><a href="loja.html">Comprar Produtos</a></li>
         </ul>
-        <div class="dark-mode-toggle">
-          <button id="darkModeBtn">Modo Escuro</button>
-        </div>
-        <!-- Menu Hamburger para mobile -->
-        <div class="hamburger" id="hamburgerMenu">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="hamburger-container">
+          <div class="dark-mode-toggle">
+            <button id="darkModeBtn">Modo Escuro</button>
+          </div>
+          <div class="hamburger" id="hamburgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </div>
     </nav>
   </header>
   
-  <!-- SEÇÃO LOJA -->
-  <section id="loja">
-    <h2>Loja - Meus Produtos</h2>
-    <div class="loja-container">
-      <!-- Produto 1 com link para detalhes -->
-      <div class="produto-card">
-        <div class="carousel">
-          <img src="./imagens/produto1-1.jpg" alt="Produto 1 - Imagem 1" class="active">
-          <img src="./imagens/produto1-2.jpg" alt="Produto 1 - Imagem 2">
-          <img src="./imagens/produto1-3.jpg" alt="Produto 1 - Imagem 3">
-        </div>
-        <h3>Smartphone XYZ</h3>
-        <p class="valor">Valor: R$ 100,00</p>
-        <!-- Botão Comprar como link para a página de detalhes -->
-        <a href="produtos/detalhes-produto.html" class="btn-comprar">Comprar</a>
-        <p class="descricao">Smartphone com design moderno, câmera tripla e excelente desempenho.</p>
-      </div>
-      <!-- Produto 2 -->
-      <div class="produto-card">
-        <div class="carousel">
-          <img src="./imagens/produto2-1.jpg" alt="Produto 2 - Imagem 1" class="active">
-          <img src="./imagens/produto2-2.jpg" alt="Produto 2 - Imagem 2">
-          <img src="./imagens/produto2-3.jpg" alt="Produto 2 - Imagem 3">
-        </div>
-        <h3>Produto 2</h3>
-        <p class="valor">Valor: R$ 200,00</p>
-        <button class="btn-comprar">Comprar</button>
-        <p class="descricao">Pequena descrição do produto 2.</p>
-      </div>
-      <!-- Produto 3 -->
-      <div class="produto-card">
-        <div class="carousel">
-          <img src="./imagens/produto3-1.jpg" alt="Produto 3 - Imagem 1" class="active">
-          <img src="./imagens/produto3-2.jpg" alt="Produto 3 - Imagem 2">
-          <img src="./imagens/produto3-3.jpg" alt="Produto 3 - Imagem 3">
-        </div>
-        <h3>Produto 3</h3>
-        <p class="valor">Valor: R$ 300,00</p>
-        <button class="btn-comprar">Comprar</button>
-        <p class="descricao">Pequena descrição do produto 3.</p>
-      </div>
-    </div>
+  <!-- Conteúdo Principal -->
+  <section class="hero">
+    <h1>Bem-vindo ao Meu Portfólio</h1>
+    <p>Conheça meus projetos e habilidades!</p>
   </section>
+  
+  <!-- Conteúdo adicional pode ser inserido aqui -->
   
   <!-- RODAPÉ -->
   <footer>
     &copy; 2025 Arcelino Cavalcante. Todos os direitos reservados.
   </footer>
   
-  <!-- BOTÃO "VOLTAR AO TOPO" -->
+  <!-- Botão "Voltar ao Topo" -->
   <button id="backToTop" title="Voltar ao Topo">&#8679;</button>
   
   <script>
@@ -319,9 +201,9 @@
     
     // Menu Hamburger para mobile
     const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const navLinks = document.querySelector('.navbar__links');
+    const navbarLinks = document.querySelector('.navbar__links');
     hamburgerMenu.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+      navbarLinks.classList.toggle('active');
       hamburgerMenu.classList.toggle('open');
     });
     
@@ -336,17 +218,6 @@
     });
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    
-    // Carrossel automático para cada produto
-    document.querySelectorAll('.carousel').forEach(carousel => {
-      const slides = carousel.querySelectorAll('img');
-      let index = 0;
-      setInterval(() => {
-        slides[index].classList.remove('active');
-        index = (index + 1) % slides.length;
-        slides[index].classList.add('active');
-      }, 3000);
     });
   </script>
 </body>
