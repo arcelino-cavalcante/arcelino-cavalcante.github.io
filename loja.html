@@ -2,37 +2,35 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <!-- IMPORTANTE: Meta tag para dispositivos móveis -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loja - Comprar Produtos</title>
-
-  <!-- Fonte Google (opcional) -->
+  <!-- Fonte Google -->
   <link rel="preconnect" href="https://fonts.gstatic.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
   
   <style>
-    /* ------------------------------------------
-       VARIÁVEIS DE COR (Claro e Escuro)
-    ------------------------------------------- */
+    /* Mesmas variáveis e estilo elegante do portfólio */
     :root {
-      --bg-color: #d9d9d9;
-      --text-color: #171716;
+      --bg-color: #f7f9fc;
+      --text-color: #333;
       --header-bg: #fff;
       --card-bg: #fff;
-      --hover-bg: #d4d4d4;
+      --hover-bg: #e0e6ed;
+      --primary-color: #4a90e2;
+      --accent-color: #25D366;
+      --instagram-color: #C13584;
     }
     body.dark-mode {
-      --bg-color: #1e1e1e;
-      --text-color: #f0f0f0;
-      --header-bg: #2c2c2c;
-      --card-bg: #2b2b2b;
+      --bg-color: #1a1a1a;
+      --text-color: #e0e0e0;
+      --header-bg: #333;
+      --card-bg: #2a2a2a;
       --hover-bg: #444;
+      --primary-color: #4a90e2;
+      --accent-color: #25D366;
+      --instagram-color: #C13584;
     }
     
-    /* ------------------------------------------
-       REGRAS GERAIS
-    ------------------------------------------- */
     * {
       margin: 0;
       padding: 0;
@@ -56,7 +54,7 @@
       transition: color 0.3s ease-in-out;
     }
     a:hover {
-      color: #555;
+      color: var(--primary-color);
     }
     h1, h2 {
       margin-bottom: 1rem;
@@ -67,9 +65,7 @@
       margin: 0 auto;
     }
     
-    /* ------------------------------------------
-       CABEÇALHO E NAVEGAÇÃO
-    ------------------------------------------- */
+    /* Cabeçalho */
     header {
       background-color: var(--header-bg);
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -88,7 +84,7 @@
       padding: 1rem 1.5rem;
     }
     .navbar__logo img {
-      height: 40px;
+      height: 50px;
     }
     .navbar__container {
       display: flex;
@@ -144,14 +140,12 @@
       transform: translateY(-8px) rotate(-45deg);
     }
     
-    /* ------------------------------------------
-       LOJA / PRODUTOS
-    ------------------------------------------- */
+    /* Seção Loja */
     #loja {
-      margin-top: 6rem; /* Espaço para o header */
+      margin-top: 6rem;
     }
     #loja h2 {
-      margin-bottom: 1rem;
+      color: var(--primary-color);
     }
     .loja-container {
       display: grid;
@@ -161,22 +155,22 @@
     }
     .produto-card {
       background-color: var(--card-bg);
-      border-radius: 5px;
+      border-radius: 8px;
       padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease-in-out;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .produto-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
-    /* Carrossel interno de cada produto */
     .carousel {
       position: relative;
       width: 100%;
       height: 200px;
       overflow: hidden;
       margin-bottom: 1rem;
-      border-radius: 5px;
+      border-radius: 8px;
     }
     .carousel img {
       position: absolute;
@@ -200,26 +194,24 @@
     }
     .btn-comprar {
       display: inline-block;
-      background-color: var(--text-color);
-      color: var(--bg-color);
+      background-color: var(--primary-color);
+      color: #fff;
       padding: 0.5rem 1rem;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       text-transform: uppercase;
       margin: 0.5rem 0;
       transition: background-color 0.3s;
     }
     .btn-comprar:hover {
-      background-color: #333;
+      background-color: #357ab7;
     }
     .produto-card p.descricao {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
     
-    /* ------------------------------------------
-       RODAPÉ
-    ------------------------------------------- */
+    /* Rodapé */
     footer {
       text-align: center;
       padding: 1rem;
@@ -227,9 +219,33 @@
       font-size: 0.9rem;
     }
     
-    /* ------------------------------------------
-       RESPONSIVIDADE / MENU HAMBURGER
-    ------------------------------------------- */
+    /* Botão “Voltar ao Topo” */
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s;
+      z-index: 1000;
+    }
+    #backToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Responsividade */
     @media (max-width: 768px) {
       .dark-mode-toggle {
         display: none;
@@ -249,7 +265,6 @@
       }
       .navbar__links.active {
         max-height: 500px;
-        transition: max-height 0.4s ease;
       }
       .hamburger {
         display: flex;
@@ -257,13 +272,13 @@
     }
     @media (max-width: 480px) {
       .navbar__logo img {
-        height: 30px;
+        height: 40px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- CABEÇALHO -->
+  <!-- Cabeçalho -->
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
@@ -271,14 +286,11 @@
           <img src="./imagens/logo.png" alt="Logo">
         </a>
       </div>
-      
-      <!-- Menu hamburger para mobile -->
       <div class="hamburger" id="hamburgerMenu">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      
       <div class="navbar__container">
         <ul class="navbar__links">
           <li><a href="index.html">Portfólio</a></li>
@@ -291,7 +303,7 @@
     </nav>
   </header>
   
-  <!-- SEÇÃO LOJA -->
+  <!-- Seção Loja -->
   <section id="loja">
     <h2>Loja - Meus Produtos</h2>
     <div class="loja-container">
@@ -334,13 +346,16 @@
     </div>
   </section>
   
-  <!-- RODAPÉ -->
+  <!-- Rodapé -->
   <footer>
     &copy; 2025 Arcelino Cavalcante. Todos os direitos reservados.
   </footer>
   
+  <!-- Botão “Voltar ao Topo” -->
+  <button id="backToTop" title="Voltar ao Topo">&#8679;</button>
+  
   <script>
-    // Rolagem suave para links internos (se houver)
+    // Rolagem suave (para links internos, se houver)
     document.querySelectorAll('.navbar__links a').forEach(link => {
       const hrefValue = link.getAttribute('href');
       if (hrefValue && hrefValue.startsWith('#')) {
@@ -348,22 +363,19 @@
           e.preventDefault();
           const section = document.querySelector(hrefValue);
           const offsetTop = section.offsetTop - 60;
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         });
       }
     });
     
-    // Alterna modo escuro/claro
+    // Alternar modo escuro/claro
     const darkModeBtn = document.getElementById('darkModeBtn');
     darkModeBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       darkModeBtn.textContent = document.body.classList.contains('dark-mode') ? "Modo Claro" : "Modo Escuro";
     });
     
-    // Menu Hamburger para mobile
+    // Menu Hamburger (mobile)
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const navLinks = document.querySelector('.navbar__links');
     hamburgerMenu.addEventListener('click', () => {
@@ -371,7 +383,20 @@
       hamburgerMenu.classList.toggle('open');
     });
     
-    // Carrossel automático para cada .carousel
+    // Botão Voltar ao Topo
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Carrossel automático para cada produto
     document.querySelectorAll('.carousel').forEach(carousel => {
       const slides = carousel.querySelectorAll('img');
       let index = 0;
@@ -379,7 +404,7 @@
         slides[index].classList.remove('active');
         index = (index + 1) % slides.length;
         slides[index].classList.add('active');
-      }, 3000); // troca a cada 3 segundos
+      }, 3000);
     });
   </script>
 </body>
