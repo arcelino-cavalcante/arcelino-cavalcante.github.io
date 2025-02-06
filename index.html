@@ -2,38 +2,36 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <!-- IMPORTANTE: Meta tag para dispositivos móveis -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio - Arcelino Cavalcante</title>
-
-  <!-- Fonte Google (opcional) -->
+  <!-- Fonte Google -->
   <link rel="preconnect" href="https://fonts.gstatic.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
   
   <style>
-    /* ------------------------------------------
-       VARIÁVEIS DE COR (Claro e Escuro)
-    ------------------------------------------- */
+    /* Cores e variáveis – visual elegante */
     :root {
-      /* Tema Claro */
-      --bg-color: #d9d9d9;
-      --text-color: #171716;
+      --bg-color: #f7f9fc;
+      --text-color: #333;
       --header-bg: #fff;
       --card-bg: #fff;
-      --hover-bg: #d4d4d4;
+      --hover-bg: #e0e6ed;
+      --primary-color: #4a90e2;       /* Azul elegante */
+      --accent-color: #25D366;        /* Verde do WhatsApp */
+      --instagram-color: #C13584;     /* Roxo do Instagram */
     }
     body.dark-mode {
-      --bg-color: #1e1e1e;
-      --text-color: #f0f0f0;
-      --header-bg: #2c2c2c;
-      --card-bg: #2b2b2b;
+      --bg-color: #1a1a1a;
+      --text-color: #e0e0e0;
+      --header-bg: #333;
+      --card-bg: #2a2a2a;
       --hover-bg: #444;
+      --primary-color: #4a90e2;
+      --accent-color: #25D366;
+      --instagram-color: #C13584;
     }
-    
-    /* ------------------------------------------
-       REGRAS GERAIS
-    ------------------------------------------- */
+
+    /* Regras gerais */
     * {
       margin: 0;
       padding: 0;
@@ -57,7 +55,7 @@
       transition: color 0.3s ease-in-out;
     }
     a:hover {
-      color: #555;
+      color: var(--primary-color);
     }
     h1, h2 {
       margin-bottom: 1rem;
@@ -68,9 +66,7 @@
       margin: 0 auto;
     }
     
-    /* ------------------------------------------
-       CABEÇALHO E NAVEGAÇÃO
-    ------------------------------------------- */
+    /* Cabeçalho e Navegação */
     header {
       background-color: var(--header-bg);
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -89,7 +85,7 @@
       padding: 1rem 1.5rem;
     }
     .navbar__logo img {
-      height: 40px;
+      height: 50px;
     }
     .navbar__container {
       display: flex;
@@ -123,7 +119,6 @@
       background-color: var(--text-color);
       color: var(--bg-color);
     }
-    /* Ícone do menu hamburger (apenas em telas pequenas) */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -136,7 +131,6 @@
       background-color: var(--text-color);
       transition: 0.3s;
     }
-    /* Animação ao abrir/fechar o menu */
     .hamburger.open span:nth-child(1) {
       transform: translateY(8px) rotate(45deg);
     }
@@ -147,9 +141,7 @@
       transform: translateY(-8px) rotate(-45deg);
     }
     
-    /* ------------------------------------------
-       SEÇÃO TOPO / HERO
-    ------------------------------------------- */
+    /* Seção Hero */
     .hero {
       display: flex;
       flex-direction: column;
@@ -164,46 +156,39 @@
       height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--text-color);
+      border: 4px solid var(--primary-color);
       margin-bottom: 1rem;
       transition: border-color 0.4s ease;
     }
     .hero h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 0.5rem;
     }
     .hero p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       max-width: 600px;
       margin: 0 auto;
     }
     
-    /* ------------------------------------------
-       SEÇÃO SOBRE MIM
-    ------------------------------------------- */
-    #sobre-mim {
-      background-color: #f3f3f3;
-      border-radius: 5px;
-      margin-top: 2rem;
-      transition: background-color 0.4s ease;
+    /* Seções Sobre Mim, Projetos, Habilidades */
+    #sobre-mim,
+    #habilidades {
+      background-color: var(--hover-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
-    body.dark-mode #sobre-mim {
-      background-color: #2c2c2c;
+    #sobre-mim h2,
+    #habilidades h2 {
+      color: var(--primary-color);
     }
-    #sobre-mim h2 {
-      margin-bottom: 1rem;
-    }
-    #sobre-mim p {
+    #sobre-mim p,
+    #habilidades p {
       margin-bottom: 1rem;
     }
     
-    /* ------------------------------------------
-       SEÇÃO PROJETOS
-    ------------------------------------------- */
-    #projetos {
-      margin-top: 2rem;
-    }
-    .projects-container {
+    /* Projetos */
+    #projetos .projects-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1.5rem;
@@ -211,42 +196,32 @@
     }
     .project-card {
       background-color: var(--card-bg);
-      border-radius: 5px;
+      border-radius: 8px;
       padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease-in-out, background-color 0.4s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .project-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
     .project-card img {
-      border-radius: 5px;
+      border-radius: 8px;
     }
     .project-card h3 {
       margin: 0.5rem 0;
     }
     .project-card p {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
     .project-card a {
-      display: inline-block;
       margin-top: 0.5rem;
+      display: inline-block;
       font-weight: 600;
-      transition: color 0.3s ease;
+      color: var(--primary-color);
     }
     
-    /* ------------------------------------------
-       SEÇÃO HABILIDADES
-    ------------------------------------------- */
-    #habilidades {
-      margin-top: 2rem;
-      background-color: #f3f3f3;
-      border-radius: 5px;
-      transition: background-color 0.4s ease;
-    }
-    body.dark-mode #habilidades {
-      background-color: #2c2c2c;
-    }
+    /* Habilidades */
     .skills-list {
       display: flex;
       flex-wrap: wrap;
@@ -256,17 +231,11 @@
     .skill-item {
       background-color: var(--card-bg);
       padding: 0.75rem 1rem;
-      border-radius: 5px;
+      border-radius: 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: background-color 0.4s ease;
     }
     
-    /* ------------------------------------------
-       SEÇÃO CONTATO
-    ------------------------------------------- */
-    #contato {
-      margin-top: 2rem;
-    }
+    /* Contato */
     #contato form {
       display: flex;
       flex-direction: column;
@@ -279,27 +248,46 @@
       width: 100%;
       padding: 0.75rem;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
       font-size: 1rem;
       font-family: inherit;
     }
     #contato form button {
-      background-color: var(--text-color);
-      color: var(--bg-color);
+      background-color: var(--primary-color);
+      color: #fff;
       padding: 0.75rem;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 1rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.3s ease;
     }
     #contato form button:hover {
-      background-color: #333;
+      background-color: #357ab7;
+    }
+    /* Botões sociais (Instagram e WhatsApp) */
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .social-buttons a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      color: #fff;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .social-buttons a.instagram {
+      background-color: var(--instagram-color);
+    }
+    .social-buttons a.whatsapp {
+      background-color: var(--accent-color);
     }
     
-    /* ------------------------------------------
-       RODAPÉ
-    ------------------------------------------- */
+    /* Rodapé */
     footer {
       text-align: center;
       padding: 1rem;
@@ -307,9 +295,33 @@
       font-size: 0.9rem;
     }
     
-    /* ------------------------------------------
-       RESPONSIVIDADE / MENU HAMBURGER
-    ------------------------------------------- */
+    /* Botão “Voltar ao Topo” */
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s;
+      z-index: 1000;
+    }
+    #backToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Responsividade */
     @media (max-width: 768px) {
       .dark-mode-toggle {
         display: none;
@@ -329,7 +341,6 @@
       }
       .navbar__links.active {
         max-height: 500px;
-        transition: max-height 0.4s ease;
       }
       .hamburger {
         display: flex;
@@ -337,19 +348,19 @@
     }
     @media (max-width: 480px) {
       .hero h1 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
       .hero p {
-        font-size: 0.9rem;
+        font-size: 1rem;
       }
       .navbar__logo img {
-        height: 30px;
+        height: 40px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- CABEÇALHO -->
+  <!-- Cabeçalho -->
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
@@ -357,21 +368,17 @@
           <img src="./imagens/logo.png" alt="Logo">
         </a>
       </div>
-      
-      <!-- Menu hamburger para mobile -->
       <div class="hamburger" id="hamburgerMenu">
         <span></span>
         <span></span>
         <span></span>
       </div>
-      
       <div class="navbar__container">
         <ul class="navbar__links">
           <li><a href="#sobre-mim">Sobre Mim</a></li>
           <li><a href="#projetos">Projetos</a></li>
           <li><a href="#habilidades">Habilidades</a></li>
           <li><a href="#contato">Contato</a></li>
-          <!-- Link para a página da loja -->
           <li><a href="loja.html">Comprar Produtos</a></li>
         </ul>
         <div class="dark-mode-toggle">
@@ -381,9 +388,9 @@
     </nav>
   </header>
   
-  <!-- SEÇÃO HERO -->
+  <!-- Seção Hero -->
   <section class="hero" id="topo">
-    <img src="./imagens/sua-foto.jpg" alt="Minha foto" class="hero__image" />
+    <img src="./imagens/sua-foto.jpg" alt="Minha foto" class="hero__image">
     <h1>Arcelino Cavalcante</h1>
     <p>
       Desenvolvedor apaixonado por criar soluções eficientes e elegantes, 
@@ -391,22 +398,20 @@
     </p>
   </section>
   
-  <!-- SEÇÃO SOBRE MIM -->
+  <!-- Seção Sobre Mim -->
   <section id="sobre-mim">
     <h2>Sobre Mim</h2>
     <p>
-      Olá! Meu nome é Arcelino Cavalcante, sou desenvolvedor com foco em 
-      <strong>tecnologias web</strong>. Possuo experiência em <strong>HTML, CSS, JavaScript</strong> 
-      e em frameworks modernos como <strong>React</strong>.
+      Olá! Meu nome é Arcelino Cavalcante, sou desenvolvedor com foco em tecnologias web.
+      Possuo experiência em HTML, CSS, JavaScript e em frameworks modernos como React.
     </p>
     <p>
-      Quando não estou codando, gosto de estudar novas tecnologias, contribuir 
-      com a comunidade de desenvolvedores e compartilhar conhecimento por meio 
-      de artigos e palestras.
+      Quando não estou codando, gosto de estudar novas tecnologias, contribuir com a comunidade 
+      de desenvolvedores e compartilhar conhecimento por meio de artigos e palestras.
     </p>
   </section>
   
-  <!-- SEÇÃO PROJETOS -->
+  <!-- Seção Projetos -->
   <section id="projetos">
     <h2>Projetos</h2>
     <div class="projects-container">
@@ -431,7 +436,7 @@
     </div>
   </section>
   
-  <!-- SEÇÃO HABILIDADES -->
+  <!-- Seção Habilidades -->
   <section id="habilidades">
     <h2>Habilidades</h2>
     <div class="skills-list">
@@ -444,22 +449,30 @@
     </div>
   </section>
   
-  <!-- SEÇÃO CONTATO -->
+  <!-- Seção Contato -->
   <section id="contato">
     <h2>Contato</h2>
     <p>Entre em contato para criarmos o seu projeto ou tirar uma dúvida!</p>
     <form>
-      <input type="text" name="nome" placeholder="Nome" required />
-      <input type="email" name="email" placeholder="E-mail" required />
+      <input type="text" name="nome" placeholder="Nome" required>
+      <input type="email" name="email" placeholder="E-mail" required>
       <textarea name="mensagem" rows="5" placeholder="Mensagem" required></textarea>
       <button type="submit">Enviar</button>
     </form>
+    <!-- Botões para Instagram e WhatsApp -->
+    <div class="social-buttons">
+      <a href="https://www.instagram.com/seuusuario" target="_blank" class="instagram">Instagram</a>
+      <a href="https://api.whatsapp.com/send?phone=seunumero" target="_blank" class="whatsapp">WhatsApp</a>
+    </div>
   </section>
   
-  <!-- RODAPÉ -->
+  <!-- Rodapé -->
   <footer>
     &copy; 2025 Arcelino Cavalcante. Todos os direitos reservados.
   </footer>
+  
+  <!-- Botão “Voltar ao Topo” -->
+  <button id="backToTop" title="Voltar ao Topo">&#8679;</button>
   
   <script>
     // Rolagem suave para links internos
@@ -470,27 +483,37 @@
           e.preventDefault();
           const section = document.querySelector(hrefValue);
           const offsetTop = section.offsetTop - 60;
-          window.scrollTo({
-            top: offsetTop,
-            behavior: 'smooth'
-          });
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         });
       }
     });
     
-    // Alterna modo escuro/claro
+    // Alternar modo escuro/claro
     const darkModeBtn = document.getElementById('darkModeBtn');
     darkModeBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
       darkModeBtn.textContent = document.body.classList.contains('dark-mode') ? "Modo Claro" : "Modo Escuro";
     });
     
-    // Menu Hamburger para mobile
+    // Menu Hamburger (mobile)
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const navLinks = document.querySelector('.navbar__links');
     hamburgerMenu.addEventListener('click', () => {
       navLinks.classList.toggle('active');
       hamburgerMenu.classList.toggle('open');
+    });
+    
+    // Botão Voltar ao Topo
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>
