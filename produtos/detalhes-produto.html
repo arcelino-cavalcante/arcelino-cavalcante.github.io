@@ -93,6 +93,7 @@
     .navbar__logo img {
       height: 50px;
     }
+    /* Itens de navegação (desktop e mobile) */
     .navbar__links {
       display: flex;
       align-items: center;
@@ -125,6 +126,7 @@
       background-color: var(--text-color);
       color: var(--bg-color);
     }
+    /* Menu Hamburger */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -147,10 +149,24 @@
       transform: translateY(-8px) rotate(-45deg);
     }
     
-    /* Responsividade: exibe o menu hamburger em telas menores */
+    /* Responsividade: em telas menores, os itens de navegação são escondidos por padrão
+       e exibidos quando o menu hamburger é clicado.
+    ================================================== */
     @media (max-width: 768px) {
       .navbar__links {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: var(--header-bg);
+        width: 100%;
+        text-align: right;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      .navbar__links.active {
+        display: flex;
       }
       .hamburger {
         display: flex;
@@ -167,7 +183,7 @@
     ================================================== */
     main {
       max-width: 800px;
-      margin: 6rem auto 2rem auto; /* Espaço superior para compensar o header fixo */
+      margin: 6rem auto 2rem auto; /* espaço superior considerando o header fixo */
       padding: 0 1rem;
     }
     .product-container {
@@ -214,7 +230,8 @@
     
     /* ==================================================
        BOTÃO "VOLTAR" (seta azul) para voltar à página de produtos
-       Posicionado fixo no canto inferior direito, formato quadrado com bordas arredondadas.
+       Posicionado fixo no canto inferior direito (acima do "Voltar ao Topo"),
+       formato quadrado com bordas arredondadas.
     ================================================== */
     .back-arrow {
       position: fixed;
@@ -316,7 +333,7 @@
         <li><a href="../../index.html">Portfólio</a></li>
         <li><a href="../../loja.html">Comprar Produtos</a></li>
       </ul>
-      <!-- Container com o botão de modo escuro e o menu hamburger (para mobile) -->
+      <!-- Container para o botão de modo escuro e o menu hamburger (celular) -->
       <div class="hamburger-container">
         <div class="dark-mode-toggle">
           <button id="darkModeBtn">Modo Escuro</button>
@@ -387,7 +404,7 @@
       darkModeBtn.textContent = document.body.classList.contains('dark-mode') ? "Modo Claro" : "Modo Escuro";
     });
     
-    // Menu Hamburger para Mobile
+    // Menu Hamburger para Mobile: mostrar/esconder itens de navegação
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const navbarLinks = document.querySelector('.navbar__links');
     hamburgerMenu.addEventListener('click', () => {
