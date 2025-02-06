@@ -9,16 +9,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
   
   <style>
-    /* Mesmas variáveis e estilo elegante do portfólio */
+    /* ==================================================
+       VARIÁVEIS DE COR E ESTILO (MESMO PADRÃO DO PORTFÓLIO)
+    ================================================== */
     :root {
       --bg-color: #f7f9fc;
       --text-color: #333;
       --header-bg: #fff;
       --card-bg: #fff;
       --hover-bg: #e0e6ed;
-      --primary-color: #4a90e2;
-      --accent-color: #25D366;
-      --instagram-color: #C13584;
+      --primary-color: #4a90e2;       /* Azul elegante */
+      --accent-color: #25D366;        /* Verde do WhatsApp */
+      --instagram-color: #C13584;     /* Roxo/rosa do Instagram */
     }
     body.dark-mode {
       --bg-color: #1a1a1a;
@@ -30,7 +32,10 @@
       --accent-color: #25D366;
       --instagram-color: #C13584;
     }
-    
+
+    /* ==================================================
+       REGRAS GERAIS
+    ================================================== */
     * {
       margin: 0;
       padding: 0;
@@ -65,7 +70,9 @@
       margin: 0 auto;
     }
     
-    /* Cabeçalho */
+    /* ==================================================
+       CABEÇALHO E NAVEGAÇÃO
+    ================================================== */
     header {
       background-color: var(--header-bg);
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -140,9 +147,11 @@
       transform: translateY(-8px) rotate(-45deg);
     }
     
-    /* Seção Loja */
+    /* ==================================================
+       SEÇÃO LOJA - PRODUTOS
+    ================================================== */
     #loja {
-      margin-top: 6rem;
+      margin-top: 6rem; /* Espaço para o header fixo */
     }
     #loja h2 {
       color: var(--primary-color);
@@ -164,6 +173,7 @@
       transform: translateY(-5px);
       box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
+    /* Carrossel interno de cada produto */
     .carousel {
       position: relative;
       width: 100%;
@@ -211,7 +221,9 @@
       font-size: 0.95rem;
     }
     
-    /* Rodapé */
+    /* ==================================================
+       RODAPÉ
+    ================================================== */
     footer {
       text-align: center;
       padding: 1rem;
@@ -219,7 +231,9 @@
       font-size: 0.9rem;
     }
     
-    /* Botão “Voltar ao Topo” */
+    /* ==================================================
+       BOTÃO "VOLTAR AO TOPO"
+    ================================================== */
     #backToTop {
       position: fixed;
       bottom: 20px;
@@ -245,7 +259,9 @@
       visibility: visible;
     }
     
-    /* Responsividade */
+    /* ==================================================
+       RESPONSIVIDADE
+    ================================================== */
     @media (max-width: 768px) {
       .dark-mode-toggle {
         display: none;
@@ -278,7 +294,7 @@
   </style>
 </head>
 <body>
-  <!-- Cabeçalho -->
+  <!-- CABEÇALHO -->
   <header>
     <nav class="navbar">
       <div class="navbar__logo">
@@ -286,6 +302,7 @@
           <img src="./imagens/logo.png" alt="Logo">
         </a>
       </div>
+      <!-- Ícone do menu hamburger (para mobile) -->
       <div class="hamburger" id="hamburgerMenu">
         <span></span>
         <span></span>
@@ -303,7 +320,7 @@
     </nav>
   </header>
   
-  <!-- Seção Loja -->
+  <!-- SEÇÃO LOJA -->
   <section id="loja">
     <h2>Loja - Meus Produtos</h2>
     <div class="loja-container">
@@ -346,16 +363,16 @@
     </div>
   </section>
   
-  <!-- Rodapé -->
+  <!-- RODAPÉ -->
   <footer>
     &copy; 2025 Arcelino Cavalcante. Todos os direitos reservados.
   </footer>
   
-  <!-- Botão “Voltar ao Topo” -->
+  <!-- BOTÃO "VOLTAR AO TOPO" -->
   <button id="backToTop" title="Voltar ao Topo">&#8679;</button>
   
   <script>
-    // Rolagem suave (para links internos, se houver)
+    // Rolagem suave para links internos (se houver)
     document.querySelectorAll('.navbar__links a').forEach(link => {
       const hrefValue = link.getAttribute('href');
       if (hrefValue && hrefValue.startsWith('#')) {
@@ -375,7 +392,7 @@
       darkModeBtn.textContent = document.body.classList.contains('dark-mode') ? "Modo Claro" : "Modo Escuro";
     });
     
-    // Menu Hamburger (mobile)
+    // Menu Hamburger para mobile
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const navLinks = document.querySelector('.navbar__links');
     hamburgerMenu.addEventListener('click', () => {
@@ -383,7 +400,7 @@
       hamburgerMenu.classList.toggle('open');
     });
     
-    // Botão Voltar ao Topo
+    // Botão "Voltar ao Topo"
     const backToTopBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
