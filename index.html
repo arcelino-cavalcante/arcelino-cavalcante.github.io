@@ -55,7 +55,7 @@
     a {
       text-decoration: none;
       color: var(--text-color);
-      transition: color 0.3s ease;
+      transition: color 0.3s ease-in-out;
     }
     a:hover {
       color: var(--primary-color);
@@ -93,7 +93,10 @@
     .navbar__logo img {
       height: 50px;
     }
-    /* Links de navegação (desktop) */
+    /* Links de navegação para desktop */
+    .navbar__links-container {
+      display: block;
+    }
     .navbar__links {
       display: flex;
       align-items: center;
@@ -107,9 +110,9 @@
     .navbar__links a:hover {
       background-color: var(--hover-bg);
     }
-    /* Container para os controles mobile */
+    /* Controles Mobile (apenas em telas menores) */
     .mobile-controls {
-      display: none; /* Será exibido apenas em telas menores */
+      display: none;
       align-items: center;
       gap: 1rem;
     }
@@ -149,11 +152,18 @@
       transform: translateY(-8px) rotate(-45deg);
     }
     
-    /* ==================================================
-       RESPONSIVIDADE PARA TELAS MENORES (≤768px)
+    /* Responsividade para telas menores (≤768px):
+       - Oculta os links de navegação
+       - Exibe os controles mobile (botão de modo escuro e menu hamburger) no canto superior direito
     ================================================== */
     @media (max-width: 768px) {
-      /* Esconde os links de navegação e exibe os controles mobile */
+      .navbar__links-container {
+        display: none;
+      }
+      .mobile-controls {
+        display: flex;
+      }
+      /* Quando o menu hamburger é clicado, exibe os links em formato de coluna abaixo do header */
       .navbar__links {
         display: none;
         flex-direction: column;
@@ -169,14 +179,16 @@
       .navbar__links.active {
         display: flex;
       }
-      /* Exibe os controles mobile (hamburger + botão modo escuro) */
-      .mobile-controls {
-        display: flex;
-      }
     }
     @media (max-width: 480px) {
       .navbar__logo img {
         height: 40px;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
       }
     }
     
@@ -184,8 +196,12 @@
        EXEMPLO DE SEÇÃO HERO
     ================================================== */
     .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding-top: 6rem; /* Espaço para compensar o header fixo */
+      padding-top: 6rem; /* Espaço para o header fixo */
       min-height: 60vh;
     }
     .hero__image {
@@ -248,28 +264,34 @@
   <!-- HEADER -->
   <header>
     <nav class="navbar">
+      <!-- Logo à esquerda -->
       <div class="navbar__logo">
         <a href="#topo">
           <img src="./imagens/logo.png" alt="Logo">
         </a>
       </div>
-      <!-- Links de navegação (desktop) -->
-      <div class="navbar__links">
-        <li><a href="#sobre-mim">Sobre Mim</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#habilidades">Habilidades</a></li>
-        <li><a href="#contato">Contato</a></li>
-        <li><a href="loja.html">Comprar Produtos</a></li>
-      </div>
-      <!-- Controles mobile: botão de modo escuro e menu hamburger (ambos alinhados à direita) -->
-      <div class="mobile-controls">
-        <div class="dark-mode-toggle">
-          <button id="darkModeBtn">Modo Escuro</button>
+      <!-- Container para os controles: links (desktop) e controles mobile -->
+      <div class="navbar__container">
+        <!-- Links de navegação (desktop) -->
+        <div class="navbar__links-container">
+          <ul class="navbar__links">
+            <li><a href="#sobre-mim">Sobre Mim</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="loja.html">Comprar Produtos</a></li>
+          </ul>
         </div>
-        <div class="hamburger" id="hamburgerMenu">
-          <span></span>
-          <span></span>
-          <span></span>
+        <!-- Controles mobile: botão de modo escuro e menu hamburger, alinhados à direita -->
+        <div class="mobile-controls">
+          <div class="dark-mode-toggle">
+            <button id="darkModeBtn">Modo Escuro</button>
+          </div>
+          <div class="hamburger" id="hamburgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </div>
     </nav>
@@ -350,7 +372,7 @@
     </div>
   </section>
   
-  <!-- RODAPÉ -->
+  <!-- Rodapé -->
   <footer>
     &copy; 2025 Arcelino Cavalcante. Todos os direitos reservados.
   </footer>
