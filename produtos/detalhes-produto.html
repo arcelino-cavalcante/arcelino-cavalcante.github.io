@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalhes do Produto - Smartphone XYZ</title>
-  <!-- Fonte Google -->
+  <title>Portfólio - Arcelino Cavalcante</title>
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
-  
   <style>
     /* ==================================================
        VARIÁVEIS DE COR E ESTILO (PADRÃO UNIFICADO)
@@ -19,8 +18,8 @@
       --card-bg: #fff;
       --hover-bg: #e0e6ed;
       --primary-color: #4a90e2;       /* Azul elegante */
-      --accent-color: #25D366;        /* Verde do WhatsApp */
-      --instagram-color: #C13584;     /* Roxo/rosa do Instagram */
+      --accent-color: #25D366;        
+      --instagram-color: #C13584;     
     }
     body.dark-mode {
       --bg-color: #1a1a1a;
@@ -47,7 +46,7 @@
       color: var(--text-color);
       font-family: 'Montserrat', sans-serif;
       line-height: 1.6;
-      transition: background-color 0.4s, color 0.4s;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
     img {
       max-width: 100%;
@@ -56,7 +55,7 @@
     a {
       text-decoration: none;
       color: var(--text-color);
-      transition: color 0.3s;
+      transition: color 0.3s ease-in-out;
     }
     a:hover {
       color: var(--primary-color);
@@ -80,7 +79,7 @@
       top: 0;
       width: 100%;
       z-index: 999;
-      transition: background-color 0.4s;
+      transition: background-color 0.4s ease;
     }
     .navbar {
       max-width: 1200px;
@@ -90,10 +89,14 @@
       align-items: center;
       justify-content: space-between;
     }
+    /* Logo */
     .navbar__logo img {
       height: 50px;
     }
-    /* Itens de navegação (desktop e mobile) */
+    /* Links de navegação (desktop) */
+    .navbar__links-container {
+      display: block;
+    }
     .navbar__links {
       display: flex;
       align-items: center;
@@ -107,9 +110,9 @@
     .navbar__links a:hover {
       background-color: var(--hover-bg);
     }
-    /* Container para o botão de modo escuro e o menu hamburger */
-    .hamburger-container {
-      display: flex;
+    /* Controles Mobile: exibidos apenas em telas menores */
+    .mobile-controls {
+      display: none;
       align-items: center;
       gap: 1rem;
     }
@@ -149,10 +152,16 @@
       transform: translateY(-8px) rotate(-45deg);
     }
     
-    /* Responsividade: em telas menores, os itens de navegação são escondidos por padrão
-       e exibidos quando o menu hamburger é clicado.
-    ================================================== */
+    /* Responsividade para telas menores (≤768px) */
     @media (max-width: 768px) {
+      /* Esconde os links de navegação e exibe os controles mobile */
+      .navbar__links-container {
+        display: none;
+      }
+      .mobile-controls {
+        display: flex;
+      }
+      /* Exibe os links de navegação em formato de coluna quando o hamburger é clicado */
       .navbar__links {
         display: none;
         flex-direction: column;
@@ -168,118 +177,48 @@
       .navbar__links.active {
         display: flex;
       }
-      .hamburger {
-        display: flex;
-      }
     }
     @media (max-width: 480px) {
       .navbar__logo img {
         height: 40px;
       }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
     }
     
     /* ==================================================
-       CONTEÚDO PRINCIPAL
+       EXEMPLO DE SEÇÃO HERO
     ================================================== */
-    main {
-      max-width: 800px;
-      margin: 6rem auto 2rem auto; /* espaço superior considerando o header fixo */
-      padding: 0 1rem;
-    }
-    .product-container {
-      background-color: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: relative;
-    }
-    .product-image {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .product-details {
-      margin-top: 1rem;
-    }
-    .product-details h2 {
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
-    }
-    .product-details p {
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-    .product-price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 1rem 0;
-    }
-    .buy-button {
-      display: inline-block;
-      background-color: var(--primary-color);
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .buy-button:hover {
-      background-color: #357ab7;
-    }
-    
-    /* ==================================================
-       BOTÃO "VOLTAR" (seta azul) para voltar à página de produtos
-       Posicionado fixo no canto inferior direito (acima do "Voltar ao Topo"),
-       formato quadrado com bordas arredondadas.
-    ================================================== */
-    .back-arrow {
-      position: fixed;
-      bottom: 90px;  /* Acima do botão "Voltar ao Topo" */
-      right: 20px;
-      background-color: var(--primary-color);
-      color: #fff;
-      padding: 0.75rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 1.2rem;
+    .hero {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 1001;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      text-align: center;
+      padding-top: 6rem; /* Espaço para o header fixo */
+      min-height: 60vh;
     }
-    .back-arrow:hover {
-      background-color: #357ab7;
+    .hero__image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary-color);
+      margin-bottom: 1rem;
+      transition: border-color 0.4s ease;
     }
-    
-    /* ==================================================
-       AVALIAÇÃO COM ESTRELAS (STAR RATING)
-    ================================================== */
-    .rating-section {
-      margin-top: 2rem;
-    }
-    .rating-section h3 {
+    .hero h1 {
+      font-size: 2.5rem;
       margin-bottom: 0.5rem;
-      font-size: 1.2rem;
     }
-    .star-rating {
-      direction: rtl;
-      font-size: 2rem;
-      unicode-bidi: bidi-override;
-      display: inline-block;
-    }
-    .star-rating input {
-      display: none;
-    }
-    .star-rating label {
-      color: #ccc;
-      cursor: pointer;
-    }
-    .star-rating input:checked ~ label,
-    .star-rating label:hover,
-    .star-rating label:hover ~ label {
-      color: gold;
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
     
     /* ==================================================
@@ -292,9 +231,7 @@
       font-size: 0.9rem;
     }
     
-    /* ==================================================
-       BOTÃO "VOLTAR AO TOPO"
-    ================================================== */
+    /* Botão "Voltar ao Topo" */
     #backToTop {
       position: fixed;
       bottom: 20px;
@@ -312,7 +249,7 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
+      transition: opacity 0.3s ease, visibility 0.3s;
       z-index: 1000;
     }
     #backToTop.show {
@@ -322,81 +259,139 @@
   </style>
 </head>
 <body>
-  <!-- CABEÇALHO COM MENU -->
+  <!-- HEADER -->
   <header>
     <nav class="navbar">
+      <!-- Logo à esquerda -->
       <div class="navbar__logo">
-        <a href="../../index.html"><img src="../../imagens/logo.png" alt="Logo"></a>
+        <a href="#topo">
+          <img src="./imagens/logo.png" alt="Logo">
+        </a>
       </div>
-      <!-- Navegação Desktop -->
-      <ul class="navbar__links">
-        <li><a href="../../index.html">Portfólio</a></li>
-        <li><a href="../../loja.html">Comprar Produtos</a></li>
-      </ul>
-      <!-- Container para o botão de modo escuro e o menu hamburger (celular) -->
-      <div class="hamburger-container">
-        <div class="dark-mode-toggle">
-          <button id="darkModeBtn">Modo Escuro</button>
+      <!-- Container para os controles: links (desktop) e controles mobile -->
+      <div class="navbar__container">
+        <!-- Links de navegação (desktop) -->
+        <div class="navbar__links-container">
+          <ul class="navbar__links">
+            <li><a href="#sobre-mim">Sobre Mim</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="loja.html">Comprar Produtos</a></li>
+          </ul>
         </div>
-        <div class="hamburger" id="hamburgerMenu">
-          <span></span>
-          <span></span>
-          <span></span>
+        <!-- Controles mobile: botão de modo escuro e menu hamburger, alinhados à direita -->
+        <div class="mobile-controls">
+          <div class="dark-mode-toggle">
+            <button id="darkModeBtn">Modo Escuro</button>
+          </div>
+          <div class="hamburger" id="hamburgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </div>
     </nav>
   </header>
   
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main>
-    <div class="product-container">
-      <!-- Botão "Voltar" (seta azul) -->
-      <a href="../../loja.html" class="back-arrow" title="Voltar para Produtos">&#8592;</a>
-      
-      <!-- Imagem do Produto -->
-      <img src="../../imagens/smartphone-xyz.jpg" alt="Smartphone XYZ" class="product-image">
-      
-      <!-- Detalhes do Produto -->
-      <div class="product-details">
-        <h2>Smartphone XYZ</h2>
-        <p>
-          O Smartphone XYZ é a escolha perfeita para quem busca desempenho e design moderno. Equipado com uma tela de 6.5 polegadas, câmera tripla de alta resolução e bateria de longa duração, ele oferece uma experiência completa para jogos, redes sociais e produtividade.
-        </p>
-        <p>
-          Com processador octa-core e 6GB de RAM, o XYZ garante fluidez em todas as tarefas. Seu design elegante e acabamento em metal o tornam um destaque em qualquer ambiente.
-        </p>
-        <div class="product-price">R$ 100,00</div>
-        <button class="buy-button">Comprar</button>
+  <!-- Seção Hero -->
+  <section class="hero" id="topo">
+    <img src="./imagens/sua-foto.jpg" alt="Minha foto" class="hero__image">
+    <h1>Arcelino Cavalcante</h1>
+    <p>
+      Desenvolvedor apaixonado por criar soluções eficientes e elegantes, focado na experiência do usuário e nas melhores práticas de desenvolvimento.
+    </p>
+  </section>
+  
+  <!-- Seção Sobre Mim -->
+  <section id="sobre-mim">
+    <h2>Sobre Mim</h2>
+    <p>
+      Olá! Meu nome é Arcelino Cavalcante, sou desenvolvedor com foco em tecnologias web. Possuo experiência em HTML, CSS, JavaScript e em frameworks modernos como React.
+    </p>
+    <p>
+      Quando não estou codando, gosto de estudar novas tecnologias, contribuir com a comunidade de desenvolvedores e compartilhar conhecimento por meio de artigos e palestras.
+    </p>
+  </section>
+  
+  <!-- Seção Projetos -->
+  <section id="projetos">
+    <h2>Projetos</h2>
+    <div class="projects-container">
+      <div class="project-card">
+        <img src="./imagens/projeto1.jpg" alt="Projeto 1">
+        <h3>Projeto 1</h3>
+        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
+        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
       </div>
-      
-      <!-- Seção de Avaliação -->
-      <div class="rating-section">
-        <h3>Avaliações dos Clientes</h3>
-        <div class="star-rating">
-          <input type="radio" id="star5" name="rating" value="5">
-          <label for="star5">&#9733;</label>
-          <input type="radio" id="star4" name="rating" value="4">
-          <label for="star4">&#9733;</label>
-          <input type="radio" id="star3" name="rating" value="3">
-          <label for="star3">&#9733;</label>
-          <input type="radio" id="star2" name="rating" value="2">
-          <label for="star2">&#9733;</label>
-          <input type="radio" id="star1" name="rating" value="1">
-          <label for="star1">&#9733;</label>
-        </div>
+      <div class="project-card">
+        <img src="./imagens/projeto2.jpg" alt="Projeto 2">
+        <h3>Projeto 2</h3>
+        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
+        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
+      </div>
+      <div class="project-card">
+        <img src="./imagens/projeto3.jpg" alt="Projeto 3">
+        <h3>Projeto 3</h3>
+        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
+        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
       </div>
     </div>
-  </main>
+  </section>
   
-  <!-- RODAPÉ -->
+  <!-- Seção Habilidades -->
+  <section id="habilidades">
+    <h2>Habilidades</h2>
+    <div class="skills-list">
+      <div class="skill-item">HTML5</div>
+      <div class="skill-item">CSS3</div>
+      <div class="skill-item">JavaScript</div>
+      <div class="skill-item">React</div>
+      <div class="skill-item">Node.js</div>
+      <div class="skill-item">Git & GitHub</div>
+    </div>
+  </section>
+  
+  <!-- Seção Contato -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Entre em contato para criarmos o seu projeto ou tirar uma dúvida!</p>
+    <form>
+      <input type="text" name="nome" placeholder="Nome" required>
+      <input type="email" name="email" placeholder="E-mail" required>
+      <textarea name="mensagem" rows="5" placeholder="Mensagem" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <!-- Botões para Instagram e WhatsApp -->
+    <div class="social-buttons">
+      <a href="https://www.instagram.com/seuusuario" target="_blank" class="instagram">Instagram</a>
+      <a href="https://api.whatsapp.com/send?phone=seunumero" target="_blank" class="whatsapp">WhatsApp</a>
+    </div>
+  </section>
+  
+  <!-- Rodapé -->
   <footer>
     &copy; 2025 Arcelino Cavalcante. Todos os direitos reservados.
   </footer>
   
-  <!-- BOTÃO "VOLTAR AO TOPO" -->
+  <!-- Botão "Voltar ao Topo" -->
   <button id="backToTop" title="Voltar ao Topo">&#8679;</button>
   
   <script>
+    // Rolagem suave para links internos
+    document.querySelectorAll('.navbar__links a').forEach(link => {
+      const hrefValue = link.getAttribute('href');
+      if (hrefValue && hrefValue.startsWith('#')) {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const section = document.querySelector(hrefValue);
+          const offsetTop = section.offsetTop - 60;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        });
+      }
+    });
+    
     // Alternar modo escuro/claro
     const darkModeBtn = document.getElementById('darkModeBtn');
     darkModeBtn.addEventListener('click', () => {
@@ -404,11 +399,11 @@
       darkModeBtn.textContent = document.body.classList.contains('dark-mode') ? "Modo Claro" : "Modo Escuro";
     });
     
-    // Menu Hamburger para Mobile: mostrar/esconder itens de navegação
+    // Menu Hamburger para mobile
     const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const navbarLinks = document.querySelector('.navbar__links');
+    const navLinks = document.querySelector('.navbar__links');
     hamburgerMenu.addEventListener('click', () => {
-      navbarLinks.classList.toggle('active');
+      navLinks.classList.toggle('active');
       hamburgerMenu.classList.toggle('open');
     });
     
