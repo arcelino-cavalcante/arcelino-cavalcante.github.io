@@ -2,518 +2,976 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio - Arcelino Cavalcante</title>
-  <!-- Fonte Google -->
-  <link rel="preconnect" href="https://fonts.gstatic.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meu Portfólio</title>
   
+  <!-- ==========================
+       CSS DO PORTFÓLIO
+       ========================== -->
   <style>
-    /* Cores e variáveis – visual elegante */
+    /* -----------------------------------------------------------
+       FONTE PRINCIPAL
+    ----------------------------------------------------------- */
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+    
+    /* -----------------------------------------------------------
+       VARIÁVEIS CSS
+    ----------------------------------------------------------- */
     :root {
-      --bg-color: #f7f9fc;
-      --text-color: #333;
-      --header-bg: #fff;
-      --card-bg: #fff;
-      --hover-bg: #e0e6ed;
-      --primary-color: #4a90e2;       /* Azul elegante */
-      --accent-color: #25D366;        /* Verde do WhatsApp */
-      --instagram-color: #C13584;     /* Roxo do Instagram */
-    }
-    body.dark-mode {
-      --bg-color: #1a1a1a;
-      --text-color: #e0e0e0;
-      --header-bg: #333;
-      --card-bg: #2a2a2a;
-      --hover-bg: #444;
-      --primary-color: #4a90e2;
-      --accent-color: #25D366;
-      --instagram-color: #C13584;
+      --header-height: 3rem;         /* Altura do cabeçalho */
+      --font-semi: 600;              /* Peso da fonte seminegrito */
+      --first-color: #4070F4;        /* Cor principal */
+      --second-color: #0E2431;       /* Cor secundária */
+      --body-font: 'Poppins', sans-serif; 
+      --big-font-size: 2rem;         /* Tamanho grande de fonte */
+      --h2-font-size: 1.25rem;       /* Tamanho de fonte h2 */
+      --normal-font-size: 0.938rem;  /* Tamanho de fonte padrão */
+      
+      /* Margens padrão */
+      --mb-1: 0.5rem;
+      --mb-2: 1rem;
+      --mb-3: 1.5rem;
+      --mb-4: 2rem;
+      --mb-5: 2.5rem;
+      --mb-6: 3rem;
+      
+      /* Z-index */
+      --z-back: -10;
+      --z-normal: 1;
+      --z-tooltip: 10;
+      --z-fixed: 100;
     }
 
-    /* Regras gerais */
-    * {
+    /* Responsividade para telas maiores que 768px */
+    @media screen and (min-width: 768px){
+      :root {
+        --big-font-size: 3.5rem;
+        --h2-font-size: 2rem;
+        --normal-font-size: 1rem;
+      }
+    }
+
+    /* ----------------------------------------
+       RESET BÁSICO
+    ---------------------------------------- */
+    *, ::before, ::after {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+    }
+    
+    /* ----------------------------------------
+       SCROLL SNAP (tela cheia por seção)
+       + Rolagem suave
+    ---------------------------------------- */
+    html, body {
+      width: 100%;
+      height: 100%;
     }
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1.6;
-      transition: background-color 0.4s ease, color 0.4s ease;
+      scroll-behavior: smooth; 
+      font-family: var(--body-font);
+      font-size: var(--normal-font-size);
+      color: var(--second-color);
+      line-height: 1.5;
+      
+      /* Ativa o scroll-snap vertical */
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
     }
-    img {
-      max-width: 100%;
-      display: block;
-    }
+
+    /* ----------------------------------------
+       LINKS, LISTAS, IMAGENS
+    ---------------------------------------- */
     a {
       text-decoration: none;
-      color: var(--text-color);
-      transition: color 0.3s ease-in-out;
     }
-    a:hover {
-      color: var(--primary-color);
+    ul {
+      list-style: none;
     }
-    h1, h2 {
-      margin-bottom: 1rem;
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
     }
-    section {
-      padding: 2rem 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    /* Cabeçalho e Navegação */
-    header {
-      background-color: var(--header-bg);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    /* ----------------------------------------
+       CABEÇALHO (HEADER) E MENU
+    ---------------------------------------- */
+    .l-header {
+      width: 100%;
+      height: var(--header-height);
       position: fixed;
       top: 0;
-      width: 100%;
-      z-index: 999;
-      transition: background-color 0.4s ease;
-    }
-    .navbar {
+      left: 0;
+      z-index: var(--z-fixed);
+      background-color: #fff;
+      box-shadow: 0 1px 4px rgba(146,161,176,0.15);
       display: flex;
+      justify-content: center;
       align-items: center;
+    }
+    .nav {
+      width: 90%;
+      height: 100%;
+      display: flex;
       justify-content: space-between;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
+      align-items: center;
+      font-weight: var(--font-semi);
     }
-    .navbar__logo img {
-      height: 50px;
-    }
-    .navbar__container {
+
+    /* LOGO + NOME no cabeçalho */
+    .nav__logo-container {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.5rem; /* Espaço entre a imagem e o nome */
     }
-    .navbar__links {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      gap: 1rem;
-      transition: max-height 0.4s ease;
-    }
-    .navbar__links a {
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-    }
-    .navbar__links a:hover {
-      background-color: var(--hover-bg);
-    }
-    .dark-mode-toggle button {
-      background-color: transparent;
-      border: 1px solid var(--text-color);
-      color: var(--text-color);
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    .dark-mode-toggle button:hover {
-      background-color: var(--text-color);
-      color: var(--bg-color);
-    }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-    }
-    .hamburger span {
-      width: 25px;
-      height: 3px;
-      background-color: var(--text-color);
-      transition: 0.3s;
-    }
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-    }
-    
-    /* Seção Hero */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding-top: 6rem; /* Espaço para o header fixo */
-      min-height: 60vh;
-    }
-    .hero__image {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--primary-color);
-      margin-bottom: 1rem;
-      transition: border-color 0.4s ease;
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    /* Seções Sobre Mim, Projetos, Habilidades */
-    #sobre-mim,
-    #habilidades {
-      background-color: var(--hover-bg);
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-    #sobre-mim h2,
-    #habilidades h2 {
-      color: var(--primary-color);
-    }
-    #sobre-mim p,
-    #habilidades p {
-      margin-bottom: 1rem;
-    }
-    
-    /* Projetos */
-    #projetos .projects-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    .project-card {
-      background-color: var(--card-bg);
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    }
-    .project-card img {
-      border-radius: 8px;
-    }
-    .project-card h3 {
-      margin: 0.5rem 0;
-    }
-    .project-card p {
-      font-size: 0.95rem;
-    }
-    .project-card a {
-      margin-top: 0.5rem;
-      display: inline-block;
-      font-weight: 600;
-      color: var(--primary-color);
-    }
-    
-    /* Habilidades */
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .skill-item {
-      background-color: var(--card-bg);
-      padding: 0.75rem 1rem;
-      border-radius: 20px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    /* Contato */
-    #contato form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    #contato form input,
-    #contato form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-family: inherit;
-    }
-    #contato form button {
-      background-color: var(--primary-color);
-      color: #fff;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
-    #contato form button:hover {
-      background-color: #357ab7;
-    }
-    /* Botões sociais (Instagram e WhatsApp) */
-    .social-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .social-buttons a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
-      color: #fff;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-    .social-buttons a.instagram {
-      background-color: var(--instagram-color);
-    }
-    .social-buttons a.whatsapp {
-      background-color: var(--accent-color);
-    }
-    
-    /* Rodapé */
-    footer {
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-    }
-    
-    /* Botão “Voltar ao Topo” */
-    #backToTop {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: var(--primary-color);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
+    .nav__logo-img {
       width: 50px;
       height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .nav__logo-text {
+      color: var(--second-color);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .nav__menu {
+      display: flex;        
+      align-items: center;
+      gap: 2rem;            
+      transition: 0.5s;
+    }
+    .nav__list {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav__link {
+      position: relative;
+      color: var(--second-color);
+      font-weight: var(--font-semi);
+    }
+    .nav__link:hover::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 0.18rem;
+      left: 0;
+      bottom: -4px;
+      background-color: var(--first-color);
+    }
+    .nav__toggle {
+      color: var(--second-color);
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none; /* Oculto em telas grandes */
+    }
+
+    /* Responsivo: Menu mobile */
+    @media screen and (max-width: 768px){
+      .nav__toggle {
+        display: block;
+      }
+      .nav__menu {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        background: var(--second-color);
+        width: 60%;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .nav__link {
+        color: #fff;
+        font-size: 1.2rem;
+      }
+      .nav__list {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .nav__menu.show {
+        right: 0;
+      }
+    }
+
+    /* BARRINHA EMBAIXO DA SEÇÃO ATIVA NO MENU */
+    .nav__link.active {
+      color: var(--first-color);
+    }
+    .nav__link.active::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 0.18rem;
+      left: 0;
+      bottom: -4px;
+      background-color: var(--first-color);
+    }
+
+    /* ----------------------------------------
+       SEÇÃO (TELA CHEIA)
+    ---------------------------------------- */
+    .section {
+      scroll-snap-align: start;
+      min-height: 100vh;
+      width: 100%;
+      padding-top: 5rem;  /* abaixo do header fixo */
+      padding-bottom: 3rem;
+      box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s;
-      z-index: 1000;
     }
-    #backToTop.show {
-      opacity: 1;
-      visibility: visible;
+    .section__container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    
-    /* Responsividade */
-    @media (max-width: 768px) {
-      .dark-mode-toggle {
-        display: none;
+    .section-title {
+      position: relative;
+      font-size: var(--h2-font-size);
+      color: var(--first-color);
+      margin-top: var(--mb-2);
+      margin-bottom: var(--mb-4);
+      text-align: center;
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      width: 80px;  
+      height: 0.2rem; 
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 3rem; 
+      background-color: var(--first-color);
+    }
+
+    /* ----------------------------------------
+       HOME
+    ---------------------------------------- */
+    .home__content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .home__content {
+        flex-direction: row; 
       }
-      .navbar__links {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: var(--header-bg);
-        flex-direction: column;
+    }
+    .home__data {
+      flex: 1 1 300px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .home__data {
+        text-align: left;
         align-items: flex-start;
-        padding: 1rem;
-        gap: 0.5rem;
-        max-height: 0;
-        overflow: hidden;
-        border-radius: 0 0 8px 8px;
-      }
-      .navbar__links.active {
-        max-height: 500px;
-      }
-      .hamburger {
-        display: flex;
       }
     }
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .navbar__logo img {
-        height: 40px;
+    .home__title {
+      font-size: var(--big-font-size);
+      margin-bottom: var(--mb-5);
+      line-height: 1.2;
+    }
+    .home__title-color {
+      color: var(--first-color);
+    }
+    .home__social {
+      display: flex;
+      gap: 1rem;
+      margin-top: var(--mb-2);
+      justify-content: center;
+    }
+    @media (min-width: 768px) {
+      .home__social {
+        justify-content: flex-start;
       }
     }
+    .home__social-icon {
+      font-size: 1.5rem;
+      color: var(--second-color);
+      transition: 0.2s;
+    }
+    .home__social-icon:hover {
+      color: var(--first-color);
+    }
+    .home__img {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .home__img img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: var(--first-color);
+      color: #fff;
+      padding: 0.75rem 2.5rem;
+      border-radius: 0.5rem;
+      font-weight: var(--font-semi);
+      transition: 0.3s;
+    }
+    .button:hover {
+      box-shadow: 0 10px 36px rgba(0,0,0,0.15);
+    }
+
+    /* ----------------------------------------
+       ABOUT
+    ---------------------------------------- */
+    .about__container {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 2rem;
+      text-align: center;
+    }
+    @media screen and (min-width:768px){
+      .about__container {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        text-align: left;
+      }
+    }
+    .about__img img {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto;
+    }
+    .about__subtitle {
+      margin-bottom: var(--mb-2);
+    }
+    .about__text {
+      margin-bottom: var(--mb-4);
+    }
+
+    /* ----------------------------------------
+       SKILLS
+    ---------------------------------------- */
+    .skills__container {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 2rem;
+    }
+    @media screen and (min-width:768px){
+      .skills__container {
+        grid-template-columns: 1fr 1fr; 
+        align-items: center;
+        gap: 2rem;
+      }
+    }
+    .skills__subtitle {
+      margin-bottom: var(--mb-2);
+    }
+    .skills__text {
+      margin-bottom: var(--mb-4);
+    }
+    .skills__data {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      font-weight: var(--font-semi);
+      padding: 0.5rem 1rem;
+      margin-bottom: var(--mb-4);
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 25px rgba(14,36,49,0.15);
+      overflow: hidden;
+    }
+    .skills__icon {
+      font-size: 2rem;
+      margin-right: var(--mb-2);
+      color: var(--first-color);
+    }
+    .skills__bar {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-color: var(--first-color);
+      height: 0.25rem;
+      border-radius: 0.5rem;
+      z-index: var(--z-back);
+      width: 0; 
+      transition: width 0.5s ease;
+    }
+    .skills__img {
+      max-width: 400px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* ----------------------------------------
+       WORK (PROJETOS) - CARROSSEL
+    ---------------------------------------- */
+    .work__container {
+      display: grid;
+      grid-template-columns: 1fr; 
+      row-gap: 2rem;
+    }
+    @media screen and (min-width:576px) {
+      .work__container {
+        grid-template-columns: 1fr 1fr; 
+        column-gap: 1rem;
+      }
+    }
+    @media screen and (min-width:992px) {
+      .work__container {
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 2rem;
+      }
+    }
+    .work__project {
+      background: #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 25px rgba(14,36,49,0.15);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+    }
+    .carousel {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .carousel-track img {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .work__title {
+      font-size: 1.1rem;
+      color: var(--second-color);
+      margin-bottom: var(--mb-2);
+      text-align: center;
+      font-weight: var(--font-semi);
+    }
+    .work__description {
+      font-size: var(--normal-font-size);
+      text-align: center;
+      margin-bottom: var(--mb-2);
+    }
+    .work__button {
+      display: inline-block;
+      background-color: var(--first-color);
+      color: #fff;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: var(--font-semi);
+      transition: 0.3s;
+      margin-top: auto;
+    }
+    .work__button:hover {
+      box-shadow: 0 10px 36px rgba(0,0,0,0.15);
+    }
+
+    /* ----------------------------------------
+       CONTACT
+    ---------------------------------------- */
+    .contact__container {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 2rem;
+      justify-items: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .contact__form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .contact__input {
+      width: 100%;
+      font-size: var(--normal-font-size);
+      font-weight: var(--font-semi);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 1.5px solid var(--second-color);
+      outline: none;
+      margin-bottom: var(--mb-4);
+    }
+    .contact__button {
+      border: none;
+      outline: none;
+      font-size: var(--normal-font-size);
+      cursor: pointer;
+      margin-left: auto;
+      background-color: var(--first-color);
+      color: #fff;
+      padding: 0.75rem 2.5rem;
+      border-radius: 0.5rem;
+      font-weight: var(--font-semi);
+      transition: 0.3s;
+    }
+    .contact__button:hover {
+      box-shadow: 0 10px 36px rgba(0,0,0,0.15);
+    }
+
+    /* ----------------------------------------
+       FOOTER
+    ---------------------------------------- */
+    .footer {
+      background-color: var(--second-color);
+      color: #fff;
+      text-align: center;
+      font-weight: var(--font-semi);
+      padding: 2rem 1rem;
+    }
+    .footer__title {
+      font-size: 2rem;
+      margin-bottom: var(--mb-4);
+    }
+    .footer__social {
+      margin-bottom: var(--mb-4);
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .footer__icon {
+      font-size: 1.5rem;
+      color: #fff;
+      transition: 0.2s;
+    }
+    .footer__icon:hover {
+      color: var(--first-color);
+    }
+
   </style>
+
+  <!-- Boxicons (Ícones) -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" 
+  />
 </head>
 <body>
-  <!-- Cabeçalho -->
-  <header>
-    <nav class="navbar">
-      <div class="navbar__logo">
-        <a href="#topo">
-          <img src="./imagens/logo.png" alt="Logo">
-        </a>
+  <!-- ===== HEADER ===== -->
+  <header class="l-header">
+    <nav class="nav">
+      <!-- LOGO + NOME NO CABEÇALHO -->
+      <div class="nav__logo-container">
+        <!-- Ajuste para o caminho do seu logo real (50x50px) -->
+        <img 
+          src="fotos/logo.png" 
+          alt="Meu Logo" 
+          class="nav__logo-img" 
+          width="50" height="50"
+        >
+        <span class="nav__logo-text">SeuNome</span>
       </div>
-      <div class="hamburger" id="hamburgerMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="navbar__container">
-        <ul class="navbar__links">
-          <li><a href="#sobre-mim">Sobre Mim</a></li>
-          <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#habilidades">Habilidades</a></li>
-          <li><a href="#contato">Contato</a></li>
-          <li><a href="loja.html">Comprar Produtos</a></li>
+      
+      <!-- Menu (para desktop e mobile) -->
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li><a href="#home" class="nav__link">Home</a></li>
+          <li><a href="#about" class="nav__link">Sobre</a></li>
+          <li><a href="#skills" class="nav__link">Habilidades</a></li>
+          <li><a href="#work" class="nav__link">Projetos</a></li>
+          <li><a href="#contact" class="nav__link">Contato</a></li>
         </ul>
-        <div class="dark-mode-toggle">
-          <button id="darkModeBtn">Modo Escuro</button>
-        </div>
+      </div>
+
+      <!-- ÍCONE HAMBURGUER (MOBILE) -->
+      <div class="nav__toggle" id="nav-toggle">
+        <i class="bx bx-menu"></i>
       </div>
     </nav>
   </header>
-  
-  <!-- Seção Hero -->
-  <section class="hero" id="topo">
-    <img src="./imagens/sua-foto.jpg" alt="Minha foto" class="hero__image">
-    <h1>Arcelino Cavalcante</h1>
-    <p>
-      Desenvolvedor apaixonado por criar soluções eficientes e elegantes, 
-      focado na experiência do usuário e nas melhores práticas de desenvolvimento.
-    </p>
-  </section>
-  
-  <!-- Seção Sobre Mim -->
-  <section id="sobre-mim">
-    <h2>Sobre Mim</h2>
-    <p>
-      Olá! Meu nome é Arcelino Cavalcante, sou desenvolvedor com foco em tecnologias web.
-      Possuo experiência em HTML, CSS, JavaScript e em frameworks modernos como React.
-    </p>
-    <p>
-      Quando não estou codando, gosto de estudar novas tecnologias, contribuir com a comunidade 
-      de desenvolvedores e compartilhar conhecimento por meio de artigos e palestras.
-    </p>
-  </section>
-  
-  <!-- Seção Projetos -->
-  <section id="projetos">
-    <h2>Projetos</h2>
-    <div class="projects-container">
-      <div class="project-card">
-        <img src="./imagens/projeto1.jpg" alt="Projeto 1">
-        <h3>Projeto 1</h3>
-        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
-        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
+
+  <!-- ===== MAIN ===== -->
+  <main class="l-main">
+    <!-- ===== HOME ===== -->
+    <section class="home section" id="home">
+      <div class="section__container">
+        <div class="home__content">
+          <!-- Texto -->
+          <div class="home__data">
+            <h1 class="home__title">
+              Olá,<br>
+              Eu sou <span class="home__title-color">Seu Nome</span><br>
+              Desenvolvedor Web
+            </h1>
+            <a href="#contact" class="button">Contrate-me</a>
+
+            <div class="home__social">
+              <!-- Substituímos Facebook por WhatsApp -->
+              <a href="#" class="home__social-icon">
+                <i class="bx bxl-whatsapp"></i>
+              </a>
+              <a href="#" class="home__social-icon">
+                <i class="bx bxl-instagram"></i>
+              </a>
+              <a href="#" class="home__social-icon">
+                <i class="bx bxl-github"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Imagem circular -->
+          <div class="home__img">
+            <img src="fotos/home-foto.jpg" alt="Minha foto">
+          </div>
+        </div>
       </div>
-      <div class="project-card">
-        <img src="./imagens/projeto2.jpg" alt="Projeto 2">
-        <h3>Projeto 2</h3>
-        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
-        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about section" id="about">
+      <div class="section__container">
+        <h2 class="section-title">Sobre Mim</h2>
+        <div class="about__container">
+          <div class="about__img">
+            <img src="fotos/about-foto.jpg" alt="Sobre mim">
+          </div>
+          <div>
+            <h2 class="about__subtitle">Eu sou [Seu Nome]</h2>
+            <p class="about__text">
+              Tenho experiência em XYZ... Formado em ABC... 
+              Tenho paixão por criar soluções que ajudam a resolver problemas...
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="project-card">
-        <img src="./imagens/projeto3.jpg" alt="Projeto 3">
-        <h3>Projeto 3</h3>
-        <p>Breve descrição do projeto, suas funcionalidades e tecnologias utilizadas.</p>
-        <a href="#" target="_blank" rel="noopener">Ver Projeto</a>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="skills section" id="skills">
+      <div class="section__container">
+        <h2 class="section-title">Habilidades</h2>
+        
+        <div class="skills__container">
+          <div>
+            <h2 class="skills__subtitle">Minhas Competências</h2>
+            <p class="skills__text">
+              Ao longo dos anos, desenvolvi habilidades em diversas áreas...
+            </p>
+
+            <div class="skills__data">
+              <div class="skills__names">
+                <i class="bx bxl-html5 skills__icon"></i>
+                <span class="skills__name">HTML5</span>
+              </div>
+              <div class="skills__bar" data-percentage="90%"></div>
+              <div><span class="skills__percentage">90%</span></div>
+            </div>
+
+            <div class="skills__data">
+              <div class="skills__names">
+                <i class="bx bxl-css3 skills__icon"></i>
+                <span class="skills__name">CSS3</span>
+              </div>
+              <div class="skills__bar" data-percentage="80%"></div>
+              <div><span class="skills__percentage">80%</span></div>
+            </div>
+
+            <div class="skills__data">
+              <div class="skills__names">
+                <i class="bx bxl-javascript skills__icon"></i>
+                <span class="skills__name">JavaScript</span>
+              </div>
+              <div class="skills__bar" data-percentage="70%"></div>
+              <div><span class="skills__percentage">70%</span></div>
+            </div>
+
+            <div class="skills__data">
+              <div class="skills__names">
+                <i class="bx bxs-paint skills__icon"></i>
+                <span class="skills__name">UX/UI</span>
+              </div>
+              <div class="skills__bar" data-percentage="75%"></div>
+              <div><span class="skills__percentage">75%</span></div>
+            </div>
+          </div>
+
+          <div>
+            <img class="skills__img" src="fotos/skills-foto.png" alt="Minhas Skills">
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- ===== WORK (PROJETOS) ===== -->
+    <section class="work section" id="work">
+      <div class="section__container">
+        <h2 class="section-title">Portfólio</h2>
+
+        <div class="work__container">
+          <!-- PROJETO 1 -->
+          <div class="work__project">
+            <div class="carousel" data-index="0">
+              <div class="carousel-track">
+                <img src="fotos/projeto1-1.jpg" alt="Projeto 1 Imagem 1">
+                <img src="fotos/projeto1-2.jpg" alt="Projeto 1 Imagem 2">
+                <img src="fotos/projeto1-3.jpg" alt="Projeto 1 Imagem 3">
+              </div>
+            </div>
+            <h3 class="work__title">Projeto 1</h3>
+            <p class="work__description">Descrição breve do Projeto 1.</p>
+            <a href="#" class="work__button">Ver projeto</a>
+          </div>
+
+          <!-- PROJETO 2 -->
+          <div class="work__project">
+            <div class="carousel" data-index="0">
+              <div class="carousel-track">
+                <img src="fotos/projeto2-1.jpg" alt="Projeto 2 Imagem 1">
+                <img src="fotos/projeto2-2.jpg" alt="Projeto 2 Imagem 2">
+                <img src="fotos/projeto2-3.jpg" alt="Projeto 2 Imagem 3">
+              </div>
+            </div>
+            <h3 class="work__title">Projeto 2</h3>
+            <p class="work__description">Descrição breve do Projeto 2.</p>
+            <a href="#" class="work__button">Ver projeto</a>
+          </div>
+
+          <!-- PROJETO 3 -->
+          <div class="work__project">
+            <div class="carousel" data-index="0">
+              <div class="carousel-track">
+                <img src="fotos/projeto3-1.jpg" alt="Projeto 3 Imagem 1">
+                <img src="fotos/projeto3-2.jpg" alt="Projeto 3 Imagem 2">
+                <img src="fotos/projeto3-3.jpg" alt="Projeto 3 Imagem 3">
+              </div>
+            </div>
+            <h3 class="work__title">Projeto 3</h3>
+            <p class="work__description">Descrição breve do Projeto 3.</p>
+            <a href="#" class="work__button">Ver projeto</a>
+          </div>
+
+          <!-- PROJETO 4 -->
+          <div class="work__project">
+            <div class="carousel" data-index="0">
+              <div class="carousel-track">
+                <img src="fotos/projeto4-1.jpg" alt="Projeto 4 Imagem 1">
+                <img src="fotos/projeto4-2.jpg" alt="Projeto 4 Imagem 2">
+                <img src="fotos/projeto4-3.jpg" alt="Projeto 4 Imagem 3">
+              </div>
+            </div>
+            <h3 class="work__title">Projeto 4</h3>
+            <p class="work__description">Descrição breve do Projeto 4.</p>
+            <a href="#" class="work__button">Ver projeto</a>
+          </div>
+
+          <!-- PROJETO 5 -->
+          <div class="work__project">
+            <div class="carousel" data-index="0">
+              <div class="carousel-track">
+                <img src="fotos/projeto5-1.jpg" alt="Projeto 5 Imagem 1">
+                <img src="fotos/projeto5-2.jpg" alt="Projeto 5 Imagem 2">
+                <img src="fotos/projeto5-3.jpg" alt="Projeto 5 Imagem 3">
+              </div>
+            </div>
+            <h3 class="work__title">Projeto 5</h3>
+            <p class="work__description">Descrição breve do Projeto 5.</p>
+            <a href="#" class="work__button">Ver projeto</a>
+          </div>
+
+          <!-- PROJETO 6 -->
+          <div class="work__project">
+            <div class="carousel" data-index="0">
+              <div class="carousel-track">
+                <img src="fotos/projeto6-1.jpg" alt="Projeto 6 Imagem 1">
+                <img src="fotos/projeto6-2.jpg" alt="Projeto 6 Imagem 2">
+                <img src="fotos/projeto6-3.jpg" alt="Projeto 6 Imagem 3">
+              </div>
+            </div>
+            <h3 class="work__title">Projeto 6</h3>
+            <p class="work__description">Descrição breve do Projeto 6.</p>
+            <a href="#" class="work__button">Ver projeto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact section" id="contact">
+      <div class="section__container">
+        <h2 class="section-title">Contato</h2>
+        <div class="contact__container">
+          <form id="contactForm" class="contact__form">
+            <input type="text" id="contactName" placeholder="Nome" class="contact__input" required>
+            <input type="email" id="contactEmail" placeholder="Email" class="contact__input" required>
+            <textarea id="contactMessage" rows="6" placeholder="Sua mensagem..." class="contact__input" required></textarea>
+            <button type="submit" class="contact__button">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p class="footer__title">SeuNome</p>
+    <div class="footer__social">
+      <!-- Substituímos Facebook por WhatsApp -->
+      <a href="#" class="footer__icon"><i class="bx bxl-whatsapp"></i></a>
+      <a href="#" class="footer__icon"><i class="bx bxl-instagram"></i></a>
+      <a href="#" class="footer__icon"><i class="bx bxl-twitter"></i></a>
     </div>
-  </section>
-  
-  <!-- Seção Habilidades -->
-  <section id="habilidades">
-    <h2>Habilidades</h2>
-    <div class="skills-list">
-      <div class="skill-item">HTML5</div>
-      <div class="skill-item">CSS3</div>
-      <div class="skill-item">JavaScript</div>
-      <div class="skill-item">React</div>
-      <div class="skill-item">Node.js</div>
-      <div class="skill-item">Git & GitHub</div>
-    </div>
-  </section>
-  
-  <!-- Seção Contato -->
-  <section id="contato">
-    <h2>Contato</h2>
-    <p>Entre em contato para criarmos o seu projeto ou tirar uma dúvida!</p>
-    <form>
-      <input type="text" name="nome" placeholder="Nome" required>
-      <input type="email" name="email" placeholder="E-mail" required>
-      <textarea name="mensagem" rows="5" placeholder="Mensagem" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-    <!-- Botões para Instagram e WhatsApp -->
-    <div class="social-buttons">
-      <a href="https://www.instagram.com/seuusuario" target="_blank" class="instagram">Instagram</a>
-      <a href="https://api.whatsapp.com/send?phone=seunumero" target="_blank" class="whatsapp">WhatsApp</a>
-    </div>
-  </section>
-  
-  <!-- Rodapé -->
-  <footer>
-    &copy; 2025 Arcelino Cavalcante. Todos os direitos reservados.
+    <p>
+      &copy; <span id="getYear"></span> - Todos os direitos reservados.
+    </p>
   </footer>
-  
-  <!-- Botão “Voltar ao Topo” -->
-  <button id="backToTop" title="Voltar ao Topo">&#8679;</button>
-  
+
+  <!-- ==========================
+       SCRIPTS
+       ========================== -->
   <script>
-    // Rolagem suave para links internos
-    document.querySelectorAll('.navbar__links a').forEach(link => {
-      const hrefValue = link.getAttribute('href');
-      if (hrefValue && hrefValue.startsWith('#')) {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const section = document.querySelector(hrefValue);
-          const offsetTop = section.offsetTop - 60;
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-        });
-      }
+    // =======================
+    // 1) ATUALIZA O ANO NO FOOTER
+    // =======================
+    const yearSpan = document.getElementById('getYear');
+    if(yearSpan){
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // =======================
+    // 2) MENU MOBILE: Mostra/esconde
+    // =======================
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    if(navToggle && navMenu){
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+      });
+    }
+
+    // =======================
+    // Fecha o menu ao clicar em um link (mobile)
+    // e faz scroll suave via JS
+    // =======================
+    const navLinks = document.querySelectorAll('.nav__link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); // Impede o pulo imediato
+        const href = link.getAttribute('href');
+        
+        // Se for um link âncora interno (#home, #about, etc.)
+        if (href && href.startsWith('#')) {
+          const section = document.querySelector(href);
+          if (section) {
+            // Faz scroll suave via JS
+            section.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+        // Fechar o menu mobile
+        navMenu.classList.remove('show');
+      });
     });
-    
-    // Alternar modo escuro/claro
-    const darkModeBtn = document.getElementById('darkModeBtn');
-    darkModeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      darkModeBtn.textContent = document.body.classList.contains('dark-mode') ? "Modo Claro" : "Modo Escuro";
+
+    // =======================
+    // 3) ANIMAÇÃO DAS SKILLS (Intersection Observer)
+    // =======================
+    const skillBars = document.querySelectorAll('.skills__bar');
+
+    const skillsObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const bar = entry.target;
+          const finalWidth = bar.getAttribute('data-percentage');
+          bar.style.width = finalWidth;
+          observer.unobserve(bar);
+        }
+      });
+    }, {
+      threshold: 0.2
     });
-    
-    // Menu Hamburger (mobile)
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const navLinks = document.querySelector('.navbar__links');
-    hamburgerMenu.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      hamburgerMenu.classList.toggle('open');
+
+    skillBars.forEach(bar => {
+      skillsObserver.observe(bar);
     });
-    
-    // Botão Voltar ao Topo
-    const backToTopBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopBtn.classList.add('show');
-      } else {
-        backToTopBtn.classList.remove('show');
-      }
+
+    // =======================
+    // 4) ENVIO DE FORMULÁRIO VIA WHATSAPP OU EMAIL
+    // =======================
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault(); // Impede o envio tradicional
+
+      const nameValue = document.getElementById('contactName').value.trim();
+      const emailValue = document.getElementById('contactEmail').value.trim();
+      const msgValue = document.getElementById('contactMessage').value.trim();
+
+      // ------------------ EXEMPLO WHATSAPP ------------------
+      const phoneNumber = "5581999999999"; // Ajuste p/ seu número (DDI+DDD+Número)
+      const text = `Olá, meu nome é ${nameValue}. E-mail: ${emailValue}.\n${msgValue}`;
+      const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(text)}`;
+      window.open(whatsappURL, '_blank');
+      contactForm.reset();
+
+      // ------------------ SE QUISER EMAIL (mailto) ------------------
+      /*
+      const subject = `Novo contato de ${nameValue}`;
+      const body = `Nome: ${nameValue}%0D%0AEmail: ${emailValue}%0D%0AMensagem:%0D%0A${msgValue}`;
+      const mailToURL = `mailto:SEU_EMAIL?subject=${encodeURIComponent(subject)}&body=${body}`;
+      window.location.href = mailToURL;
+      contactForm.reset();
+      */
     });
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // =======================
+    // 5) BARRINHA NO MENU (Scroll Spy)
+    // =======================
+    const sections = document.querySelectorAll('section[id]');
+    function scrollActive(){
+      const scrollY = window.pageYOffset;
+      
+      sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 50;
+        const sectionId = current.getAttribute('id');
+        
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+          document.querySelector('.nav__list a[href*=' + sectionId + ']').classList.add('active');
+        } else {
+          document.querySelector('.nav__list a[href*=' + sectionId + ']').classList.remove('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', scrollActive);
+
+    // =======================
+    // 6) CARROSSEL AUTOMÁTICO
+    // =======================
+    const allCarousels = document.querySelectorAll('.carousel');
+    allCarousels.forEach(carousel => {
+      const track = carousel.querySelector('.carousel-track');
+      const slides = track.querySelectorAll('img');
+      let currentIndex = 0;
+      const totalSlides = slides.length;
+
+      // Define intervalo de troca (3 seg)
+      setInterval(() => {
+        currentIndex++;
+        if (currentIndex >= totalSlides) {
+          currentIndex = 0;
+        }
+        track.style.transform = `translateX(${-100 * currentIndex}%)`;
+      }, 3000);
     });
   </script>
 </body>
