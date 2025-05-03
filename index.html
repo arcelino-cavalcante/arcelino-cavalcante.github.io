@@ -169,32 +169,60 @@
       display: none; /* Oculto em telas grandes */
     }
 
-    /* Responsivo: Menu mobile */
-    @media screen and (max-width: 768px){
+        /* =======================
+      MENU MOBILE: Drawer lateral
+      ======================= */
+
+    /* Esconde o toggle em telas grandes */
+    .nav__toggle {
+      display: none;
+    }
+
+    /* Estado padrão do menu (telas grandes) */
+    .nav__menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      transition: right 0.3s ease;
+    }
+
+    /* Quando chegar em telas pequenas */
+    @media screen and (max-width: 768px) {
+      /* Mostra o ícone de hambúrguer */
       .nav__toggle {
         display: block;
       }
+
+      /* Transforma o menu em drawer lateral */
       .nav__menu {
         position: fixed;
         top: var(--header-height);
-        right: -100%;
-        background: var(--second-color);
-        width: 60%;
+        right: -100%;              /* escondido inicialmente */
+        width: 70%;                /* largura do drawer */
         height: 100vh;
+        background: var(--second-color);
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        z-index: var(--z-fixed);
       }
-      .nav__link {
-        color: #fff;
-        font-size: 1.2rem;
+
+      /* Quando o JS adicionar a classe .show, o drawer aparece */
+      .nav__menu.show {
+        right: 0;
       }
+
+      /* Lista em coluna */
       .nav__list {
+        display: flex;
         flex-direction: column;
         gap: 2rem;
       }
-      .nav__menu.show {
-        right: 0;
+
+      /* Links brancos e maiores */
+      .nav__link {
+        color: #fff;
+        font-size: 1.2rem;
       }
     }
 
@@ -585,16 +613,17 @@
       </div>
       
       <!-- Substitua apenas este bloco <ul> … </ul> -->
-      <ul class="nav__list">
-        <li><a href="#home"    class="nav__link">Home</a></li>
-        <li><a href="#about"   class="nav__link">Sobre</a></li>
-        <li><a href="#skills"  class="nav__link">Habilidades</a></li>
-        <li><a href="#work"    class="nav__link">Projetos</a></li>
-        <li><a href="#contact" class="nav__link">Contato</a></li>
-        <!-- NOVO ITEM – abre loja.html em nova guia/aba -->
-        <li><a href="loja.html" class="nav__link">Loja</a></li>
-      </ul>
-
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li><a href="#home"    class="nav__link">Home</a></li>
+          <li><a href="#about"   class="nav__link">Sobre</a></li>
+          <li><a href="#skills"  class="nav__link">Habilidades</a></li>
+          <li><a href="#work"    class="nav__link">Projetos</a></li>
+          <li><a href="#contact" class="nav__link">Contato</a></li>
+          <!-- NOVO ITEM – abre loja.html em nova guia/aba -->
+          <li><a href="loja.html" class="nav__link">Loja</a></li>
+        </ul>
+      </div>
 
       <!-- ÍCONE HAMBURGUER (MOBILE) -->
       <div class="nav__toggle" id="nav-toggle">
@@ -863,13 +892,27 @@
     // =======================
     // 2) MENU MOBILE: Mostra/esconde
     // =======================
+    // pega os elementos
     const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    if(navToggle && navMenu){
-      navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('show');
+    const navMenu   = document.getElementById('nav-menu');
+
+    // abre / fecha drawer
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+
+    // fecha ao clicar em um link âncora
+    document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth'});
+          navMenu.classList.remove('show');
+        }
       });
-    }
+    });
+
 
     // =======================
     // Fecha o menu ao clicar em um link (mobile)
