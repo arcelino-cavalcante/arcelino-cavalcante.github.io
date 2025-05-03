@@ -172,7 +172,7 @@ header {
     @media (max-width: 600px) {
       /* Diminui o tamanho do título do cabeçalho */
       header h1 {
-        font-size: 1.1rem;   /* de 2em para ~1.4rem */
+        font-size: 1.4rem;   /* de 2em para ~1.4rem */
       }
 
       /* Botão “Portfólio” (back-btn) um pouco menor */
@@ -195,6 +195,15 @@ header {
         right: 44px;             /* ajusta posição junto ao ícone */
       }
     }
+    /* Esconde o título “Loja” no desktop e o “Produtos e Serviços” no mobile */
+    .mobile-title { display: none; }
+    .desktop-title { display: inline; }
+
+    @media (max-width: 600px) {
+      .desktop-title { display: none; }
+      .mobile-title  { display: inline; }
+    }
+
 
   </style>
 </head>
@@ -202,7 +211,10 @@ header {
 <header>
     <!-- Botão de retorno -->
   <a href="index.html" class="back-btn">Portfólio</a>
-  <h1>Produtos e Serviços</h1>
+  <h1>
+    <span class="desktop-title">Produtos e Serviços</span>
+    <span class="mobile-title">Loja</span>
+  </h1>
   <img src="https://cdn-icons-png.flaticon.com/512/34/34568.png" alt="Carrinho"
        onclick="document.getElementById('cart').scrollIntoView({behavior:'smooth'})">
   <div id="cart-count">0</div>
