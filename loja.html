@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loja de Drones</title>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+    :root {
+  /* cores já existentes */
+  --btn-text-color: #ffffff;      /* cor do texto dos botões */
+  --header-bg-color: #ffffff;     /* cor de fundo do cabeçalho */
+  --first-color: #4070F4;   /* ex.: cor de destaque */
+  --second-color: #000000;  /* ex.: cor do texto */
+  --accent: #4070F4;        /* ex.: cor de fundo de botões */
+  --colorblack: #000000; 
+  
+}
+
+/* cabeçalho */
+header {
+  background: var(--header-bg-color);
+  padding: 20px;
+  /* ... restante */
+}
+
+/* todos os botões da loja */
+.product button,
+#checkout-btn,
+.qty-btn,
+.remove-btn,
+.action-btn,
+.back-btn {
+  color: var(--btn-text-color);
+}
+
+/* se quiser trocar só o hover separadamente */
+.product button:hover,
+#checkout-btn:hover,
+.qty-btn:hover,
+.remove-btn:hover,
+.action-btn:hover {
+  background: darken(var(--accent), 10%); /* ou outra cor que prefira */
+}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body{background:#ffffff;color:var(--second-color);overflow-x:hidden;}
+   
+    .back-btn {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  color: var(--btn-text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+    /* HEADER */
+    header{
+      background:var( --header-bg-color);
+      padding:20px;
+      display:flex;align-items:center;justify-content:center;position:relative;
+    }
+    header h1{color:#000000;font-size:2em;font-weight:bold;letter-spacing:1px;}
+    header img{
+      position:absolute;right:20px;top:50%;transform:translateY(-50%);
+      width:32px;cursor:pointer;
+    }
+    #cart-count{
+      position:absolute;right:54px;top:50%;transform:translateY(-50%);
+      background:var(--accent);color:var(--btn-text-color);
+      width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8em;font-weight:bold;
+    }
+
+    /* GRID */
+    main{
+      padding:40px 20px;
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;max-width:1200px;margin:0 auto;
+    }
+    .product{
+      background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 8px rgba(0,0,0,.1);
+      transition:.3s;cursor:pointer;display:flex;flex-direction:column;
+    }
+    .product:hover{transform:translateY(-5px);box-shadow:0 8px 16px rgba(0,0,0,.2);}
+    .product img{width:100%;height:200px;object-fit:cover;opacity:1;transition:opacity .5s;}
+    .product-info{padding:20px;flex-grow:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;color:var(--colorblack);}
+    .product-info h2{font-size:1.3em;color:var(--colorblack);}
+    .product-info p{font-size:.9em;color:#000000;}
+    .product .price{color:var(--accent);font-weight:bold;font-size:1.1em;}
+    .product button{
+      margin-top:auto;background:var(--accent);color:var(--btn-text-color);border:none;
+      padding:10px 20px;border-radius:6px;cursor:pointer;transition:.3s;
+    }
+    .product button:hover{background:#4070F4;}
+
+    /* CART */
+    #cart{
+      background:#fff;margin:40px auto;padding:20px;max-width:800px;border-radius:10px;box-shadow:0 4px 8px rgba(0, 0, 0, 0.476);
+    }
+    #cart h2{text-align:center;margin-bottom:20px;color:var(---colorblack);}
+    #cart ul{list-style:none;margin-bottom:20px;color:var(---colorblack);}
+    .cart-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;color:var(---colorblack);}
+    .qty-controls{display:flex;align-items:center;gap:6px;}
+    .qty-btn{
+      background:var(--accent);color:var(--btn-text-color);border:none;width:26px;height:26px;border-radius:4px;cursor:pointer;
+    }
+    .qty-btn:hover{background:#4070F4;}
+    .remove-btn{background:#e74c3c;color:#fff;border:none;padding:4px 8px;border-radius:4px;cursor:pointer;}
+    .remove-btn:hover{background:#c0392b;}
+    #checkout-btn{
+      display:block;margin:20px auto;padding:15px 30px;background:var(--accent);color:var(--btn-text-color);
+      font-size:1em;border:none;border-radius:8px;cursor:pointer;transition:.3s;
+    }
+    #checkout-btn:hover{background:#4070F4;}
+
+    /* POPUP E MODAIS */
+    #popup{
+      position:fixed;top:20px;right:20px;background:var(--accent);color:var(--btn-text-color);
+      padding:10px 20px;border-radius:8px;font-size:.9em;display:none;z-index:3000;
+    }
+    #modal,#modal-quantidade{
+      position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:2000;
+    }
+    .modal-box{
+      background:#fff;padding:30px;border-radius:10px;max-width:480px;width:90%;text-align:center;
+      animation:zoom .35s forwards;color:var(--colorblack);
+    }
+    @keyframes zoom{from{transform:scale(.5);opacity:0;}to{transform:scale(1);opacity:1;}}
+    .action-btn{
+      margin-top:20px;background:var(--accent);color:var(--btn-text-color);
+      border:none;padding:10px 20px;border-radius:6px;cursor:pointer;transition:.3s;
+    }
+    .action-btn:hover{background:#4070F4;color:var(--btn-text-color)}
+    .qty-control{display:flex;align-items:center;justify-content:center;gap:18px;margin:18px 0;}
+    .qty-value{font-size:1.2em;font-weight:bold;width:40px;text-align:center;}
+
+    .modal-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #galeria img {
+      width: 80%;
+      max-width: 300px;
+      height: auto;
+      margin-bottom: 1rem;
+      border-radius: 0.25rem;
+    }
+
+    @media (max-width: 600px) {
+      .modal-box {
+        width: 100%;
+        height: auto;
+        max-height: 90vh;
+        padding: 1rem;
+      }
+      #galeria img {
+        width: 90%;
+        max-width: none;
+        max-height: 30vh;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+<header>
+    <!-- Botão de retorno -->
+  <a href="index.html" class="back-btn">Portfólio</a>
+  <h1>Produtos e Serviços</h1>
+  <img src="https://cdn-icons-png.flaticon.com/512/34/34568.png" alt="Carrinho"
+       onclick="document.getElementById('cart').scrollIntoView({behavior:'smooth'})">
+  <div id="cart-count">0</div>
+</header>
+
+<main id="product-list"></main>
+
+<section id="cart">
+  <h2>Seu Carrinho</h2>
+  <ul id="cart-items"><li>Nenhum produto adicionado.</li></ul>
+  <div id="cart-total"></div>
+  <button id="checkout-btn">Finalizar Compra</button>
+</section>
+
+<div id="modal"><div id="modal-content" class="modal-box"></div></div>
+<div id="modal-quantidade"><div id="modal-quantidade-content" class="modal-box"></div></div>
+<div id="popup">Produto adicionado ao carrinho!</div>
+
+<footer style="text-align:center;padding:20px;color:#666;font-size:.9em;">
+  &copy; <span id="getYear"></span>2025 Loja de Podutos e Serviços.<br/>Desenvolvida por DEV ARC
+</footer>
+
+<script>
+/* ------------ DADOS DOS PRODUTOS ------------ */
+const produtos = [
+  {
+    nome: "Drone Explorer",
+    descricao: "Vôo estável com câmera 4K.",
+    detalhes: [
+      "Câmera 4K com gimbal 3 eixos",
+      "Alcance de até 3 km",
+      "Bateria de até 30 minutos de voo",
+      "Peso aproximado de 750 g"
+    ],
+    preco: 1299,
+    imagens: [
+      "imagens_loja/drone1-1.jpg",
+      "imagens_loja/drone1-2.jpg",
+      "imagens_loja/drone1-3.jpg"
+    ]
+  },
+  {
+    nome: "Pro Flyer X",
+    descricao: "Alcance de 5 km e sensor de obstáculos omnidirecional.",
+    detalhes: [
+      "Sensores de obstáculos em 360°",
+      "GPS de dupla frequência para maior precisão",
+      "Modo Follow-Me avançado",
+      "Bateria com até 28 minutos de autonomia"
+    ],
+    preco: 1599,
+    imagens: [
+      "imagens_loja/drone2-1.jpg",
+      "imagens_loja/drone2-2.jpg",
+      "imagens_loja/drone2-3.jpg"
+    ]
+  },
+  {
+    nome: "Mini Sky",
+    descricao: "Compacto e portátil, ótimo para iniciantes.",
+    detalhes: [
+      "Design ultracompacto (500 g)",
+      "Braços dobráveis para fácil transporte",
+      "Até 20 minutos de voo contínuo",
+      "Modos de vôo assistidos para iniciantes"
+    ],
+    preco: 499,
+    imagens: [
+      "imagens_loja/drone3-1.jpg",
+      "imagens_loja/drone3-2.jpg",
+      "imagens_loja/drone3-3.jpg"
+    ]
+  },
+  {
+    nome: "Racing Drone",
+    descricao: "Alta velocidade e frame leve.",
+    detalhes: [
+      "Velocidade máxima de 120 km/h",
+      "Frame de fibra de carbono ultraleve",
+      "Controle de baixa latência para corridas",
+      "Bateria de 15 minutos com recarga rápida"
+    ],
+    preco: 799,
+    imagens: [
+      "imagens_loja/drone4-1.jpg",
+      "imagens_loja/drone4-2.jpg",
+      "imagens_loja/drone4-3.jpg"
+    ]
+  },
+  {
+    nome: "Foldable Pro",
+    descricao: "Dobragem fácil, transporte prático.",
+    detalhes: [
+      "Estrutura dobrável em segundos",
+      "Até 35 minutos de autonomia",
+      "Alcance de transmissão de até 4 km",
+      "Inclui case rígido para transporte"
+    ],
+    preco: 1399,
+    imagens: [
+      "imagens_loja/drone5-1.jpg",
+      "imagens_loja/drone5-2.jpg",
+      "imagens_loja/drone5-3.jpg"
+    ]
+  },
+  {
+    nome: "CineDrone 8K",
+    descricao: "Filmagens cinematográficas em 8K.",
+    detalhes: [
+      "Sensor de alta resolução 8K",
+      "Estabilização de imagem avançada",
+      "Excelente desempenho em baixa luminosidade",
+      "Uso profissional para cinema e publicidade"
+    ],
+    preco: 2999,
+    imagens: [
+      "imagens_loja/drone6-1.jpg",
+      "imagens_loja/drone6-2.jpg",
+      "imagens_loja/drone6-3.jpg"
+    ]
+  },
+  {
+    nome: "Agricultural",
+    descricao: "Pulverização precisa para plantações.",
+    detalhes: [
+      "Tanque de pulverização de 5 L",
+      "Vôo estável em baixas altitudes",
+      "Controle de fluxo de líquido ajustável",
+      "Autonomia de até 25 minutos"
+    ],
+    preco: 1899,
+    imagens: [
+      "imagens_loja/drone7-1.jpg",
+      "imagens_loja/drone7-2.jpg",
+      "imagens_loja/drone7-3.jpg"
+    ]
+  },
+  {
+    nome: "Inspection",
+    descricao: "Inspeção industrial com zoom 30x.",
+    detalhes: [
+      "Zoom ótico 30× para detalhes distantes",
+      "Transmissão de vídeo em 1080p ao vivo",
+      "Hover automático super preciso",
+      "Bateria com até 40 minutos de uso"
+    ],
+    preco: 2199,
+    imagens: [
+      "imagens_loja/drone8-1.jpg",
+      "imagens_loja/drone8-2.jpg",
+      "imagens_loja/drone8-3.jpg"
+    ]
+  }
+];
+
+
+/* ------------ ELEMENTOS ------------ */
+const lista=document.getElementById('product-list');
+const cartItemsEl=document.getElementById('cart-items');
+const cartTotalEl=document.getElementById('cart-total');
+const cartCountEl=document.getElementById('cart-count');
+const popup=document.getElementById('popup');
+const modal=document.getElementById('modal');
+const modalContent=document.getElementById('modal-content');
+const modalQ=document.getElementById('modal-quantidade');
+const modalQContent=document.getElementById('modal-quantidade-content');
+let carrinho=[],currentIdx=null,currentQty=1;
+
+/* ------------ CRIA CARDS ------------ */
+produtos.forEach((p,i)=>{
+  const card=document.createElement('div');card.className='product';
+  const img=document.createElement('img');img.src=p.imagens[0];let k=0;
+  setInterval(()=>{img.style.opacity=0;setTimeout(()=>{k=(k+1)%p.imagens.length;img.src=p.imagens[k];img.style.opacity=1;},250);},2000);
+  const info=document.createElement('div');info.className='product-info';
+  info.innerHTML=`<h2>${p.nome}</h2><p>${p.descricao}</p><div class='price'>R$ ${p.preco.toFixed(2)}</div>`;
+  const btn=document.createElement('button');btn.textContent='Adicionar ao Carrinho';
+  btn.onclick=e=>{e.stopPropagation();abrirModalQuantidade(i);};
+  info.appendChild(btn);card.appendChild(img);card.appendChild(info);
+  card.onclick=()=>abrirModal(i);lista.appendChild(card);
+});
+
+/* ------------ MODAIS ------------ */
+function abrirModal(i){
+  const p = produtos[i];
+  // monta os <li> dos detalhes automaticamente
+  const itensDetalhes = p.detalhes
+    .map(item => `<li>${item}</li>`)
+    .join("");
+  
+  modalContent.innerHTML = `
+    <div id="galeria"></div>
+    <h2>${p.nome}</h2>
+    <p>${p.descricao}</p>
+    <ul style="text-align:left; margin:1rem 0; padding-left:1.2rem;">
+      ${itensDetalhes}
+    </ul>
+    <div class="price">R$ ${p.preco.toFixed(2)}</div>
+    <button class="action-btn" onclick="abrirModalQuantidade(${i})">
+      Adicionar ao Carrinho
+    </button><br>
+    <button class="action-btn" onclick="modal.style.display='none'">
+      Fechar
+    </button>
+  `;
+
+  // resto do seu código de galeria…
+  const gal = document.getElementById('galeria');
+  let j = 0;
+  const gimg = document.createElement('img');
+  gimg.src = p.imagens[0];
+  gal.appendChild(gimg);
+  const inter = setInterval(()=>{
+    gimg.style.opacity = 0;
+    setTimeout(()=>{
+      j = (j+1) % p.imagens.length;
+      gimg.src = p.imagens[j];
+      gimg.style.opacity = 1;
+    }, 250);
+  }, 2000);
+
+  modal.style.display = 'flex';
+  modal.onclick = e => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      clearInterval(inter);
+    }
+  };
+}
+
+function abrirModalQuantidade(i){
+  modal.style.display='none';currentIdx=i;currentQty=1;
+  const p=produtos[i];
+  modalQContent.innerHTML=`<h2>${p.nome}</h2><p>Quantidade:</p>
+    <div class='qty-control'>
+      <button class='qty-btn' onclick='changeQty(-1)'>&minus;</button>
+      <span id='qty-value' class='qty-value'>1</span>
+      <button class='qty-btn' onclick='changeQty(1)'>&#43;</button>
+    </div>
+    <button class='action-btn' onclick='confirmarCarrinho()'>Confirmar</button><br>
+    <button class='action-btn' onclick='modalQ.style.display=\"none\"'>Cancelar</button>`;
+  modalQ.style.display='flex';
+}
+function changeQty(d){currentQty=Math.max(1,currentQty+d);document.getElementById('qty-value').textContent=currentQty;}
+
+/* ------------ CARRINHO ------------ */
+function confirmarCarrinho(){
+  carrinho.push({...produtos[currentIdx],quantidade:currentQty});
+  modalQ.style.display='none';popup.style.display='block';
+  setTimeout(()=>popup.style.display='none',2000);atualizarCarrinho();
+}
+function atualizarCarrinho(){
+  cartItemsEl.innerHTML='';let total=0,qt=0;
+  carrinho.forEach((item,i)=>{
+    const li=document.createElement('li');li.className='cart-item';
+    li.innerHTML=`<span>${item.quantidade}x ${item.nome} - R$ ${(item.preco*item.quantidade).toFixed(2)}</span>
+      <div class='qty-controls'>
+        <button class='qty-btn' onclick='updateItemQty(${i},-1)'>&minus;</button>
+        <button class='qty-btn' onclick='updateItemQty(${i},1)'>&#43;</button>
+      </div>
+      <button class='remove-btn' onclick='removerItem(${i})'>Remover</button>`;
+    cartItemsEl.appendChild(li);total+=item.preco*item.quantidade;qt+=item.quantidade;
+  });
+  if(carrinho.length===0)cartItemsEl.innerHTML='<li>Nenhum produto adicionado.</li>';
+  cartCountEl.textContent=qt;cartTotalEl.innerHTML=`<strong>Total: R$ ${total.toFixed(2)}</strong>`;
+}
+function removerItem(i){carrinho.splice(i,1);atualizarCarrinho();}
+function updateItemQty(i,d){carrinho[i].quantidade=Math.max(1,carrinho[i].quantidade+d);atualizarCarrinho();}
+
+/* ------------ CHECKOUT (WhatsApp) ------------ */
+document.getElementById('checkout-btn').onclick=()=>{
+  if(!carrinho.length){alert('Carrinho vazio!');return;}
+  let msg='Olá! Pedido:%0A',tot=0;
+  carrinho.forEach(m=>{msg+=`${m.quantidade}x ${m.nome} - R$ ${(m.preco*m.quantidade).toFixed(2)}%0A`;tot+=m.preco*m.quantidade;});
+  msg+=`%0ATotal: R$ ${tot.toFixed(2)}`;
+  window.open(`https://wa.me/5587981473819?text=${msg}`,'_blank');
+};
+</script>
+</body>
+</html>
