@@ -241,15 +241,23 @@ header {
 /* ------------ DADOS DOS PRODUTOS ------------ */
 const produtos = [
   {
-    nome: "Drone Explorer",
-    descricao: "Vôo estável com câmera 4K.",
+    nome: "Sistema de Gestão Escolar",
+    descricao: "Gerencie sua escola de forma eficiente e organizada",
     detalhes: [
-      "Câmera 4K com gimbal 3 eixos",
-      "Alcance de até 3 km",
-      "Bateria de até 30 minutos de voo",
-      "Peso aproximado de 750 g"
+      "Interfaces separadas e organizadas",
+      "Assistente Inteligente personalizado para fornecer documentos, horários, duvidaas escolares e muito mais",
+      "Gestão, Coordenação, Professores, Reforço, Sala de Impressão, Biblioteca e Parecer piscológico",
+      "Reforço integrado para acompnhamento e maior rendimento",
+      "Controle total de impressões de atividades, provas bimestrais",
+      "Controle de busca ativa em tempo real",
+      "Controle total da Biblioteca escolar, com entrada e saída de estudantes leitores",
+      "Controle total e devolutivas de parecer piscológico dos estudantes",
     ],
-    preco: 1299,
+    preco: {
+      avista: 1100,
+      mensal: 150,
+      anual: 1600
+    },
     imagens: [
       "imagens_loja/drone1-1.jpg",
       "imagens_loja/drone1-2.jpg",
@@ -265,7 +273,11 @@ const produtos = [
       "Modo Follow-Me avançado",
       "Bateria com até 28 minutos de autonomia"
     ],
-    preco: 1599,
+    preco: {
+      avista: 1100,
+      mensal: 150,
+      anual: 1600
+    },
     imagens: [
       "imagens_loja/drone2-1.jpg",
       "imagens_loja/drone2-2.jpg",
@@ -281,7 +293,11 @@ const produtos = [
       "Até 20 minutos de voo contínuo",
       "Modos de vôo assistidos para iniciantes"
     ],
-    preco: 499,
+    preco: {
+      avista: 1100,
+      mensal: 150,
+      anual: 1600
+    },
     imagens: [
       "imagens_loja/drone3-1.jpg",
       "imagens_loja/drone3-2.jpg",
@@ -297,7 +313,11 @@ const produtos = [
       "Controle de baixa latência para corridas",
       "Bateria de 15 minutos com recarga rápida"
     ],
-    preco: 799,
+    preco: {
+      avista: 1100,
+      mensal: 150,
+      anual: 1600
+    },
     imagens: [
       "imagens_loja/drone4-1.jpg",
       "imagens_loja/drone4-2.jpg",
@@ -313,7 +333,11 @@ const produtos = [
       "Alcance de transmissão de até 4 km",
       "Inclui case rígido para transporte"
     ],
-    preco: 1399,
+    preco: {
+      avista: 1100,
+      mensal: 150,
+      anual: 1600
+    },
     imagens: [
       "imagens_loja/drone5-1.jpg",
       "imagens_loja/drone5-2.jpg",
@@ -329,7 +353,11 @@ const produtos = [
       "Excelente desempenho em baixa luminosidade",
       "Uso profissional para cinema e publicidade"
     ],
-    preco: 2999,
+    preco: {
+      avista: 1100,
+      mensal: 150,
+      anual: 1600
+    },
     imagens: [
       "imagens_loja/drone6-1.jpg",
       "imagens_loja/drone6-2.jpg",
@@ -345,7 +373,11 @@ const produtos = [
       "Controle de fluxo de líquido ajustável",
       "Autonomia de até 25 minutos"
     ],
-    preco: 1899,
+    preco: {
+      avista: 1100,
+      mensal: 150,
+      anual: 1600
+    },
     imagens: [
       "imagens_loja/drone7-1.jpg",
       "imagens_loja/drone7-2.jpg",
@@ -361,7 +393,11 @@ const produtos = [
       "Hover automático super preciso",
       "Bateria com até 40 minutos de uso"
     ],
-    preco: 2199,
+    preco: {
+      avista: 1100,
+      mensal: 150,
+      anual: 1600
+    },
     imagens: [
       "imagens_loja/drone8-1.jpg",
       "imagens_loja/drone8-2.jpg",
@@ -382,42 +418,90 @@ const modalContent=document.getElementById('modal-content');
 const modalQ=document.getElementById('modal-quantidade');
 const modalQContent=document.getElementById('modal-quantidade-content');
 let carrinho=[],currentIdx=null,currentQty=1;
+let currentModalidade = 'avista';   // <‑‑ ADICIONE ESTA LINHA
+
 
 /* ------------ CRIA CARDS ------------ */
-produtos.forEach((p,i)=>{
-  const card=document.createElement('div');card.className='product';
-  const img=document.createElement('img');img.src=p.imagens[0];let k=0;
-  setInterval(()=>{img.style.opacity=0;setTimeout(()=>{k=(k+1)%p.imagens.length;img.src=p.imagens[k];img.style.opacity=1;},250);},2000);
-  const info=document.createElement('div');info.className='product-info';
-  info.innerHTML=`<h2>${p.nome}</h2><p>${p.descricao}</p><div class='price'>R$ ${p.preco.toFixed(2)}</div>`;
-  const btn=document.createElement('button');btn.textContent='Adicionar ao Carrinho';
-  btn.onclick=e=>{e.stopPropagation();abrirModalQuantidade(i);};
-  info.appendChild(btn);card.appendChild(img);card.appendChild(info);
-  card.onclick=()=>abrirModal(i);lista.appendChild(card);
+/* ------------ CRIA CARDS ------------ */
+produtos.forEach((p, i) => {
+  const card = document.createElement('div');           // wrapper
+  card.className = 'product';
+
+  // imagem com fade automático
+  const img = document.createElement('img');
+  img.src = p.imagens[0];
+  let k = 0;
+  setInterval(() => {
+    img.style.opacity = 0;
+    setTimeout(() => {
+      k = (k + 1) % p.imagens.length;
+      img.src = p.imagens[k];
+      img.style.opacity = 1;
+    }, 300);
+  }, 2600);
+
+  // bloco de informações
+  const info   = document.createElement('div');
+  info.className = 'product-info';
+  info.innerHTML = `<h2>${p.nome}</h2><p>${p.descricao}</p>`;
+
+  // select de modalidade
+  // select de modalidade
+const select = document.createElement('select');
+select.innerHTML = `
+  <option value="avista">À vista – R$ ${p.preco.avista.toFixed(2)}</option>
+  <option value="mensal">Mensal – R$ ${p.preco.mensal.toFixed(2)}</option>
+  <option value="anual">Anual – R$ ${p.preco.anual.toFixed(2)}</option>
+`;
+
+/* BLOQUEIA propagação para que o card não “veja” o clique no <select> */
+  ['mousedown', 'touchstart', 'click', 'change'].forEach(evt =>
+  select.addEventListener(evt, e => e.stopPropagation())
+);
+
+  // preço dinâmico
+  const priceDiv = document.createElement('div');
+  priceDiv.className = 'price';
+  priceDiv.textContent = `R$ ${p.preco.avista.toFixed(2)}`;
+  select.onchange = () =>
+    (priceDiv.textContent = `R$ ${p.preco[select.value].toFixed(2)}`);
+
+  // botão adicionar
+  const btn = document.createElement('button');
+  btn.textContent = 'Adicionar ao Carrinho';
+  btn.onclick = e => {
+    e.stopPropagation();
+    abrirModalQuantidade(i, select.value);
+  };
+
+  // monta card
+  info.appendChild(select);
+  info.appendChild(priceDiv);
+  info.appendChild(btn);
+  card.appendChild(img);
+  card.appendChild(info);
+  card.onclick = () => abrirModal(i, select.value);   // passa a modalidade
+  lista.appendChild(card);
 });
 
+
 /* ------------ MODAIS ------------ */
-function abrirModal(i){
+function abrirModal(i, modalidade = 'avista') {   // <-- assinatura nova
   const p = produtos[i];
-  // monta os <li> dos detalhes automaticamente
-  const itensDetalhes = p.detalhes
-    .map(item => `<li>${item}</li>`)
-    .join("");
-  
+  const itensDetalhes = p.detalhes.map(d => `<li>${d}</li>`).join('');
+
   modalContent.innerHTML = `
     <div id="galeria"></div>
     <h2>${p.nome}</h2>
     <p>${p.descricao}</p>
-    <ul style="text-align:left; margin:1rem 0; padding-left:1.2rem;">
+    <ul style="text-align:left;margin:1rem 0;padding-left:1.2rem;">
       ${itensDetalhes}
     </ul>
-    <div class="price">R$ ${p.preco.toFixed(2)}</div>
-    <button class="action-btn" onclick="abrirModalQuantidade(${i})">
+    <div class="price">R$ ${p.preco[modalidade].toFixed(2)} (${modalidade})</div>
+    <button class="action-btn" onclick="abrirModalQuantidade(${i}, '${modalidade}')">
       Adicionar ao Carrinho
     </button><br>
-    <button class="action-btn" onclick="modal.style.display='none'">
-      Fechar
-    </button>
+    <button class="action-btn" onclick="modal.style.display='none'">Fechar</button>
   `;
 
   // resto do seu código de galeria…
@@ -444,42 +528,69 @@ function abrirModal(i){
   };
 }
 
-function abrirModalQuantidade(i){
-  modal.style.display='none';currentIdx=i;currentQty=1;
-  const p=produtos[i];
-  modalQContent.innerHTML=`<h2>${p.nome}</h2><p>Quantidade:</p>
-    <div class='qty-control'>
-      <button class='qty-btn' onclick='changeQty(-1)'>&minus;</button>
-      <span id='qty-value' class='qty-value'>1</span>
-      <button class='qty-btn' onclick='changeQty(1)'>&#43;</button>
+function abrirModalQuantidade(i, modalidade = 'avista') {
+  modal.style.display = 'none';
+  currentIdx = i;
+  currentQty = 1;
+  currentModalidade = modalidade;           // nova variável global
+
+  const p = produtos[i];
+  modalQContent.innerHTML = `
+    <h2>${p.nome} (${modalidade})</h2>
+    <p>Preço unitário: R$ ${p.preco[modalidade].toFixed(2)}</p>
+    <p>Quantidade:</p>
+    <div class="qty-control">
+      <button class="qty-btn" onclick="changeQty(-1)">&minus;</button>
+      <span id="qty-value" class="qty-value">1</span>
+      <button class="qty-btn" onclick="changeQty(1)">&#43;</button>
     </div>
-    <button class='action-btn' onclick='confirmarCarrinho()'>Confirmar</button><br>
-    <button class='action-btn' onclick='modalQ.style.display=\"none\"'>Cancelar</button>`;
-  modalQ.style.display='flex';
+    <button class="action-btn" onclick="confirmarCarrinho()">Confirmar</button>
+    <br>
+    <button class="action-btn" onclick="modalQ.style.display='none'">Cancelar</button>
+  `;
+  modalQ.style.display = 'flex';
 }
+
 function changeQty(d){currentQty=Math.max(1,currentQty+d);document.getElementById('qty-value').textContent=currentQty;}
 
 /* ------------ CARRINHO ------------ */
-function confirmarCarrinho(){
-  carrinho.push({...produtos[currentIdx],quantidade:currentQty});
-  modalQ.style.display='none';popup.style.display='block';
-  setTimeout(()=>popup.style.display='none',2000);atualizarCarrinho();
-}
-function atualizarCarrinho(){
-  cartItemsEl.innerHTML='';let total=0,qt=0;
-  carrinho.forEach((item,i)=>{
-    const li=document.createElement('li');li.className='cart-item';
-    li.innerHTML=`<span>${item.quantidade}x ${item.nome} - R$ ${(item.preco*item.quantidade).toFixed(2)}</span>
-      <div class='qty-controls'>
-        <button class='qty-btn' onclick='updateItemQty(${i},-1)'>&minus;</button>
-        <button class='qty-btn' onclick='updateItemQty(${i},1)'>&#43;</button>
-      </div>
-      <button class='remove-btn' onclick='removerItem(${i})'>Remover</button>`;
-    cartItemsEl.appendChild(li);total+=item.preco*item.quantidade;qt+=item.quantidade;
+function confirmarCarrinho() {
+  const p = produtos[currentIdx];
+  carrinho.push({
+    nome: p.nome,
+    preco: p.preco[currentModalidade],
+    quantidade: currentQty,
+    modalidade: currentModalidade
   });
-  if(carrinho.length===0)cartItemsEl.innerHTML='<li>Nenhum produto adicionado.</li>';
-  cartCountEl.textContent=qt;cartTotalEl.innerHTML=`<strong>Total: R$ ${total.toFixed(2)}</strong>`;
+  modalQ.style.display = 'none';
+  popup.style.display = 'block';
+  setTimeout(() => popup.style.display = 'none', 2000);
+  atualizarCarrinho();
 }
+
+function atualizarCarrinho() {
+  cartItemsEl.innerHTML = '';
+  let total = 0, Qt = 0;
+  carrinho.forEach((item, i) => {
+    const valorItem = item.preco * item.quantidade;
+    total += valorItem;
+    Qt += item.quantidade;
+    const li = document.createElement('li');
+    li.className = 'cart-item';
+    li.innerHTML = `
+  <span>${item.quantidade}x ${item.nome} (${item.modalidade}) – R$ ${(item.preco * item.quantidade).toFixed(2)}</span>
+  <div class="qty-controls">
+    <button class="qty-btn" onclick="updateItemQty(${i},-1)">&minus;</button>
+    <button class="qty-btn" onclick="updateItemQty(${i},1)">&#43;</button>
+  </div>
+  <button class="remove-btn" onclick="removerItem(${i})">Remover</button>
+`;
+    cartItemsEl.appendChild(li);
+  });
+  cartCountEl.textContent = Qt;
+  cartTotalEl.innerHTML = `<strong>Total: R$ ${total.toFixed(2)}</strong>`;
+}
+
 function removerItem(i){carrinho.splice(i,1);atualizarCarrinho();}
 function updateItemQty(i,d){carrinho[i].quantidade=Math.max(1,carrinho[i].quantidade+d);atualizarCarrinho();}
 
