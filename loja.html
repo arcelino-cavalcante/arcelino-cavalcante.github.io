@@ -168,6 +168,33 @@ header {
       }
     }
 
+        /* Ajustes para mobile (telas até 600px) */
+    @media (max-width: 600px) {
+      /* Diminui o tamanho do título do cabeçalho */
+      header h1 {
+        font-size: 1.4rem;   /* de 2em para ~1.4rem */
+      }
+
+      /* Botão “Portfólio” (back-btn) um pouco menor */
+      .back-btn {
+        padding: 0.4rem 0.8rem;  /* de 0.5rem 1rem */
+        font-size: 0.9rem;       /* texto menor */
+      }
+
+      /* Ícone do carrinho menor */
+      header img {
+        width: 24px;             /* de 32px */
+        right: 16px;             /* afasta um pouco da borda */
+      }
+
+      /* Badge de contagem do carrinho */
+      #cart-count {
+        width: 16px;             /* de 20px */
+        height: 16px;
+        font-size: 0.7rem;       /* de .8em */
+        right: 44px;             /* ajusta posição junto ao ícone */
+      }
+    }
 
   </style>
 </head>
