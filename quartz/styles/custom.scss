@@ -29,18 +29,20 @@ mark {
     color: #202020; // Dark text for contrast against light blue
 }
 
-// Search Optimization: Icon Only (Global)
-.search {
-    flex-grow: 0 !important; // Prevent expansion
-    min-width: auto !important;
-}
+// Search Optimization: Icon Only (Mobile Only)
+@media all and (max-width: 800px) {
+    .search {
+        flex-grow: 0 !important;
+        min-width: auto !important;
+    }
 
-.search>.search-button {
-    border: none !important; // Remove border
-    padding: 0 !important; // Compact spacing
-    width: auto !important;
-}
+    .search>.search-button {
+        border: none !important;
+        padding: 0 !important;
+        width: auto !important;
+    }
 
-.search>.search-button>p {
-    display: none !important; // Hide text globally
+    .search>.search-button>p {
+        display: none !important;
+    }
 }
