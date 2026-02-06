@@ -29,26 +29,26 @@ const config: QuartzConfig = {
       },
       colors: {
         lightMode: {
-          light: "#F8FAFC", // Slate 50 (Off-white)
-          lightgray: "#E2E8F0", // Slate 200 (Borders)
-          gray: "#64748B", // Slate 500 (Muted)
-          darkgray: "#475569", // Slate 600 (Body)
-          dark: "#1E293B", // Slate 800 (Headings/Text)
-          secondary: "#6366F1", // Indigo 500 (Primary Accent)
-          tertiary: "#818CF8", // Indigo 400 (Hover/Graph)
-          highlight: "rgba(99, 102, 241, 0.15)", // Indigo Highlight
-          textHighlight: "#6366F188",
+          light: "#F8FAFC", // Slate 50
+          lightgray: "#E2E8F0", // Slate 200
+          gray: "#64748B", // Slate 500
+          darkgray: "#475569", // Slate 600
+          dark: "#1E293B", // Slate 800 (Text)
+          secondary: "#0F172A", // Slate 900 (Accent - Dark Gray/Black)
+          tertiary: "#334155", // Slate 700 (Hover/Graph)
+          highlight: "rgba(15, 23, 42, 0.15)", // Gray Highlight
+          textHighlight: "#0F172A88",
         },
         darkMode: {
-          light: "#0F172A", // Slate 900 (Deep Dark)
-          lightgray: "#1E293B", // Slate 800 (Borders)
-          gray: "#94A3B8", // Slate 400 (Muted)
-          darkgray: "#E2E8F0", // Slate 200 (Body)
-          dark: "#F8FAFC", // Slate 50 (Headings)
-          secondary: "#818CF8", // Indigo 400 (Accent)
-          tertiary: "#6366F1", // Indigo 500 (Hover)
-          highlight: "rgba(99, 102, 241, 0.15)",
-          textHighlight: "#818CF888",
+          light: "#0F172A", // Slate 900
+          lightgray: "#1E293B", // Slate 800
+          gray: "#94A3B8", // Slate 400
+          darkgray: "#E2E8F0", // Slate 200
+          dark: "#F8FAFC", // Slate 50
+          secondary: "#F8FAFC", // White (Accent in Dark Mode for contrast)
+          tertiary: "#E2E8F0", // Slate 200
+          highlight: "rgba(248, 250, 252, 0.15)",
+          textHighlight: "#F8FAFC88",
         },
       },
     },
