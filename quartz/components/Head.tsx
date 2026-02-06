@@ -83,6 +83,21 @@ export default (() => {
         )}
 
         <link rel="icon" href={iconPath} />
+        <link rel="manifest" href={joinSegments(baseDir, "manifest.json")} />
+        <meta name="theme-color" content="#82B1FF" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                  navigator.serviceWorker.register('${joinSegments(baseDir, "sw.js")}')
+                    .then(reg => console.log('SW registered!', reg))
+                    .catch(err => console.log('SW failed!', err));
+                });
+              }
+            `,
+          }}
+        />
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
 
