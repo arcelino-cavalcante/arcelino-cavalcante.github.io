@@ -22,3 +22,9 @@ mark {
     border-radius: 2px;
     padding: 0 2px;
 }
+
+// Custom Text Selection Color
+::selection {
+    background-color: #82B1FF;
+    color: #202020; // Dark text for contrast against light blue
+}
