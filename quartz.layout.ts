@@ -38,7 +38,12 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer({ title: "Categorias" }),
+    Component.Explorer({
+      title: "Categorias",
+      mapFn: (node) => {
+        node.displayName = node.displayName.replace(/^\d+[-_.\s]+/, "")
+      },
+    }),
   ],
   right: [
     Component.Graph({
@@ -87,7 +92,12 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer({ title: "Categorias" }),
+    Component.Explorer({
+      title: "Categorias",
+      mapFn: (node) => {
+        node.displayName = node.displayName.replace(/^\d+[-_.\s]+/, "")
+      },
+    }),
   ],
   right: [],
 }
