@@ -61,6 +61,7 @@ mark {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
+    align-items: stretch; // Ensure all cards same height
 }
 
 // 2. Product Card
@@ -72,9 +73,10 @@ mark {
     background-color: var(--light);
     display: flex;
     flex-direction: column;
-    height: 100%;
-    text-decoration: none !important; // Override default link underline
+    height: 100%; // Fill grid cell
+    text-decoration: none !important;
     color: var(--dark) !important;
+    box-sizing: border-box;
 
     &:hover {
         transform: translateY(-4px);
@@ -86,13 +88,18 @@ mark {
         margin-top: 0;
         margin-bottom: 0.5rem;
         color: var(--tertiary);
+
+        a {
+            color: var(--tertiary);
+            text-decoration: none;
+        }
     }
 
     p {
         font-size: 0.9rem;
         color: var(--gray);
         flex-grow: 1; // Pushes button to bottom
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .price {
@@ -104,9 +111,10 @@ mark {
 }
 
 // 3. Buy Button
-.btn-buy {
+.btn-buy,
+a.btn-buy {
     display: inline-block;
-    background-color: #82B1FF;
+    background-color: #82B1FF !important; // Force Blue
     color: white !important;
     padding: 0.8rem 1.5rem;
     border-radius: 6px;
@@ -116,9 +124,17 @@ mark {
     transition: filter 0.2s;
     width: 100%;
     box-sizing: border-box;
+    margin-top: auto;
+    border: none;
+
+    &:visited {
+        color: white !important;
+        background-color: #82B1FF !important;
+    }
 
     &:hover {
         filter: brightness(0.9);
+        color: white !important;
     }
 }
 
@@ -128,10 +144,9 @@ mark {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 1rem;
-    padding-bottom: 1rem; // Space for scrollbar
+    padding-bottom: 1rem;
     margin-bottom: 1.5rem;
 
-    // Hide scrollbar for cleaner look if desired
     &::-webkit-scrollbar {
         height: 6px;
     }
@@ -147,6 +162,6 @@ mark {
         width: auto;
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        display: block; // Fix image gap
+        display: block;
     }
 }
