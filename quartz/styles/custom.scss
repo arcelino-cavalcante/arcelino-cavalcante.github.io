@@ -1,18 +1,18 @@
 @use "./base.scss";
 
-// Forcing Blue Hover for all links (Text Only, No Background, No Underline)
+// Forcing Hover Color for all links
 a:hover,
 .internal-link:hover,
 .external-link:hover {
-    color: #0F172A !important; // Light Blue Text
-    background-color: transparent !important; // No "highlighter" background
-    text-decoration: none !important; // No underline
+    color: var(--tertiary) !important; // Hover Color
+    background-color: transparent !important;
+    text-decoration: none !important;
     transition: color 0.2s ease;
 }
 
-// Ensure the "rover" (graph/popover) highlights are also blue
+// Ensure the "rover" (graph/popover) highlights match accent
 .graph-view canvas {
-    --highlight: #0F172A !important;
+    --highlight: var(--secondary) !important;
 }
 
 // Ensure highlighted text (==text==) uses the configured color
@@ -25,8 +25,8 @@ mark {
 
 // Custom Text Selection Color
 ::selection {
-    background-color: #0F172A;
-    color: #202020; // Dark text for contrast against light blue
+    background-color: var(--tertiary);
+    color: var(--light); // Constant contrast
 }
 
 // Search Optimization: Icon Only (Mobile Only)
@@ -47,10 +47,10 @@ mark {
     }
 }
 
-// Explorer Active Item & Hover Color (Lighter Blue)
+// Explorer Active Item & Hover Color
 .explorer-content ul li>a.active,
 .explorer-content ul li>a:hover {
-    color: #0F172A !important;
+    color: var(--tertiary) !important;
     opacity: 1 !important;
 }
 
@@ -82,7 +82,7 @@ mark {
     &:hover {
         transform: translateY(-4px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        border-color: #0F172A; // Blue Theme
+        border-color: var(--secondary); // Accent Theme
     }
 
     h3 {
@@ -115,8 +115,8 @@ mark {
 .btn-buy,
 a.btn-buy {
     display: inline-block;
-    background-color: #0F172A !important; // Force Blue
-    color: white !important;
+    background-color: var(--secondary) !important; // Accent
+    color: var(--light) !important;
     padding: 0.8rem 1.5rem;
     border-radius: 6px;
     text-decoration: none !important;
@@ -129,13 +129,14 @@ a.btn-buy {
     border: none;
 
     &:visited {
-        color: white !important;
-        background-color: #0F172A !important;
+        color: var(--light) !important;
+        background-color: var(--secondary) !important;
     }
 
     &:hover {
         filter: brightness(0.9);
-        color: white !important;
+        color: var(--light) !important;
+        background-color: var(--tertiary) !important;
     }
 }
 

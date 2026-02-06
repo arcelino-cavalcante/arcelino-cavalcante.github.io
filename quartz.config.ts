@@ -34,19 +34,19 @@ const config: QuartzConfig = {
           gray: "#64748B", // Slate 500
           darkgray: "#475569", // Slate 600
           dark: "#1E293B", // Slate 800 (Text)
-          secondary: "#0F172A", // Slate 900 (Accent - Dark Gray/Black)
-          tertiary: "#334155", // Slate 700 (Hover/Graph)
+          secondary: "#0F172A", // Slate 900 (Accent)
+          tertiary: "#334155", // Slate 700 (Hover)
           highlight: "rgba(15, 23, 42, 0.15)", // Gray Highlight
           textHighlight: "#0F172A88",
         },
         darkMode: {
           light: "#000000", // True Black
-          lightgray: "#334155", // Slate 700 (Visible Borders)
-          gray: "#94A3B8", // Slate 400 (Muted)
-          darkgray: "#E2E8F0", // Slate 200 (Body)
-          dark: "#F8FAFC", // Slate 50 (Headings)
-          secondary: "#E2E8F0", // Slate 200 (Almost White Gradient)
-          tertiary: "#CBD5E1", // Slate 300 (Hover)
+          lightgray: "#334155", // Slate 700
+          gray: "#94A3B8", // Slate 400
+          darkgray: "#E2E8F0", // Slate 200
+          dark: "#F8FAFC", // Slate 50
+          secondary: "#E2E8F0", // Slate 200 (Accent - Almost White)
+          tertiary: "#FFFFFF", // White (Hover - Maximum Visibility)
           highlight: "rgba(226, 232, 240, 0.15)",
           textHighlight: "#E2E8F088",
         },
