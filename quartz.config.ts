@@ -23,8 +23,8 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
+        header: "Literata", // Estilo Bookerly para títulos
+        body: "Literata",   // Estilo Bookerly para texto
         code: "IBM Plex Mono",
       },
       colors: {
