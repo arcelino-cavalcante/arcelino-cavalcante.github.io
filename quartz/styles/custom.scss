@@ -14,3 +14,11 @@ a:hover,
 .graph-view canvas {
     --highlight: #82B1FF !important;
 }
+
+// Ensure highlighted text (==text==) uses the configured color
+mark {
+    background-color: var(--textHighlight) !important;
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 2px;
+}
