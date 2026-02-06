@@ -46,3 +46,9 @@ mark {
         display: none !important;
     }
 }
+
+// Explorer Active Item Color (Light Blue)
+.explorer-content ul li>a.active {
+    color: #82B1FF !important;
+    opacity: 1 !important;
+}
