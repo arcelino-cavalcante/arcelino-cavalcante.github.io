@@ -40,15 +40,15 @@ const config: QuartzConfig = {
           textHighlight: "#0F172A88",
         },
         darkMode: {
-          light: "#0F172A", // Slate 900
-          lightgray: "#1E293B", // Slate 800
-          gray: "#94A3B8", // Slate 400
-          darkgray: "#E2E8F0", // Slate 200
-          dark: "#F8FAFC", // Slate 50
-          secondary: "#F8FAFC", // White (Accent in Dark Mode for contrast)
-          tertiary: "#E2E8F0", // Slate 200
-          highlight: "rgba(248, 250, 252, 0.15)",
-          textHighlight: "#F8FAFC88",
+          light: "#000000", // True Black
+          lightgray: "#334155", // Slate 700 (Visible Borders)
+          gray: "#94A3B8", // Slate 400 (Muted)
+          darkgray: "#E2E8F0", // Slate 200 (Body)
+          dark: "#F8FAFC", // Slate 50 (Headings)
+          secondary: "#E2E8F0", // Slate 200 (Almost White Gradient)
+          tertiary: "#CBD5E1", // Slate 300 (Hover)
+          highlight: "rgba(226, 232, 240, 0.15)",
+          textHighlight: "#E2E8F088",
         },
       },
     },
