@@ -17,7 +17,7 @@ a:hover,
 
 // Ensure highlighted text (==text==) uses the configured color
 mark {
-    background-color: var(--textHighlight) !important;
+    background-color: var(--textHighlight); // Removed !important to allow overrides
     color: inherit;
     border-radius: 2px;
     padding: 0 2px;
