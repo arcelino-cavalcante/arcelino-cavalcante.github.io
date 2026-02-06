@@ -36,8 +36,8 @@ const config: QuartzConfig = {
           dark: "#2b2b2b",
           secondary: "#448AFF", // Blue Accent (Light Mode)
           tertiary: "#84a59d",
-          highlight: "rgba(68, 138, 255, 0.15)",
-          textHighlight: "#fff23688",
+          highlight: "rgba(68, 138, 255, 0.15)", // Fundo de destaque (já azul)
+          textHighlight: "#448AFF88", // "Rover"/Texto marcado agora azul
         },
         darkMode: {
           light: "#202020", // Obsidian Dark Background
@@ -47,8 +47,8 @@ const config: QuartzConfig = {
           dark: "#ebf2fc",
           secondary: "#448AFF", // Blue Accent (Dark Mode)
           tertiary: "#84a59d",
-          highlight: "rgba(68, 138, 255, 0.15)",
-          textHighlight: "#b3aa0288",
+          highlight: "rgba(68, 138, 255, 0.15)", // Fundo de destaque (já azul)
+          textHighlight: "#448AFF88", // "Rover"/Texto marcado agora azul
         },
       },
     },
