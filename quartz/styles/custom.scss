@@ -52,3 +52,101 @@ mark {
     color: #82B1FF !important;
     opacity: 1 !important;
 }
+
+// === STORE / PREMIUM SECTION STYLES ===
+
+// 1. Storefront Grid (for index.md)
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+// 2. Product Card
+.product-card {
+    border: 1px solid var(--lightgray);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: var(--light);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none !important; // Override default link underline
+    color: var(--dark) !important;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-color: var(--tertiary);
+    }
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        color: var(--tertiary);
+    }
+
+    p {
+        font-size: 0.9rem;
+        color: var(--gray);
+        flex-grow: 1; // Pushes button to bottom
+        margin-bottom: 1rem;
+    }
+
+    .price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--secondary);
+        margin: 0 0 1rem 0;
+    }
+}
+
+// 3. Buy Button
+.btn-buy {
+    display: inline-block;
+    background-color: #82B1FF;
+    color: white !important;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none !important;
+    font-weight: bold;
+    text-align: center;
+    transition: filter 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
+}
+
+// 4. CSS Carousel (Scroll Snap)
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem; // Space for scrollbar
+    margin-bottom: 1.5rem;
+
+    // Hide scrollbar for cleaner look if desired
+    &::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--lightgray);
+        border-radius: 3px;
+    }
+
+    img {
+        scroll-snap-align: center;
+        max-height: 400px;
+        width: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        display: block; // Fix image gap
+    }
+}
