@@ -1,20 +1,41 @@
 ---
-title: Bem-vindo ao Meu Blog
-date: 2026-03-20
-tags:
-  - bem-vindo
+title: Bem-vindo ao Meu Blog 🚀
 ---
 
-# Olá Mundo
+> [!abstract] Sobre este espaço
+> Aqui compartilho meus estudos, dicas e tutoriais sobre tecnologia, produtividade e inteligência artificial.
+> Tudo o que você vê aqui é gerenciado no **Obsidian** e publicado com **Quartz**.
 
-Bem-vindo ao meu novo blog powered by Obsidian! Todo este conteúdo está salvo de forma segura no meu Vault e publicado automaticamente para o Quartz.
+## 🧭 Navegação Rápida
 
-## Como funciona?
-1. Eu escrevo aqui em ==`Vault/Blog`==.
-2. Eu rodo `npm run publish` em `Vault/quartz`.
-3. Tudo aparece na web!
+Explore o conteúdo pelas categorias principais:
 
-## Recursos
-- **Rápido**: Feito com Quartz 4.
-- **Seguro**: Meus arquivos originais nunca são tocados pelo processo de build.
-- **Git-backed**: Todo o histórico é salvo.
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+
+> [!example] [[Inteligencia Artificial/index|Inteligência Artificial]]
+> Notícias, reflexões e guias sobre o mundo da IA.
+
+> [!tip] [[Dicas/index|Dicas & Truques]]
+> Atalhos e métodos para melhorar seu fluxo de trabalho.
+
+> [!note] [[Documentacoes/index|Documentações]]
+> Manuais técnicos e referências detalhadas.
+
+> [!important] [[Tutorial/index|Tutoriais]]
+> Guias passo a passo para aprender na prática.
+
+</div>
+
+---
+
+## ✨ Destaques Recentes
+
+*   [[Dicas/Exemplo Tags|Como funcionam as Tags no Quartz?]] - Entenda o poder da organização sem pastas.
+*   [[Guia]] - O guia completo de configuração deste blog.
+
+---
+
+> [!quote] 
+> *"A melhor maneira de aprender é ensinar."*
+
+[Ver todos os arquivos](tags/)
