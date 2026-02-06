@@ -28,7 +28,7 @@ O **Template Obsidian Pro** é a base perfeita para quem quer produtividade máx
 ## Adquira Agora
 
 <div style="background: var(--light); padding: 2rem; border-radius: 8px; text-align: center; margin-top: 2rem; border: 1px solid var(--lightgray);">
-  <h2 style="margin-top: 0; color: #0062FF">R$ 49,90</h2>
+  <h2 style="margin-top: 0; color: #0F172AF">R$ 49,90</h2>
   <p style="margin-bottom: 1.5rem">Acesso vitalício + Atualizações</p>
   <a href="https://kiwify.com.br" class="btn-buy" style="max-width: 300px; margin: 0 auto;">Comprar Agora</a>
 </div>
