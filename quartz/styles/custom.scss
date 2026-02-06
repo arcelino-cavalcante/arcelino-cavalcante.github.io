@@ -47,9 +47,10 @@ mark {
     }
 }
 
-// Explorer Active Item Color (Light Blue)
-.explorer-content ul li>a.active {
-    color: #0062FF !important;
+// Explorer Active Item & Hover Color (Lighter Blue)
+.explorer-content ul li>a.active,
+.explorer-content ul li>a:hover {
+    color: #4C8DFF !important;
     opacity: 1 !important;
 }
 
