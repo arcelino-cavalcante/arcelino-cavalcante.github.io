@@ -29,25 +29,25 @@ const config: QuartzConfig = {
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#7F6DF2", // Obsidian Purple (Light Mode)
-          tertiary: "#84a59d",
-          highlight: "rgba(127, 109, 242, 0.15)",
+          light: "#E3DCD2",   // Beige (Light BG)
+          lightgray: "#D4CDC3",
+          gray: "#8D8D8D",
+          darkgray: "#4A4A4A",
+          dark: "#013328",    // Dark Green (Text)
+          secondary: "#CC8B65", // Terracotta (Accent)
+          tertiary: "#A97050",
+          highlight: "rgba(204, 139, 101, 0.15)",
           textHighlight: "#fff23688",
         },
         darkMode: {
-          light: "#202020", // Obsidian Dark Background
-          lightgray: "#2b2b2b",
-          gray: "#b8b8b8",
-          darkgray: "#dcddde", // Obsidian Text color
-          dark: "#ebf2fc",
-          secondary: "#7F6DF2", // Obsidian Purple (Dark Mode)
-          tertiary: "#84a59d",
-          highlight: "rgba(127, 109, 242, 0.15)",
+          light: "#100C0D",   // Deep Dark (Dark BG) - assumindo correção do hex #100COD para #100C0D
+          lightgray: "#1F1B1C",
+          gray: "#646464",
+          darkgray: "#C0B8B0",
+          dark: "#E3DCD2",    // Beige (Text)
+          secondary: "#CC8B65", // Terracotta (Accent)
+          tertiary: "#A97050",
+          highlight: "rgba(204, 139, 101, 0.15)",
           textHighlight: "#b3aa0288",
         },
       },
