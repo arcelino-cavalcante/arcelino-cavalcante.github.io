@@ -23,5 +23,6 @@ Bem-vindo à nossa seleção exclusiva de produtos e materiais premium.
   </div>
 
   <!-- Adicione mais produtos seguindo o modelo acima -->
+  <!-- CARD_ANCHOR -->
 
 </div>
