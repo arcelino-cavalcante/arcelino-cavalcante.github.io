@@ -124,9 +124,7 @@ export default ((userOpts?: Partial<Options>) => {
         </div>
         <template id="template-file">
           <li>
-            <a href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="file-icon" width="14" height="14" fill="currentColor" style="margin-right: 5px; opacity: 0.8;"><path d="M14,10H19.5L14,4.5V10M5,3H15L21,9V19A2,2 0 0,1 19,21H5C3.89,21 3,20.1 3,19V5C3,3.89 3.89,3 5,3M5,5V19H19V12H12V5H5Z" /></svg>
-            </a>
+            <a href="#"></a>
           </li>
         </template>
         <template id="template-folder">
@@ -146,7 +144,6 @@ export default ((userOpts?: Partial<Options>) => {
               >
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="margin-right: 5px; opacity: 0.8;"><path d="M20,18H4V8H20M20,6H12L10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6Z" /></svg>
               <div>
                 <button class="folder-button">
                   <span class="folder-title"></span>
