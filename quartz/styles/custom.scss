@@ -28,3 +28,10 @@ mark {
     background-color: #82B1FF;
     color: #202020; // Dark text for contrast against light blue
 }
+
+// Mobile Search Optimization: Hide text, show only icon
+@media all and (max-width: 800px) {
+    .search>.search-button>p {
+        display: none;
+    }
+}
