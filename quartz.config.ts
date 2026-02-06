@@ -23,8 +23,8 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Outfit",
-        body: "Inter",
+        header: "Outfit", // Mantendo Outfit para contraste moderno nos títulos
+        body: "Literata", // Inspirada no Bookerly (ótima para leitura)
         code: "JetBrains Mono",
       },
       colors: {
