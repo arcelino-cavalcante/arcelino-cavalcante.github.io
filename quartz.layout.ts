@@ -41,7 +41,33 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Explorer(),
   ],
   right: [
-    Component.Graph(),
+    Component.Graph({
+      localGraph: {
+        drag: true,
+        zoom: true,
+        depth: 1,
+        scale: 1.1,
+        repelForce: 0.8, // Increased for less clutter
+        centerForce: 0.3,
+        linkDistance: 40, // More breathing room
+        fontSize: 0.6,
+        opacityScale: 1,
+        highlightColor: "#82B1FF", // Ensuring consistency with light blue theme
+        enableRadial: true, // Obsidian-like focus
+      },
+      globalGraph: {
+        drag: true,
+        zoom: true,
+        depth: -1,
+        scale: 0.9,
+        repelForce: 0.6,
+        centerForce: 0.3,
+        linkDistance: 35,
+        fontSize: 0.6,
+        opacityScale: 1,
+        highlightColor: "#82B1FF",
+      },
+    }),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
   ],
