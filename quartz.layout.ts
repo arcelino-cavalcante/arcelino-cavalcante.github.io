@@ -47,13 +47,12 @@ export const defaultContentPageLayout: PageLayout = {
         zoom: true,
         depth: 1,
         scale: 1.1,
-        repelForce: 0.8, // Increased for less clutter
+        repelForce: 0.8,
         centerForce: 0.3,
-        linkDistance: 40, // More breathing room
+        linkDistance: 40,
         fontSize: 0.6,
         opacityScale: 1,
-        highlightColor: "#82B1FF", // Ensuring consistency with light blue theme
-        enableRadial: true, // Obsidian-like focus
+        enableRadial: true,
       },
       globalGraph: {
         drag: true,
@@ -65,7 +64,6 @@ export const defaultContentPageLayout: PageLayout = {
         linkDistance: 35,
         fontSize: 0.6,
         opacityScale: 1,
-        highlightColor: "#82B1FF",
       },
     }),
     Component.DesktopOnly(Component.TableOfContents()),
