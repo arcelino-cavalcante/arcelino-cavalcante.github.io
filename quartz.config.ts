@@ -34,20 +34,20 @@ const config: QuartzConfig = {
           gray: "#b8b8b8",
           darkgray: "#4e4e4e",
           dark: "#2b2b2b",
-          secondary: "#284b63",
+          secondary: "#7F6DF2", // Obsidian Purple (Light Mode)
           tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+          highlight: "rgba(127, 109, 242, 0.15)",
           textHighlight: "#fff23688",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
+          light: "#202020", // Obsidian Dark Background
+          lightgray: "#2b2b2b",
+          gray: "#b8b8b8",
+          darkgray: "#dcddde", // Obsidian Text color
+          dark: "#ebf2fc",
+          secondary: "#7F6DF2", // Obsidian Purple (Dark Mode)
           tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
+          highlight: "rgba(127, 109, 242, 0.15)",
           textHighlight: "#b3aa0288",
         },
       },
