@@ -81,16 +81,16 @@ mark {
     &:hover {
         transform: translateY(-4px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        border-color: var(--tertiary);
+        border-color: #82B1FF; // Blue Theme
     }
 
     h3 {
         margin-top: 0;
         margin-bottom: 0.5rem;
-        color: var(--tertiary);
+        color: var(--dark); // Black Title
 
         a {
-            color: var(--tertiary);
+            color: var(--dark);
             text-decoration: none;
         }
     }
