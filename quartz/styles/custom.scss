@@ -139,7 +139,54 @@ a.btn-buy {
     }
 }
 
-// 4. CSS Carousel (Scroll Snap)
+// === DEEP TECH REFINEMENTS ===
+
+// 1. Typography & Layout
+body,
+p,
+li {
+    line-height: 1.6 !important; // "Tech Doc" feel
+}
+
+// 2. Tags: "Pill" Style (Border only, light background)
+.tags a.internal-link {
+    background-color: transparent !important;
+    border: 1px solid var(--secondary);
+    color: var(--secondary) !important;
+    border-radius: 9999px !important; // Pill shape
+    padding: 0.2rem 0.6rem !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: var(--secondary) !important;
+        color: var(--light) !important;
+        transform: translateY(-1px);
+    }
+}
+
+// 3. UI Refinements: Shadows & Radius
+.product-card,
+.callout,
+pre code,
+img {
+    border-radius: 12px !important; // Modern rounded corners
+}
+
+.product-card {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); // Tailwind "shadow-md"
+}
+
+.product-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); // Tailwind "shadow-xl"
+}
+
+// 4. Graph View Colors (Central vs Others)
+// Note: Quartz handles graph colors via config, but we can try to force specific node styles if classes exist.
+// For now, the config colors (Secondary/Tertiary) handle most of this hierarchy.
+
+// === STORE / PREMIUM SECTION STYLES ===
+// ... (Previous store styles below)
 .carousel-container {
     display: flex;
     overflow-x: auto;
@@ -161,8 +208,8 @@ a.btn-buy {
         scroll-snap-align: center;
         max-height: 400px;
         width: auto;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 12px; // Updated Radius
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Updated Shadow
         display: block;
     }
 }

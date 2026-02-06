@@ -23,32 +23,32 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Literata", // Estilo Bookerly para títulos
-        body: "Literata",   // Estilo Bookerly para texto
+        header: "Inter",
+        body: "Inter",
         code: "IBM Plex Mono",
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#0062FF", // Strong Modern Blue
-          tertiary: "#84a59d",
-          highlight: "rgba(0, 98, 255, 0.15)", // Based on #0062FF
-          textHighlight: "#0062FF88", // Based on #0062FF
+          light: "#F8FAFC", // Slate 50 (Off-white)
+          lightgray: "#E2E8F0", // Slate 200 (Borders)
+          gray: "#64748B", // Slate 500 (Muted)
+          darkgray: "#475569", // Slate 600 (Body)
+          dark: "#1E293B", // Slate 800 (Headings/Text)
+          secondary: "#6366F1", // Indigo 500 (Primary Accent)
+          tertiary: "#818CF8", // Indigo 400 (Hover/Graph)
+          highlight: "rgba(99, 102, 241, 0.15)", // Indigo Highlight
+          textHighlight: "#6366F188",
         },
         darkMode: {
-          light: "#202020", // Obsidian Dark Background
-          lightgray: "#2b2b2b",
-          gray: "#b8b8b8",
-          darkgray: "#dcddde", // Obsidian Text color
-          dark: "#ebf2fc",
-          secondary: "#0062FF", // Strong Modern Blue
-          tertiary: "#84a59d",
-          highlight: "rgba(0, 98, 255, 0.15)", // Based on #0062FF
-          textHighlight: "#0062FF88", // Based on #0062FF
+          light: "#0F172A", // Slate 900 (Deep Dark)
+          lightgray: "#1E293B", // Slate 800 (Borders)
+          gray: "#94A3B8", // Slate 400 (Muted)
+          darkgray: "#E2E8F0", // Slate 200 (Body)
+          dark: "#F8FAFC", // Slate 50 (Headings)
+          secondary: "#818CF8", // Indigo 400 (Accent)
+          tertiary: "#6366F1", // Indigo 500 (Hover)
+          highlight: "rgba(99, 102, 241, 0.15)",
+          textHighlight: "#818CF888",
         },
       },
     },
