@@ -23,6 +23,15 @@ Bem-vindo à nossa seleção exclusiva de produtos e materiais premium.
   </div>
 
   <!-- Adicione mais produtos seguindo o modelo acima -->
+  
+  <!-- Produto: Jogos Classicos -->
+  <div class="product-card">
+    <h3>Jogos Classicos</h3>
+    <p>Algo queda para voce fazerem legal</p>
+    <div class="price">R$ 34.00</div>
+    <a href="Jogos Classicos" class="btn-buy">Ver Detalhes</a>
+  </div>
+
   <!-- CARD_ANCHOR -->
 
 </div>
