@@ -1,3 +1,71 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// 1. Spacing & Layout "Respiro"
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+// 2. Headings & Typography
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1em;
+}
+
+p {
+  line-height: 1.7; // More breathable reading
+  margin-bottom: 1.5em;
+}
+
+// 3. Card Layout for Lists (Home, tags, etc)
+.section-li > .section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+// Style individual list items as cards
+.section-li > .section > .popover-hint {
+  display: block; // Make card occupy space
+  padding: 1.5rem;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  
+  // Shadow for depth
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--secondary);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+  }
+}
+
+// Metadata inside cards
+.section-li > .section > .popover-hint .meta {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+// 4. Premium Accents
+blockquote {
+  border-left: 4px solid var(--secondary);
+  background: var(--highlight);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.5rem;
+}
+
+// Smooth scroll
+html {
+  scroll-behavior: smooth;
+}

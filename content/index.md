@@ -1,20 +1,20 @@
 ---
-title: Welcome to My Blog
+title: Bem-vindo ao Meu Blog
 date: 2024-03-20
 tags:
-  - welcome
+  - bem-vindo
 ---
 
-# Hello World
+# Olá Mundo
 
-Welcome to my new Obsidian-powered blog! This content is safely stored in my Vault and published automatically to Quartz.
+Bem-vindo ao meu novo blog powered by Obsidian! Todo este conteúdo está salvo de forma segura no meu Vault e publicado automaticamente para o Quartz.
 
-## How it works
-1. I write here in `Vault/Blog`.
-2. I run `npm run publish` in `Vault/quartz`.
-3. It appears on the web!
+## Como funciona?
+1. Eu escrevo aqui em `Vault/Blog`.
+2. Eu rodo `npm run publish` em `Vault/quartz`.
+3. Tudo aparece na web!
 
-## Features
-- **Fast**: Built with Quartz 4.
-- **Safe**: My original files are never touched by the build process.
-- **Git-backed**: All history is saved.
+## Recursos
+- **Rápido**: Feito com Quartz 4.
+- **Seguro**: Meus arquivos originais nunca são tocados pelo processo de build.
+- **Git-backed**: Todo o histórico é salvo.
