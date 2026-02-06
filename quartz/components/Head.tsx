@@ -84,7 +84,7 @@ export default (() => {
 
         <link rel="icon" href={iconPath} />
         <link rel="manifest" href={joinSegments(baseDir, "manifest.json")} />
-        <meta name="theme-color" content="#82B1FF" />
+        <meta name="theme-color" content="#0062FF" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

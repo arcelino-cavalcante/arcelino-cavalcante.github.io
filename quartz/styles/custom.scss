@@ -4,7 +4,7 @@
 a:hover,
 .internal-link:hover,
 .external-link:hover {
-    color: #82B1FF !important; // Light Blue Text
+    color: #0062FF !important; // Light Blue Text
     background-color: transparent !important; // No "highlighter" background
     text-decoration: none !important; // No underline
     transition: color 0.2s ease;
@@ -12,7 +12,7 @@ a:hover,
 
 // Ensure the "rover" (graph/popover) highlights are also blue
 .graph-view canvas {
-    --highlight: #82B1FF !important;
+    --highlight: #0062FF !important;
 }
 
 // Ensure highlighted text (==text==) uses the configured color
@@ -25,7 +25,7 @@ mark {
 
 // Custom Text Selection Color
 ::selection {
-    background-color: #82B1FF;
+    background-color: #0062FF;
     color: #202020; // Dark text for contrast against light blue
 }
 
@@ -49,7 +49,7 @@ mark {
 
 // Explorer Active Item Color (Light Blue)
 .explorer-content ul li>a.active {
-    color: #82B1FF !important;
+    color: #0062FF !important;
     opacity: 1 !important;
 }
 
@@ -81,7 +81,7 @@ mark {
     &:hover {
         transform: translateY(-4px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        border-color: #82B1FF; // Blue Theme
+        border-color: #0062FF; // Blue Theme
     }
 
     h3 {
@@ -114,7 +114,7 @@ mark {
 .btn-buy,
 a.btn-buy {
     display: inline-block;
-    background-color: #82B1FF !important; // Force Blue
+    background-color: #0062FF !important; // Force Blue
     color: white !important;
     padding: 0.8rem 1.5rem;
     border-radius: 6px;
@@ -129,7 +129,7 @@ a.btn-buy {
 
     &:visited {
         color: white !important;
-        background-color: #82B1FF !important;
+        background-color: #0062FF !important;
     }
 
     &:hover {

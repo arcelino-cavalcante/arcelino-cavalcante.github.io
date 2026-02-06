@@ -34,10 +34,10 @@ const config: QuartzConfig = {
           gray: "#b8b8b8",
           darkgray: "#4e4e4e",
           dark: "#2b2b2b",
-          secondary: "#448AFF", // Blue Accent (Light Mode)
+          secondary: "#0062FF", // Strong Modern Blue
           tertiary: "#84a59d",
-          highlight: "rgba(130, 177, 255, 0.15)", // Fundo mais claro (#82B1FF)
-          textHighlight: "#82B1FF88", // Texto marcado mais claro
+          highlight: "rgba(0, 98, 255, 0.15)", // Based on #0062FF
+          textHighlight: "#0062FF88", // Based on #0062FF
         },
         darkMode: {
           light: "#202020", // Obsidian Dark Background
@@ -45,10 +45,10 @@ const config: QuartzConfig = {
           gray: "#b8b8b8",
           darkgray: "#dcddde", // Obsidian Text color
           dark: "#ebf2fc",
-          secondary: "#448AFF", // Blue Accent (Dark Mode)
+          secondary: "#0062FF", // Strong Modern Blue
           tertiary: "#84a59d",
-          highlight: "rgba(130, 177, 255, 0.15)", // Fundo mais claro (#82B1FF)
-          textHighlight: "#82B1FF88", // Texto marcado mais claro
+          highlight: "rgba(0, 98, 255, 0.15)", // Based on #0062FF
+          textHighlight: "#0062FF88", // Based on #0062FF
         },
       },
     },
