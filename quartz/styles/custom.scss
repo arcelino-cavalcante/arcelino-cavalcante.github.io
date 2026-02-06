@@ -1,11 +1,13 @@
 @use "./base.scss";
 
-// Forcing Blue Hover for all links
+// Forcing Blue Hover for all links (Text Only, No Background)
 a:hover,
 .internal-link:hover,
 .external-link:hover {
-    color: #82B1FF !important; // Light Blue
-    background-color: rgba(130, 177, 255, 0.1) !important; // Subtle background
+    color: #82B1FF !important; // Light Blue Text
+    background-color: transparent !important; // No "highlighter" background
+    text-decoration: underline; // Optional: adds underline for clarity without background
+    text-decoration-color: rgba(130, 177, 255, 0.5);
     transition: color 0.2s ease;
 }
 
