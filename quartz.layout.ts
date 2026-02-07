@@ -40,6 +40,19 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.Explorer({
       title: "Categorias",
+      sortFn: (a, b) => {
+        if ((!a.file && !b.file) || (a.file && b.file)) {
+          return a.slugSegment.localeCompare(b.slugSegment, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          })
+        }
+        if (!a.file && b.file) {
+          return 1
+        } else {
+          return -1
+        }
+      },
       mapFn: (node) => {
         node.displayName = node.displayName.replace(/^\d+[-_.\s]+/, "")
       },
@@ -95,6 +108,19 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.Explorer({
       title: "Categorias",
+      sortFn: (a, b) => {
+        if ((!a.file && !b.file) || (a.file && b.file)) {
+          return a.slugSegment.localeCompare(b.slugSegment, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          })
+        }
+        if (!a.file && b.file) {
+          return 1
+        } else {
+          return -1
+        }
+      },
       mapFn: (node) => {
         node.displayName = node.displayName.replace(/^\d+[-_.\s]+/, "")
       },
