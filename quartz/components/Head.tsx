@@ -82,15 +82,15 @@ export default (() => {
           </>
         )}
 
-        <link rel="icon" href={iconPath} />
-        <link rel="manifest" href={joinSegments(baseDir, "manifest.json")} />
+        <link rel="icon" href="/static/icon.svg" />
+        <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#EA580C" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
-                  navigator.serviceWorker.register('${joinSegments(baseDir, "sw.js")}')
+                  navigator.serviceWorker.register('/sw.js')
                     .then(reg => console.log('SW registered!', reg))
                     .catch(err => console.log('SW failed!', err));
                 });
