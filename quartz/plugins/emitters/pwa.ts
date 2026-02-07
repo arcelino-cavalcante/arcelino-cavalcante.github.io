@@ -8,7 +8,7 @@ export const PWA: QuartzEmitterPlugin = () => ({
     return []
   },
   async emit(ctx, _content, _resources) {
-    const { argv, cfg } = ctx
+
 
     // Generate Manifest
     const manifest = {
