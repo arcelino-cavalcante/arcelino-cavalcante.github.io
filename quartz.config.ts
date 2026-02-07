@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "pt-BR",
-    baseUrl: "arcelinocavalcante.dev",
+    baseUrl: "arcelino-cavalcante.github.io",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
@@ -91,7 +91,6 @@ const config: QuartzConfig = {
       // Comment out CustomOgImages to speed up build time
       Plugin.CustomOgImages(),
       Plugin.PWA(),
-      Plugin.CNAME(),
     ],
   },
 }
