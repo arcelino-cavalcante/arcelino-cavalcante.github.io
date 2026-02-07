@@ -284,14 +284,19 @@ li:has(> .folder-outer:not(.open))>.folder-container>svg {
 
 // Mobile Font Size Adjustments
 @media all and ($mobile) {
-  .folder-container div>button span {
-    font-size: 1.3rem !important;
+
+  // Target specific class for reliability
+  .folder-container .folder-title {
+    font-size: 1.4rem !important; // Larger Folder Titles
     font-weight: 700 !important;
+  }
+
+  .folder-button {
     padding: 0.5rem 0;
   }
 
   .explorer-content ul li>a {
-    font-size: 1.2rem !important;
+    font-size: 1.2rem !important; // Larger File Links
     padding: 0.5rem 0;
     display: block;
   }
