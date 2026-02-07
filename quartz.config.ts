@@ -16,9 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "pt-BR",
-    locale: "pt-BR",
     baseUrl: "arcelinocavalcante.dev",
-    ignorePatterns: ["private", "templates", ".obsidian"],
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
