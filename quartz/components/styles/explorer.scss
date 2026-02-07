@@ -281,3 +281,23 @@ li:has(> .folder-outer:not(.open))>.folder-container>svg {
     }
   }
 }
+
+// Mobile Font Size Adjustments
+@media all and ($mobile) {
+  .folder-container div>button span {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    padding: 0.5rem 0;
+  }
+
+  .explorer-content ul li>a {
+    font-size: 1.2rem !important;
+    padding: 0.5rem 0;
+    display: block;
+  }
+
+  .folder-icon {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
