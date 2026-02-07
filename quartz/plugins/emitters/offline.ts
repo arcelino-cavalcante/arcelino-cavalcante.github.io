@@ -1,5 +1,5 @@
 import { QuartzEmitterPlugin } from "../types"
-import { joinSegments } from "../../util/path"
+import { FullSlug } from "../../util/path"
 import { write } from "./helpers"
 
 export const Offline: QuartzEmitterPlugin = () => ({
@@ -7,7 +7,9 @@ export const Offline: QuartzEmitterPlugin = () => ({
     getQuartzComponents() {
         return []
     },
-    async emit({ argv, cfg }, _content, _resources) {
+    async emit(ctx, _content, _resources) {
+        const { argv, cfg } = ctx
+
         // Generate Manifest
         const manifest = {
             name: "DevEnsino",
@@ -29,8 +31,8 @@ export const Offline: QuartzEmitterPlugin = () => ({
         }
 
         await write({
-            ctx: { argv, cfg },
-            slug: "manifest",
+            ctx,
+            slug: "manifest" as FullSlug,
             ext: ".json",
             content: JSON.stringify(manifest, null, 2),
         })
@@ -43,7 +45,6 @@ const urlsToCache = [
   '/index.html',
   '/manifest.json',
   '/static/icon.svg',
-  '/styles/custom.css'
 ];
 
 self.addEventListener('install', event => {
@@ -67,8 +68,8 @@ self.addEventListener('fetch', event => {
 `
 
         await write({
-            ctx: { argv, cfg },
-            slug: "sw",
+            ctx,
+            slug: "sw" as FullSlug,
             ext: ".js",
             content: sw,
         })
