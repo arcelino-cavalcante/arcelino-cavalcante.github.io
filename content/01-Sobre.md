@@ -19,7 +19,7 @@ social_links:
 
 <img src="../../quartz/static/icon.png" alt="Profile Logic" width="150" style="border-radius: 50%; border: 3px solid #EA580C; display: block; margin: 0 auto 20px auto;">
 
-> [!quote] 
+> [!quote]
 > *"Apaixonado por tecnologia, automação e em compartilhar conhecimento."*
 
 ---

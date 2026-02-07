@@ -1,5 +1,5 @@
 ---
-title: 🛍️ Loja Premium
+title: Loja
 ---
 
 Bem-vindo à nossa seleção exclusiva de produtos e materiais premium.
