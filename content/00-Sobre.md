@@ -17,7 +17,7 @@ social_links:
 
 # 👋 Olá, eu sou o Arcelino!
 
-<img src="Blog/assets/perfil.png" alt="Profile Logic" width="180" style="border-radius: 50%; border: 3px solid #EA580C; display: block; margin: 0 auto 20px auto;">
+<img src="assets/perfil.png" alt="Arcelino Cavalcante" width="180" style="border-radius: 50%; border: 3px solid #EA580C; display: block; margin: 0 auto 20px auto;">
 
 > [!quote]
 > *"Apaixonado por tecnologia, automação e em compartilhar conhecimento."*
