@@ -291,6 +291,12 @@ li:has(> .folder-outer:not(.open))>.folder-container>svg {
     font-weight: 700 !important;
   }
 
+  // Add breathing room between folders
+  .folder-container {
+    margin-bottom: 0.8rem !important;
+    margin-top: 0.4rem !important;
+  }
+
   .folder-button {
     padding: 0.5rem 0;
   }
