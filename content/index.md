@@ -18,10 +18,10 @@ Explore o conteúdo pelas categorias principais:
 > [!tip] [[Dicas/index|Dicas & Truques]]
 > Atalhos e métodos para melhorar seu fluxo de trabalho.
 
-> [!note] [[Blog/05-Documentacoes/index|Documentações]]
+> [!note] [[Blog/06-Documentacoes/index|Documentações]]
 > Manuais técnicos e referências detalhadas.
 
-> [!important] [[Blog/03-Tutorial/index|Tutoriais]]
+> [!important] [[Blog/04-Tutorial/index|Tutoriais]]
 > Guias passo a passo para aprender na prática.
 
 </div>
