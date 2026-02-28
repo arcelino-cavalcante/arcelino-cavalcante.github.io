@@ -10,6 +10,8 @@ export const sharedPageComponents: SharedLayout = {
     links: {
       Instagram: "#",
       WhatsApp: "#",
+      "Política de Privacidade": "/Politica-de-Privacidade",
+      "Termos de Uso": "/Termos-de-Uso",
     },
   }),
 }
