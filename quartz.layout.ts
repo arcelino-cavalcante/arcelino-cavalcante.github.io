@@ -8,8 +8,9 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [Component.CookieConsent()],
   footer: Component.Footer({
     links: {
-      Instagram: "#",
-      WhatsApp: "#",
+      "Instagram": "#",
+      "WhatsApp": "#",
+      "Contato": "/Contato",
       "Política de Privacidade": "/Politica-de-Privacidade",
       "Termos de Uso": "/Termos-de-Uso",
     },
