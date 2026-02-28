@@ -16,3 +16,32 @@ Running 'npm run publish'...
  Quartz v4.5.2 
 
 Backing up your content
+[v4 03a40f3] Quartz sync: Feb 28, 2026, 1:08 PM
+ Committer: Arcelino Cavalcante <arc@MacBook-Air-de-Arcelino.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 6 files changed, 149 insertions(+), 2 deletions(-)
+ create mode 100644 quartz/components/CookieConsent.tsx
+ create mode 100644 quartz/components/scripts/cookieconsent.inline.ts
+ create mode 100644 quartz/components/styles/cookieconsent.scss
+Pulling updates from your repository. You may need to resolve some `git` conflicts if you've made changes to components or plugins.
+From https://github.com/arcelino-cavalcante/arcelino-cavalcante.github.io
+ * branch            v4         -> FETCH_HEAD
+Already up to date.
+Pushing your changes
+To https://github.com/arcelino-cavalcante/arcelino-cavalcante.github.io.git
+   5154aab..03a40f3  v4 -> v4
+branch 'v4' set up to track 'origin/v4'.
+Done!
+Success!
+--- Finished at Sat Feb 28 13:08:10 -03 2026 ---
