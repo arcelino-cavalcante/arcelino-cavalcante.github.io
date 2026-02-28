@@ -43,6 +43,10 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.Explorer({
       title: "Categorias",
+      filterFn: (node) => {
+        const emptyCategories = ["AI", "Materials", "Documentation", "Cursos", "Documentações", "Inteligência Artificial", "Loja", "Materiais e Arquivos"]
+        return node.name !== "tags" && !emptyCategories.includes(node.name)
+      },
       sortFn: (a, b) => {
         return a.slugSegment.localeCompare(b.slugSegment, undefined, {
           numeric: true,
@@ -104,6 +108,11 @@ export const defaultListPageLayout: PageLayout = {
     }),
     Component.Explorer({
       title: "Categorias",
+      filterFn: (node) => {
+        const emptyCategories = ["AI", "Materials", "Documentation", "Cursos", "Documentações", "Inteligência Artificial", "Loja", "Materiais e Arquivos"]
+        return node.name !== "tags" && !emptyCategories.includes(node.name)
+      },
+      useSavedState: true,
       sortFn: (a, b) => {
         return a.slugSegment.localeCompare(b.slugSegment, undefined, {
           numeric: true,
