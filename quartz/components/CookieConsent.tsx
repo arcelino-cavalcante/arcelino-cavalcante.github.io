@@ -8,7 +8,6 @@ const CookieConsent: QuartzComponent = () => {
 
     return (
         <div id="cookie-consent-banner" class="hidden">
-            <span class="cookie-icon">🍪</span>
             <p class="cookie-text">
                 Este site utiliza cookies e o Google Analytics para melhorar sua experiência.
                 Ao continuar navegando, você concorda com nossa{" "}
