@@ -45,7 +45,7 @@ export const defaultContentPageLayout: PageLayout = {
       title: "Categorias",
       filterFn: (node) => {
         const emptyCategories = ["AI", "Materials", "Documentation", "Cursos", "Documentações", "Inteligência Artificial", "Loja", "Materiais e Arquivos"]
-        return node.name !== "tags" && !emptyCategories.includes(node.name)
+        return node.displayName !== "tags" && !emptyCategories.includes(node.displayName)
       },
       sortFn: (a, b) => {
         return a.slugSegment.localeCompare(b.slugSegment, undefined, {
@@ -110,7 +110,7 @@ export const defaultListPageLayout: PageLayout = {
       title: "Categorias",
       filterFn: (node) => {
         const emptyCategories = ["AI", "Materials", "Documentation", "Cursos", "Documentações", "Inteligência Artificial", "Loja", "Materiais e Arquivos"]
-        return node.name !== "tags" && !emptyCategories.includes(node.name)
+        return node.displayName !== "tags" && !emptyCategories.includes(node.displayName)
       },
       useSavedState: true,
       sortFn: (a, b) => {
