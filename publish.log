@@ -1,0 +1,18 @@
+--- Starting Publish at Sat Feb 28 12:01:25 -03 2026 ---
+Running 'npm run publish'...
+
+> @jackyzha0/quartz@4.5.2 publish
+> npm run sync && npx quartz sync
+
+
+> @jackyzha0/quartz@4.5.2 sync
+> node scripts/copy_content.cjs
+
+🚀 Starting Sync: /Users/arc/Vault/Blog -> /Users/arc/Vault/quartz/content
+🧹 Cleaning existing content...
+📂 Copying files...
+✨ Sync Complete!
+
+ Quartz v4.5.2 
+
+Backing up your content

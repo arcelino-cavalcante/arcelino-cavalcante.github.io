@@ -13,7 +13,8 @@ const config: QuartzConfig = {
     enableSPA: true,
     enablePopovers: true,
     analytics: {
-      provider: "plausible",
+      provider: "google",
+      tagId: "G-H1TCB4PYH7",
     },
     locale: "pt-BR",
     baseUrl: "arcelino-cavalcante.github.io",
